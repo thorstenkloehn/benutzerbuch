@@ -35,4 +35,6 @@ Eine Rohfassung wird in drei Schritten zu einem fertigen Artikel in `src/`:
 
 **3. Lint** (Sprache und Stil)
 - Grammatik prüfen und im Stil eines Praxisbuchs schreiben (klar, anwendungsorientiert, keine reine Theorie): sachlich, nicht in Ich-Form, verständlich für Anfänger und 10-Jährige (einfache Sätze, keine Fachbegriffe ohne Erklärung).
+- Jedem Artikel folgenden Hinweis als Kopf- und Fußzeile hinzufügen (identischer Text an beiden Stellen):
+  > Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).
 - Danach darf Claude die Rohfassung in `RAW/` löschen.

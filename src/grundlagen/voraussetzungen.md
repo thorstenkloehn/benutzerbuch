@@ -1,5 +1,7 @@
 # Voraussetzungen
 
+> Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).
+
 Bekannte Coding-Tools dieser Art kommen aktuell vor allem von drei großen KI-Firmen: Anthropic mit Claude Code, OpenAI mit Codex CLI und Google mit Antigravity CLI. Alle drei funktionieren nach einem ähnlichen Grundprinzip, unterscheiden sich aber im verwendeten KI-Modell. Dieses Kapitel konzentriert sich auf Claude Code.
 
 ## Installation
@@ -75,3 +77,5 @@ Eine dritte Möglichkeit ist die Claude-Desktop-App, das allgemeine Chatprogramm
 ## Fazit
 
 Für den Einstieg eignet sich die Erweiterung für Visual Studio Code am besten, wenn man bereits mit diesem Programm arbeitet. Wer die volle Kontrolle über jeden einzelnen Schritt haben möchte, benutzt Claude Code direkt im Terminal. Die Claude-Desktop-App ist dagegen eher für allgemeine Aufgaben gedacht als fürs Programmieren.
+
+> Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).

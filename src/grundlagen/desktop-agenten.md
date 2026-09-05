@@ -1,5 +1,7 @@
 # Desktop-Agenten
 
+> Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).
+
 Ein Desktop-Agent ist ein Programm, das nicht nur im Chat antwortet, sondern selbstständig Aufgaben auf dem eigenen Computer erledigt: Dateien lesen, anlegen oder ändern, im Browser klicken oder mehrere Schritte hintereinander ausführen, ohne dass man jeden einzelnen davon selbst anstößt. Anders als bei Claude Code, Codex CLI oder Antigravity CLI (siehe [Voraussetzungen](./voraussetzungen.md)) läuft ein Desktop-Agent nicht im Terminal, sondern in einer eigenen grafischen Anwendung mit Fenstern und Schaltflächen.
 
 Drei bekannte Beispiele dafür sind aktuell:
@@ -38,3 +40,5 @@ Diese Schritte sind nur unter Linux nötig. Unter macOS und Windows lässt sich 
 ## Fazit
 
 Neben diesen drei Beispielen gibt es bereits weitere Desktop-Agenten, und es werden mit großer Sicherheit noch mehr dazukommen — dieses Handbuch kann und will keine vollständige, ständig aktuelle Liste davon sein. Wichtiger als die Anzahl der verfügbaren Werkzeuge ist ein Grundsatz, der für alle gilt: Ein Desktop-Agent kann viele Schritte selbstständig ausführen, doch die Kontrolle über wichtige Entscheidungen sollte am Ende immer beim Menschen bleiben, etwa beim Aufbau einer Webseite oder einer Anwendung. Wer Ergebnisse ungeprüft übernimmt, überlässt der KI mehr, als ihr gut tut. Ein Sprachmodell wird außerdem nicht von selbst besser, nur weil man es häufiger benutzt — es hilft, die eigenen Grundlagen zu verstehen, statt sich blind auf Vorschläge zu verlassen. Die folgenden Kapitel zeigen deshalb, wie man mit einem Desktop-Agenten gezielt Wissen aufbaut und sammelt, statt ihm die Arbeit einfach vollständig zu überlassen.
+
+> Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).
