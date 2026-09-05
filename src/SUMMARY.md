@@ -10,6 +10,7 @@
 # Server einrichten
 
 - [Server mieten](./server-einrichten/server-mieten.md)
+- [Betriebssystem](./server-einrichten/betriebssystem.md)
 
 # Rechtliche Fragen
 - [Impressum](Impressum.md)
