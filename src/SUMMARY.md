@@ -12,6 +12,7 @@
 - [Server mieten](./server-einrichten/server-mieten.md)
 - [Betriebssystem](./server-einrichten/betriebssystem.md)
 - [Laufzeitumgebung](./server-einrichten/laufzeitumgebung.md)
+- [Tomcat 11 einrichten](./server-einrichten/tomcat.md)
 - [Datenbank](./server-einrichten/datenbank.md)
 - [Tileserver](./server-einrichten/tileserver.md)
 - [Webserver](./server-einrichten/webserver.md)
