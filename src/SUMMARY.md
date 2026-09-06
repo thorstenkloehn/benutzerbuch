@@ -38,7 +38,8 @@
   - [XWiki einrichten](./web-stack/xwiki.md)
 - [Content-Management-System](./web-stack/cms.md)
   - [Drupal einrichten](./web-stack/drupal.md)
-## Mobil
+
+# Mobil
 
 - [IDE und GUI](./mobil/ide-und-gui.md)
 
