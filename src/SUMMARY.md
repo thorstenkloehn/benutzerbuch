@@ -17,7 +17,9 @@
 - [Postfix](./server-einrichten/postfix.md)
 - [Containerisierung von Software](./server-einrichten/containerisierung.md)
 - [KI-Agenten auf dem Server](./server-einrichten/ki-agent.md)
+# Entwicklungs-Rechner
 
+- [Docs-as-Code](./entwicklungs-rechner/docs-as-code.md)
 # Rechtliche Fragen
 - [Impressum](Impressum.md)
 - [Datenschutz](Datenschutz.md)
