@@ -13,6 +13,7 @@
 - [Betriebssystem](./server-einrichten/betriebssystem.md)
 - [Laufzeitumgebung](./server-einrichten/laufzeitumgebung.md)
 - [Datenbank](./server-einrichten/datenbank.md)
+- [Tileserver](./server-einrichten/tileserver.md)
 - [Webserver](./server-einrichten/webserver.md)
 - [Webframework](./server-einrichten/webframework.md)
 - [Postfix](./server-einrichten/postfix.md)
