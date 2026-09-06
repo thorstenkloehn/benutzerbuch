@@ -26,6 +26,7 @@
 # Web Stack
 
 - [Wissenssystem](./web-stack/wissensystem.md)
+  - [MediaWiki einrichten](./web-stack/mediawiki.md)
   - [XWiki einrichten](./web-stack/xwiki.md)
 
 # Rechtliche Fragen
