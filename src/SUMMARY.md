@@ -21,6 +21,7 @@
 - [Postfix](./server-einrichten/postfix.md)
 - [Containerisierung von Software](./server-einrichten/containerisierung.md)
 - [KI-Agenten auf dem Server](./server-einrichten/ki-agent.md)
+- [Git Hosting](./server-einrichten/git-hosting.md)
 # Entwicklungs-Rechner
 
 - [Allgemeine Einstellungen](./entwicklungs-rechner/allgemeine-einstellungen.md)
