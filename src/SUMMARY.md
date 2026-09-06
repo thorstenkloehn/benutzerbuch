@@ -24,6 +24,7 @@
 # Entwicklungs-Rechner
 
 - [IDE](./entwicklungs-rechner/ide.md)
+- [Programmiersprachen](./entwicklungs-rechner/programmiersprachen.md)
 - [Unix-Socket](./entwicklungs-rechner/unix-socket.md)
 - [Docs-as-Code](./entwicklungs-rechner/docs-as-code.md)
   - [Webseiten und Blogs](./entwicklungs-rechner/docs-as-code-webseiten.md)
