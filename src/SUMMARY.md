@@ -15,6 +15,7 @@
 - [Datenbank](./server-einrichten/datenbank.md)
 - [Tileserver](./server-einrichten/tileserver.md)
 - [Webserver](./server-einrichten/webserver.md)
+  - [Unix-Socket bei NGINX](./server-einrichten/nginx-unix-socket.md)
 - [Webframework](./server-einrichten/webframework.md)
 - [Postfix](./server-einrichten/postfix.md)
 - [Containerisierung von Software](./server-einrichten/containerisierung.md)
@@ -22,6 +23,7 @@
 # Entwicklungs-Rechner
 
 - [IDE](./entwicklungs-rechner/ide.md)
+- [Unix-Socket](./entwicklungs-rechner/unix-socket.md)
 - [Docs-as-Code](./entwicklungs-rechner/docs-as-code.md)
   - [Webseiten und Blogs](./entwicklungs-rechner/docs-as-code-webseiten.md)
 
