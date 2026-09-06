@@ -11,6 +11,9 @@
 
 - [Server mieten](./server-einrichten/server-mieten.md)
 - [Betriebssystem](./server-einrichten/betriebssystem.md)
+- [Laufzeitumgebung](./server-einrichten/laufzeitumgebung.md)
+- [Webserver](./server-einrichten/webserver.md)
+- [Postfix](./server-einrichten/postfix.md)
 - [Containerisierung von Software](./server-einrichten/containerisierung.md)
 - [KI-Agenten auf dem Server](./server-einrichten/ki-agent.md)
 
