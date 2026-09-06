@@ -12,6 +12,7 @@
 - [Server mieten](./server-einrichten/server-mieten.md)
 - [Betriebssystem](./server-einrichten/betriebssystem.md)
 - [Containerisierung von Software](./server-einrichten/containerisierung.md)
+- [KI-Agenten auf dem Server](./server-einrichten/ki-agent.md)
 
 # Rechtliche Fragen
 - [Impressum](Impressum.md)
