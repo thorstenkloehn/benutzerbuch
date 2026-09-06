@@ -84,16 +84,31 @@ Die **Prüfsumme** ist ein Fingerabdruck der Datei. Stimmt der berechnete Finger
 
 > **Hinweis:** Ältere Tomcat-Versionen werden von `dlcdn.apache.org` irgendwann entfernt und wandern nach `https://archive.apache.org/dist/tomcat/`. Wer eine ältere Version braucht, ändert die Adresse entsprechend.
 
-Jetzt das Zielverzeichnis anlegen und das Archiv hineinentpacken:
+Jetzt das Zielverzeichnis anlegen, es dem Benutzer `tomcat` übergeben und die Rechte setzen:
 
 ```bash
+# Zielverzeichnis anlegen (falls noch nicht vorhanden)
 sudo mkdir -p /opt/tomcat11
+
+# Eigentümer auf Benutzer und Gruppe "tomcat" setzen
+sudo chown tomcat:tomcat /opt/tomcat11
+
+# Rechte setzen (rwxr-x---): Besitzer darf alles, die Gruppe darf lesen und
+# in das Verzeichnis wechseln, alle anderen nichts
+sudo chmod 750 /opt/tomcat11
+```
+
+Das Recht der Gruppe, in das Verzeichnis zu wechseln (das `x` in `r-x`), ist kein Beiwerk: Ohne dieses Recht erreicht NGINX später die Socket-Datei in diesem Verzeichnis nicht, und die Anbindung schlägt fehl (siehe Abschnitt „Tomcat über einen Unix-Socket an NGINX anbinden").
+
+Dann das Archiv hineinentpacken:
+
+```bash
 sudo tar xzf "apache-tomcat-${VERSION}.tar.gz" -C /opt/tomcat11 --strip-components=1
 ```
 
 `--strip-components=1` lässt die oberste Ordnerebene aus dem Archiv weg, sodass die Dateien direkt in `/opt/tomcat11` liegen und nicht in `/opt/tomcat11/apache-tomcat-11.0.25`.
 
-Anschließend gehört alles dem Benutzer `tomcat`:
+Das Entpacken lief als `root`, deshalb gehören die entpackten Dateien zunächst `root`. Anschließend gehört wieder alles dem Benutzer `tomcat`:
 
 ```bash
 sudo chown -R tomcat:tomcat /opt/tomcat11
@@ -260,7 +275,7 @@ Was sich ändert:
 - `protocol="org.apache.coyote.http11.Http11NioProtocol"` wählt ausdrücklich die Verarbeitungsart, die Socket-Dateien unterstützt.
 - `unixDomainSocketPathPermissions="rw-rw----"` setzt die Dateirechte: Besitzer und Gruppe dürfen lesen und schreiben, alle anderen nichts. Der Besitzer ist der Benutzer `tomcat`.
 
-Die Socket-Datei liegt hier bewusst im Verzeichnis `/opt/tomcat11`, das dem Benutzer `tomcat` gehört und einen Neustart übersteht.
+Die Socket-Datei liegt hier bewusst im Verzeichnis `/opt/tomcat11`, das dem Benutzer `tomcat` gehört und einen Neustart übersteht. Damit NGINX die Datei darin erreicht, muss die Gruppe `tomcat` in das Verzeichnis wechseln dürfen – das leisten die Rechte `750` aus Schritt 3 von Weg A. Beim Paket-Weg ist `/var/lib/tomcat11` bereits passend gesetzt.
 
 > **Hinweis:** Stürzt Tomcat ab, bleibt die Socket-Datei manchmal liegen. Beim nächsten Start meldet das Protokoll dann, die Datei sei schon vorhanden, und Tomcat startet nicht. In dem Fall die Datei von Hand entfernen: `sudo rm /opt/tomcat11/tomcat11.sock`, dann `sudo systemctl start tomcat`.
 
