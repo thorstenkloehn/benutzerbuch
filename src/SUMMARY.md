@@ -12,6 +12,7 @@
 - [Server mieten](./server-einrichten/server-mieten.md)
 - [Betriebssystem](./server-einrichten/betriebssystem.md)
 - [Laufzeitumgebung](./server-einrichten/laufzeitumgebung.md)
+- [Datenbank](./server-einrichten/datenbank.md)
 - [Webserver](./server-einrichten/webserver.md)
 - [Webframework](./server-einrichten/webframework.md)
 - [Postfix](./server-einrichten/postfix.md)
@@ -20,6 +21,13 @@
 # Entwicklungs-Rechner
 
 - [Docs-as-Code](./entwicklungs-rechner/docs-as-code.md)
+  - [Webseiten und Blogs](./entwicklungs-rechner/docs-as-code-webseiten.md)
+
+# Web Stack
+
+- [Wissenssystem](./web-stack/wissensystem.md)
+  - [XWiki einrichten](./web-stack/xwiki.md)
+
 # Rechtliche Fragen
 - [Impressum](Impressum.md)
 - [Datenschutz](Datenschutz.md)
