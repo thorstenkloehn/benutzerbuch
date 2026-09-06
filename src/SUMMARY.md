@@ -38,6 +38,9 @@
   - [XWiki einrichten](./web-stack/xwiki.md)
 - [Content-Management-System](./web-stack/cms.md)
   - [Drupal einrichten](./web-stack/drupal.md)
+## Mobil
+
+- [IDE und GUI](./mobil/ide-und-gui.md)
 
 # Rechtliche Fragen
 - [Impressum](Impressum.md)
