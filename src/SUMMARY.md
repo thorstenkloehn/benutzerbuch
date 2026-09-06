@@ -20,6 +20,7 @@
 - [KI-Agenten auf dem Server](./server-einrichten/ki-agent.md)
 # Entwicklungs-Rechner
 
+- [IDE](./entwicklungs-rechner/ide.md)
 - [Docs-as-Code](./entwicklungs-rechner/docs-as-code.md)
   - [Webseiten und Blogs](./entwicklungs-rechner/docs-as-code-webseiten.md)
 
@@ -29,6 +30,7 @@
   - [MediaWiki einrichten](./web-stack/mediawiki.md)
   - [XWiki einrichten](./web-stack/xwiki.md)
 - [Content-Management-System](./web-stack/cms.md)
+  - [Drupal einrichten](./web-stack/drupal.md)
 
 # Rechtliche Fragen
 - [Impressum](Impressum.md)
