@@ -1,0 +1,24 @@
+{
+  "name": "benutzerbuch",
+  "version": "1.0.0",
+  "description": "und da heißtange# Benutzerhandbuch",
+  "homepage": "https://github.com/thorstenkloehn/benutzerbuch#readme",
+  "bugs": {
+    "url": "https://github.com/thorstenkloehn/benutzerbuch/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thorstenkloehn/benutzerbuch.git"
+  },
+  "license": "ISC",
+  "author": "Thorsten klöhn",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "ver": "gh-pages -d book --nojekyll --cname benutzerhandbuch.wissen-ahrensburg.de --no-history"
+  },
+  "dependencies": {
+    "gh-pages": "^6.3.0",
+    "github-pages": "^0.1.0"
+  }
+}

@@ -1,4 +1,5 @@
 book
+node_modules
 
 RAW/*
 !RAW/README.md
