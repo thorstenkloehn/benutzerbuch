@@ -23,6 +23,7 @@
 - [KI-Agenten auf dem Server](./server-einrichten/ki-agent.md)
 # Entwicklungs-Rechner
 
+- [Allgemeine Einstellungen](./entwicklungs-rechner/allgemeine-einstellungen.md)
 - [IDE](./entwicklungs-rechner/ide.md)
 - [Programmiersprachen](./entwicklungs-rechner/programmiersprachen.md)
 - [Unix-Socket](./entwicklungs-rechner/unix-socket.md)
