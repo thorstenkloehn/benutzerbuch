@@ -28,6 +28,7 @@
 - [Wissenssystem](./web-stack/wissensystem.md)
   - [MediaWiki einrichten](./web-stack/mediawiki.md)
   - [XWiki einrichten](./web-stack/xwiki.md)
+- [Content-Management-System](./web-stack/cms.md)
 
 # Rechtliche Fragen
 - [Impressum](Impressum.md)
