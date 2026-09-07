@@ -6,6 +6,7 @@
 - [Desktop-Agenten](./grundlagen/desktop-agenten.md)
 - [Freies Wissen](./grundlagen/freies-wissen.md)
 - [Inhalts-Software selbst betreiben](./grundlagen/inhalt-software-verwalten.md)
+- [Text erstellen](./grundlagen/text-erstellen.md)
 - [Urheberrecht und Duplicate Content](./grundlagen/urheberrecht-duplicate-content.md)
 # Server einrichten
 
