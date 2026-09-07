@@ -3,6 +3,7 @@
 # Grundlagen
 
 - [Voraussetzungen](./grundlagen/voraussetzungen.md)
+- [KI-Abo auswählen](./grundlagen/ki-abo.md)
 - [Desktop-Agenten](./grundlagen/desktop-agenten.md)
 - [Freies Wissen](./grundlagen/freies-wissen.md)
 - [Inhalts-Software selbst betreiben](./grundlagen/inhalt-software-verwalten.md)
