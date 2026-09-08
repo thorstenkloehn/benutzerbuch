@@ -4,10 +4,12 @@
 
 - [Voraussetzungen](./grundlagen/voraussetzungen.md)
 - [KI-Abo auswählen](./grundlagen/ki-abo.md)
+- [LLM-Anbieter](./grundlagen/llm-anbieter.md)
 - [Desktop-Agenten](./grundlagen/desktop-agenten.md)
 - [Freies Wissen](./grundlagen/freies-wissen.md)
 - [Inhalts-Software selbst betreiben](./grundlagen/inhalt-software-verwalten.md)
 - [Text erstellen](./grundlagen/text-erstellen.md)
+- [Programmiersprachen für KI](./grundlagen/ki-programmiersprachen.md)
 - [Urheberrecht und Duplicate Content](./grundlagen/urheberrecht-duplicate-content.md)
 # Server einrichten
 
@@ -22,6 +24,7 @@
 - [Webframework](./server-einrichten/webframework.md)
 - [Postfix](./server-einrichten/postfix.md)
 - [Containerisierung von Software](./server-einrichten/containerisierung.md)
+- [Sprachmodell selbst betreiben](./server-einrichten/sprachmodell-selbst-betreiben.md)
 - [KI-Agenten auf dem Server](./server-einrichten/ki-agent.md)
 - [Git Hosting](./server-einrichten/git-hosting.md)
 # Entwicklungs-Rechner
