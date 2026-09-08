@@ -10,6 +10,10 @@
 - [Inhalts-Software selbst betreiben](./grundlagen/inhalt-software-verwalten.md)
 - [Text erstellen](./grundlagen/text-erstellen.md)
 - [Programmiersprachen für KI](./grundlagen/ki-programmiersprachen.md)
+- [Enterprise Web-Stack](./grundlagen/enterprise-web-stack.md)
+  - [Enterprise-Webframework](./grundlagen/enterprise-webframework.md)
+  - [Enterprise-CMS](./grundlagen/enterprise-cms.md)
+  - [Enterprise-Wissenssystem](./grundlagen/enterprise-wissenssystem.md)
 - [Urheberrecht und Duplicate Content](./grundlagen/urheberrecht-duplicate-content.md)
 # Server einrichten
 
