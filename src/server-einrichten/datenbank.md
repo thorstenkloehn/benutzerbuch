@@ -265,5 +265,3 @@ Die Datenbank läuft direkt auf dem Server und ist nur von dort erreichbar, nich
 Eine Datenbank legt die Inhalte der Wissenssammlung geordnet ab und gibt sie schnell wieder heraus, ohne bei gleichzeitigen Zugriffen oder einem Absturz Schaden zu nehmen. **PostgreSQL** und **MariaDB** sind beide quelloffen, ausgereift und für eine Million Einträge weit mehr als ausreichend; dieses Buch wählt PostgreSQL wegen seiner Erweiterungen. Auf Ubuntu 26.04 wird PostgreSQL 18 über die offizielle Paketquelle eingerichtet, danach werden Benutzer, Datenbank und die Erweiterungen `vector`, `pg_trgm` und `hstore` angelegt. **Meilisearch** oder **Typesense** ergänzen die schnelle Wortsuche, **pgvector** die Suche nach Bedeutung. Ob die Sammlung schnell bleibt, entscheidet nicht die Wahl der Datenbank, sondern die richtigen Indizes, sparsames Laden und ein Zwischenspeicher.
 
 > Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).
-</content>
-</invoke>
