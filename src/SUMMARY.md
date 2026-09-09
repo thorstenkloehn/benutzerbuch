@@ -47,6 +47,7 @@
   - [XWiki einrichten](./web-stack/xwiki.md)
 - [Content-Management-System](./web-stack/cms.md)
   - [Drupal einrichten](./web-stack/drupal.md)
+    - [Inhalte importieren und exportieren](./web-stack/drupal-import-export.md)
 
 # Mobil
 
