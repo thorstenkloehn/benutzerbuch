@@ -1,0 +1,512 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Git Hosting - Benutzerhandbuch</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bfa72d74.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0c2ed6dd.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Benutzerhandbuch</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="git-hosting"><a class="header" href="#git-hosting">Git Hosting</a></h1>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+<p>Der Quelltext dieses Buchs liegt in einem <strong>Git-Verzeichnis</strong> (siehe <a href="../entwicklungs-rechner/docs-as-code.html">Docs-as-Code</a>). Git merkt sich jede Änderung: wer sie gemacht hat, wann und warum. Solange dieses Verzeichnis nur auf dem eigenen Rechner liegt, ist es aber schlecht geschützt und lässt sich nicht mit anderen teilen. Dafür braucht es eine zentrale Stelle im Netz, bei der alle Beteiligten ihre Änderungen abliefern und die Änderungen der anderen abholen. Diese Stelle heißt <strong>Git-Hosting</strong>.</p>
+<p>Bekannt ist vor allem <strong>GitHub</strong>. Das ist ein Dienst einer Firma; die Verzeichnisse liegen auf deren Servern. Man kann so einen Dienst aber auch selbst betreiben (siehe <a href="../grundlagen/inhalt-software-verwalten.html">Inhalts-Software selbst betreiben</a>). Dieses Kapitel zeigt, wie man dafür <strong>Forgejo</strong> auf einem Server mit <strong>Ubuntu 26.04 LTS</strong> (siehe <a href="./betriebssystem.html">Betriebssystem</a>) einrichtet und über einen <strong>Unix-Socket</strong> an den Webserver NGINX anbindet – am Beispiel der Adresse <code>https://git.meine-domain.de</code>.</p>
+<p>Alle Befehle werden in der Textkonsole des Servers eingegeben. Ein vorangestelltes <code>sudo</code> bedeutet: mit Verwaltungsrechten ausführen.</p>
+<h2 id="was-git-hosting-ist"><a class="header" href="#was-git-hosting-ist">Was Git-Hosting ist</a></h2>
+<p><strong>Git</strong> allein ist nur ein Programm auf der Festplatte. Es verwaltet die Versionsgeschichte eines Verzeichnisses. Damit mehrere Leute am selben Projekt arbeiten können, muss es eine gemeinsame Ablage geben, die alle erreichen. Diese gemeinsame Ablage nennt Git ein <strong>entferntes Verzeichnis</strong> (auf Englisch <em>remote</em>).</p>
+<p>Ein Git-Hosting-Dienst stellt solche entfernten Verzeichnisse bereit und packt eine Weboberfläche darum herum. Damit kann man:</p>
+<ul>
+<li><strong>Verzeichnisse anlegen und verwalten</strong> – öffentlich sichtbar oder nur für angemeldete Personen.</li>
+<li><strong>Den Quelltext im Browser durchblättern</strong>, ohne ihn erst herunterzuladen.</li>
+<li><strong>Änderungswünsche besprechen.</strong> Wer etwas beitragen möchte, reicht seine Änderungen als Vorschlag ein (auf Englisch <em>pull request</em>). Andere sehen den Unterschied Zeile für Zeile, schreiben Anmerkungen und übernehmen den Vorschlag erst, wenn er passt.</li>
+<li><strong>Aufgaben und Fehler sammeln</strong> – als Liste von Einträgen (auf Englisch <em>issues</em>), die man einzelnen Personen zuordnen und abhaken kann.</li>
+<li><strong>Automatische Abläufe starten</strong>, sobald neue Änderungen ankommen – zum Beispiel das Buch bauen und veröffentlichen (siehe <a href="../entwicklungs-rechner/docs-as-code-webseiten.html">Webseiten und Blogs</a>).</li>
+</ul>
+<p>Der eigentliche Datenaustausch läuft über zwei Wege: <strong>HTTPS</strong> (dieselbe verschlüsselte Verbindung wie beim Surfen) oder <strong>SSH</strong> (eine verschlüsselte Verbindung mit Schlüsseldatei statt Passwort). Die Weboberfläche selbst ist immer über HTTPS erreichbar.</p>
+<h2 id="was-forgejo-ist"><a class="header" href="#was-forgejo-ist">Was Forgejo ist</a></h2>
+<p><strong>Forgejo</strong> (gesprochen etwa „for-dsche-jo“, vom Esperanto-Wort <em>forĝejo</em> – die Schmiede) ist ein Programm, mit dem man einen eigenen Git-Hosting-Dienst betreibt. Es ist <strong>Freie Software</strong> (siehe <a href="../grundlagen/freies-wissen.html">Freies Wissen</a>) unter der Lizenz GPL Version 3 und wird von <strong>Codeberg e. V.</strong> getragen, einem gemeinnützigen Verein aus Berlin.</p>
+<h3 id="woher-forgejo-kommt"><a class="header" href="#woher-forgejo-kommt">Woher Forgejo kommt</a></h3>
+<p>Forgejo ist eine <strong>Abspaltung von Gitea</strong> (auf Englisch <em>fork</em>): eine Kopie des Quelltexts, die von da an einen eigenen Weg geht. Gitea wiederum war selbst eine Abspaltung eines älteren Programms namens Gogs.</p>
+<p>Der Grund für die Abspaltung war ein Streit um die Kontrolle über das Projekt. Ende 2022 übertrug der Hauptentwickler von Gitea die Namensrechte und die Leitung an eine gewinnorientierte Firma, ohne die Gemeinschaft der Mitwirkenden vorher zu fragen. Ein Teil dieser Gemeinschaft wollte das Projekt lieber in den Händen eines gemeinnützigen Vereins sehen und gründete daraufhin Forgejo. Anfangs übernahm Forgejo noch alle Änderungen von Gitea; seit Anfang 2024 sind die beiden Programme vollständig getrennt und entwickeln sich auseinander.</p>
+<p>Für den Betrieb heißt das: Forgejo wird von einem Verein nach demokratischen Regeln geführt, nicht von einer einzelnen Firma. Wer von Gitea zu Forgejo wechselt, kann seine Daten in aller Regel unverändert übernehmen, weil beide noch dieselbe Grundstruktur haben.</p>
+<h3 id="was-forgejo-kann"><a class="header" href="#was-forgejo-kann">Was Forgejo kann</a></h3>
+<p>Forgejo ist in der Programmiersprache <strong>Go</strong> geschrieben (siehe <a href="../entwicklungs-rechner/programmiersprachen.html">Programmiersprachen</a>). Ein Go-Programm wird zu einer einzigen ausführbaren Datei übersetzt, die ohne weitere Bestandteile läuft. Deshalb besteht die Installation im Kern nur darin, diese eine Datei auf den Server zu legen.</p>
+<p>Der Funktionsumfang ist groß:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Bereich</th><th>Was Forgejo bietet</th></tr>
+</thead>
+<tbody>
+<tr><td>Verzeichnisse</td><td>anlegen, durchblättern, Rechte je Person oder Gruppe vergeben</td></tr>
+<tr><td>Zusammenarbeit</td><td>Änderungsvorschläge, Anmerkungen Zeile für Zeile, Aufgabenlisten</td></tr>
+<tr><td>Automatische Abläufe</td><td>„Forgejo Actions“ – Aufgaben, die bei jeder Änderung anlaufen</td></tr>
+<tr><td>Pakete</td><td>eine Ablage für fertige Programmbausteine (z. B. für Java, JavaScript, Container)</td></tr>
+<tr><td>Wiki</td><td>zu jedem Verzeichnis eine kleine Sammlung von Erklärseiten</td></tr>
+<tr><td>Anmeldung</td><td>eigene Konten oder Anbindung an einen zentralen Verzeichnisdienst</td></tr>
+</tbody>
+</table>
+</div>
+<p>Ein längerfristiges Ziel des Projekts ist die <strong>Föderation</strong>: Verschieden betriebene Forgejo-Server sollen sich untereinander verständigen können, sodass jemand auf Server A einen Änderungsvorschlag für ein Verzeichnis auf Server B einreichen kann, ohne dort ein Konto zu haben. Dieser Teil ist noch in Arbeit.</p>
+<h3 id="forgejo-im-vergleich"><a class="header" href="#forgejo-im-vergleich">Forgejo im Vergleich</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th>Forgejo (selbst betrieben)</th><th>GitHub</th><th>GitLab (selbst betrieben)</th></tr>
+</thead>
+<tbody>
+<tr><td>Betreiber</td><td>man selbst</td><td>Firma (Microsoft)</td><td>man selbst</td></tr>
+<tr><td>Lizenz</td><td>Freie Software (GPL 3)</td><td>geschlossen</td><td>Kern frei, Zusätze geschlossen</td></tr>
+<tr><td>Ressourcen</td><td>sehr sparsam</td><td>–</td><td>vergleichsweise hoch</td></tr>
+<tr><td>Einrichtung</td><td>eine Programmdatei plus Datenbank</td><td>entfällt (fertiger Dienst)</td><td>umfangreich</td></tr>
+</tbody>
+</table>
+</div>
+<p>GitLab bietet mehr fertige Funktionen, verlangt aber deutlich mehr Arbeitsspeicher und Pflege. Für eine kleine Redaktion, die vor allem ein sicheres, gemeinsames Zuhause für ihre Texte und ihren Quelltext braucht, ist Forgejo die passende Größe.</p>
+<h2 id="voraussetzungen"><a class="header" href="#voraussetzungen">Voraussetzungen</a></h2>
+<ul>
+<li>Ein Server mit <strong>Ubuntu 26.04 LTS</strong> und einem Webserver davor. Dieses Kapitel geht von <strong>NGINX</strong> aus (siehe <a href="./webserver.html">Webserver</a>).</li>
+<li>Eine <strong>Domain</strong>, deren DNS-Eintrag auf den Server zeigt – hier <code>git.meine-domain.de</code>.</li>
+<li>Eine <strong>Datenbank</strong>. Forgejo kann eine einzelne Datei (SQLite) verwenden oder eine richtige Datenbank (PostgreSQL, MariaDB). Für wenige Nutzer genügt SQLite und spart die Einrichtung. Wer mit stärkerem Andrang rechnet, nimmt PostgreSQL (siehe <a href="./datenbank.html">Datenbank</a>). Dieses Kapitel zeigt den Weg mit SQLite und nennt die Stellen, an denen PostgreSQL abweicht.</li>
+<li><strong>Arbeitsspeicher:</strong> Forgejo selbst kommt mit wenigen Hundert MB aus. Zusammen mit Betriebssystem und Webserver reicht ein kleiner Server mit 1 bis 2 GB.</li>
+</ul>
+<h2 id="forgejo-installieren"><a class="header" href="#forgejo-installieren">Forgejo installieren</a></h2>
+<h3 id="schritt-1-git-auf-dem-server-bereitstellen"><a class="header" href="#schritt-1-git-auf-dem-server-bereitstellen">Schritt 1: Git auf dem Server bereitstellen</a></h3>
+<p>Forgejo ruft im Hintergrund das Programm <code>git</code> auf. Für größere Dateien kommt <code>git-lfs</code> dazu:</p>
+<pre><code class="language-bash">sudo apt update
+sudo apt install git git-lfs
+</code></pre>
+<h3 id="schritt-2-die-programmdatei-herunterladen-und-prüfen"><a class="header" href="#schritt-2-die-programmdatei-herunterladen-und-prüfen">Schritt 2: Die Programmdatei herunterladen und prüfen</a></h3>
+<p>Die aktuelle Versionsnummer steht auf der Seite <a href="https://forgejo.org/download/">https://forgejo.org/download/</a>. Sie wird hier einmal in eine Variable geschrieben, damit die folgenden Befehle unverändert bleiben:</p>
+<pre><code class="language-bash">cd /tmp
+VERSION=16.0.3
+
+# Die Programmdatei für 64-Bit-PCs herunterladen
+wget "https://code.forgejo.org/forgejo/forgejo/releases/download/v${VERSION}/forgejo-${VERSION}-linux-amd64"
+
+# Die zugehörige Unterschrift herunterladen
+wget "https://code.forgejo.org/forgejo/forgejo/releases/download/v${VERSION}/forgejo-${VERSION}-linux-amd64.asc"
+
+# Den öffentlichen Schlüssel des Forgejo-Projekts holen
+gpg --keyserver keys.openpgp.org --recv EB114F5E6C0DC2BCDD183550A4B61A2DC5923710
+
+# Die Datei gegen die Unterschrift prüfen – die Ausgabe muss "Good signature" enthalten
+gpg --verify "forgejo-${VERSION}-linux-amd64.asc" "forgejo-${VERSION}-linux-amd64"
+</code></pre>
+<p>Die <strong>digitale Unterschrift</strong> ist ein Nachweis, dass die Datei wirklich vom Forgejo-Projekt stammt und unterwegs nicht verändert wurde. Meldet <code>gpg</code> etwas anderes als eine gültige Unterschrift, wird die Datei nicht benutzt, sondern neu geladen. Der Hinweis „This key is not certified with a trusted signature“ ist dabei normal – er besagt nur, dass man dem Schlüssel noch nicht ausdrücklich vertraut hat.</p>
+<p>Danach die geprüfte Datei an ihren Platz legen:</p>
+<pre><code class="language-bash">sudo cp "forgejo-${VERSION}-linux-amd64" /usr/local/bin/forgejo
+sudo chmod 755 /usr/local/bin/forgejo
+</code></pre>
+<h3 id="schritt-3-einen-eigenen-benutzer-anlegen"><a class="header" href="#schritt-3-einen-eigenen-benutzer-anlegen">Schritt 3: Einen eigenen Benutzer anlegen</a></h3>
+<p>Forgejo soll <strong>nicht</strong> mit Verwaltungsrechten laufen. Sonst hätte ein Fehler im Programm sofort Zugriff auf den ganzen Server. Deshalb bekommt es einen eigenen Benutzer namens <code>git</code>:</p>
+<pre><code class="language-bash">sudo adduser --system --shell /bin/bash --gecos 'Git Versionsverwaltung' \
+  --group --disabled-password --home /home/git git
+</code></pre>
+<ul>
+<li><code>--system</code> legt ein Dienstkonto an, kein persönliches.</li>
+<li><code>--disabled-password</code> verhindert das Anmelden mit einem Passwort.</li>
+<li><code>--shell /bin/bash</code> wird hier gebraucht, weil Forgejo den Zugang über SSH später über diesen Benutzer abwickelt.</li>
+</ul>
+<h3 id="schritt-4-verzeichnisse-anlegen"><a class="header" href="#schritt-4-verzeichnisse-anlegen">Schritt 4: Verzeichnisse anlegen</a></h3>
+<p>Forgejo trennt seine Dateien in zwei Bereiche: die <strong>Daten</strong> (Verzeichnisse, Datenbank, Anhänge) unter <code>/var/lib/forgejo</code> und die <strong>Konfiguration</strong> unter <code>/etc/forgejo</code>.</p>
+<pre><code class="language-bash">sudo mkdir /var/lib/forgejo
+sudo chown git:git /var/lib/forgejo
+sudo chmod 750 /var/lib/forgejo
+
+sudo mkdir /etc/forgejo
+sudo chown root:git /etc/forgejo
+sudo chmod 770 /etc/forgejo
+</code></pre>
+<p>Das Konfigurationsverzeichnis gehört <code>root</code>, die Gruppe <code>git</code> darf hineinschreiben. Das ist nötig, weil die Ersteinrichtung im Browser die Konfigurationsdatei anlegt. Danach werden die Rechte wieder enger gesetzt (siehe Schritt 8).</p>
+<h3 id="schritt-5-eine-erste-konfiguration-schreiben"><a class="header" href="#schritt-5-eine-erste-konfiguration-schreiben">Schritt 5: Eine erste Konfiguration schreiben</a></h3>
+<p>Forgejo liest beim Start die Datei <code>/etc/forgejo/app.ini</code>. Für den ersten Start genügt ein kleines Gerüst; den Rest ergänzt die Ersteinrichtung im Browser. Die Datei wird als Benutzer <code>git</code> angelegt:</p>
+<pre><code class="language-bash">sudo -u git nano /etc/forgejo/app.ini
+</code></pre>
+<p>Mit diesem Inhalt:</p>
+<pre><code class="language-ini">APP_NAME = Git der Redaktion
+RUN_USER = git
+RUN_MODE = prod
+
+[server]
+PROTOCOL  = http+unix
+HTTP_ADDR = /run/forgejo/forgejo.sock
+UNIX_SOCKET_PERMISSION = 660
+DOMAIN    = git.meine-domain.de
+ROOT_URL  = https://git.meine-domain.de/
+SSH_DOMAIN = git.meine-domain.de
+
+[database]
+DB_TYPE = sqlite3
+PATH    = /var/lib/forgejo/data/forgejo.db
+</code></pre>
+<p>Was die wichtigsten Zeilen bedeuten:</p>
+<ul>
+<li><code>PROTOCOL = http+unix</code> und <code>HTTP_ADDR = …</code> sagen Forgejo, dass es <strong>nicht</strong> auf einem Netzwerk-Port lauschen soll, sondern an einer <strong>Socket-Datei</strong>. Was das ist und warum es sich lohnt, erklären die Kapitel <a href="../entwicklungs-rechner/unix-socket.html">Unix-Socket</a> und <a href="./nginx-unix-socket.html">Unix-Socket bei NGINX</a>. Kurz gesagt: So steht kein Port offen, der aus Versehen ins Netz geöffnet werden könnte, und der Zugriff hängt allein an Dateirechten.</li>
+<li><code>ROOT_URL</code> ist die Adresse, unter der Besucher Forgejo erreichen. Sie muss stimmen, sonst baut Forgejo falsche Links.</li>
+<li>Für <strong>PostgreSQL</strong> statt SQLite lautet der <code>[database]</code>-Abschnitt anders (<code>DB_TYPE = postgres</code>, dazu <code>HOST</code>, <code>NAME</code>, <code>USER</code>, <code>PASSWD</code>); die Werte stammen aus dem Kapitel <a href="./datenbank.html">Datenbank</a>.</li>
+</ul>
+<h3 id="schritt-6-den-dienst-einrichten"><a class="header" href="#schritt-6-den-dienst-einrichten">Schritt 6: Den Dienst einrichten</a></h3>
+<p>Damit Forgejo beim Serverstart automatisch hochfährt, wird es als <strong>systemd-Dienst</strong> eingetragen. Das Projekt liefert eine fertige Dienstdatei mit:</p>
+<pre><code class="language-bash">sudo wget -O /etc/systemd/system/forgejo.service \
+  https://code.forgejo.org/forgejo/forgejo/raw/branch/forgejo/contrib/systemd/forgejo.service
+</code></pre>
+<p>Diese Datei setzt bereits die richtigen Pfade (<code>WorkingDirectory=/var/lib/forgejo</code>, Konfiguration unter <code>/etc/forgejo/app.ini</code>). Eine Ergänzung ist nötig, damit das Verzeichnis für die Socket-Datei bei jedem Start angelegt wird:</p>
+<pre><code class="language-bash">sudo systemctl edit forgejo
+</code></pre>
+<p>Im vorgesehenen Bereich eintragen:</p>
+<pre><code class="language-ini">[Service]
+RuntimeDirectory = forgejo
+RuntimeDirectoryMode = 0750
+</code></pre>
+<p><code>RuntimeDirectory = forgejo</code> sorgt dafür, dass systemd beim Start des Dienstes das Verzeichnis <code>/run/forgejo</code> anlegt – dem Benutzer <code>git</code> gehörend – und beim Stoppen wieder entfernt. Genau dort legt Forgejo dann seine Socket-Datei ab.</p>
+<p>Dann den Dienst bekannt machen, einschalten und starten:</p>
+<pre><code class="language-bash">sudo systemctl daemon-reload
+sudo systemctl enable --now forgejo
+sudo systemctl status forgejo
+</code></pre>
+<p><code>status</code> sollte <code>active (running)</code> zeigen. Zur Kontrolle, dass die Socket-Datei da ist:</p>
+<pre><code class="language-bash">ls -l /run/forgejo/forgejo.sock
+</code></pre>
+<h3 id="schritt-7-nginx-als-reverse-proxy"><a class="header" href="#schritt-7-nginx-als-reverse-proxy">Schritt 7: NGINX als Reverse Proxy</a></h3>
+<p>Der Webserver <strong>NGINX</strong> nimmt die Verbindungen aus dem Internet an, verschlüsselt sie (HTTPS) und reicht sie an die Socket-Datei weiter. Diese Rolle heißt <strong>Reverse Proxy</strong> (siehe <a href="./webserver.html">Webserver</a>).</p>
+<p>Zuerst darf der Benutzer <code>www-data</code>, unter dem NGINX läuft, die Socket-Datei benutzen. Die Datei gehört <code>git:git</code> mit den Rechten <code>rw-rw----</code>. Also wird <code>www-data</code> in die Gruppe <code>git</code> aufgenommen:</p>
+<pre><code class="language-bash">sudo usermod -aG git www-data
+sudo systemctl restart forgejo nginx
+</code></pre>
+<p>Ein bloßes <code>reload</code> genügt für die neue Gruppenzugehörigkeit nicht; NGINX muss vollständig neu starten.</p>
+<p>Dann das SSL-Zertifikat besorgen. Wie das mit <strong>Certbot</strong> und <strong>Let’s Encrypt</strong> genau geht, steht im Kapitel <a href="./webserver.html">Webserver</a>; für eine feste Domain genügt:</p>
+<pre><code class="language-bash">sudo certbot certonly --nginx -d git.meine-domain.de
+</code></pre>
+<p>Jetzt die Konfigurationsdatei <code>/etc/nginx/sites-available/git.meine-domain.de</code> anlegen:</p>
+<pre><code class="language-nginx">server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name git.meine-domain.de;
+
+    ssl_certificate     /etc/letsencrypt/live/git.meine-domain.de/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/git.meine-domain.de/privkey.pem;
+
+    # Git-Verzeichnisse und Anhänge können groß werden
+    client_max_body_size 512m;
+
+    # Kodierte Schrägstriche in Adressen nicht zusammenfassen
+    merge_slashes off;
+
+    location / {
+        proxy_pass http://unix:/run/forgejo/forgejo.sock:/;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+        # Für die Live-Aktualisierung mancher Seiten
+        proxy_set_header Upgrade    $http_upgrade;
+        proxy_set_header Connection $http_connection;
+    }
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name git.meine-domain.de;
+    # Alle unverschlüsselten Aufrufe auf HTTPS umleiten
+    return 301 https://$host$request_uri;
+}
+</code></pre>
+<p>Die Zeile <code>proxy_pass http://unix:/run/forgejo/forgejo.sock:/;</code> ist der Weg zur Socket-Datei. Die Schreibweise ist etwas ungewohnt: Nach <code>http://unix:</code> folgt der Pfad zur Socket-Datei, dann ein Doppelpunkt und der Pfad innerhalb der Anwendung (<code>/</code>).</p>
+<p>Die Datei aktiv schalten, prüfen und übernehmen:</p>
+<pre><code class="language-bash">sudo ln -s /etc/nginx/sites-available/git.meine-domain.de /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+</code></pre>
+<p>Weil kein Port für Forgejo geöffnet wurde, ist an der Firewall nichts zusätzlich zu sperren. Es genügt, dem Webserver die Ports 80 und 443 zu erlauben (siehe <a href="./webserver.html">Webserver</a>).</p>
+<h3 id="schritt-8-die-ersteinrichtung-im-browser"><a class="header" href="#schritt-8-die-ersteinrichtung-im-browser">Schritt 8: Die Ersteinrichtung im Browser</a></h3>
+<p>Jetzt <code>https://git.meine-domain.de/</code> im Browser aufrufen. Beim ersten Mal zeigt Forgejo eine <strong>Einrichtungsseite</strong>. Die meisten Felder sind aus der <code>app.ini</code> schon vorbelegt. Wichtig sind:</p>
+<ol>
+<li><strong>Datenbank:</strong> unverändert lassen (SQLite bzw. die PostgreSQL-Werte).</li>
+<li><strong>Verwaltungskonto erstellen:</strong> ganz unten Benutzername, Passwort und E-Mail-Adresse für das erste Konto eintragen. Dieses Konto hat volle Rechte. Diesen Schritt nicht überspringen – sonst wird das erste selbst registrierte Konto zum Verwalter.</li>
+<li><strong>Weitere Einstellungen</strong> (aufklappbar): Hier lässt sich „Selbstregistrierung deaktivieren“ ankreuzen, damit sich nicht Fremde ein Konto anlegen können.</li>
+</ol>
+<p>Nach einem Klick auf „Forgejo installieren“ schreibt das Programm die vollständige <code>app.ini</code> und startet neu. Danach die Rechte an der Datei wieder eng setzen:</p>
+<pre><code class="language-bash">sudo chmod 640 /etc/forgejo/app.ini
+sudo chmod 750 /etc/forgejo
+</code></pre>
+<p>Die Einrichtung ist damit abgeschlossen. Die Anmeldung erfolgt oben rechts mit dem eben angelegten Verwaltungskonto.</p>
+<h3 id="schritt-9-zugang-über-ssh-empfohlen"><a class="header" href="#schritt-9-zugang-über-ssh-empfohlen">Schritt 9: Zugang über SSH (empfohlen)</a></h3>
+<p>Für das tägliche Arbeiten ist der Weg über <strong>SSH</strong> bequemer als über HTTPS, weil man kein Passwort und keinen Zugangs-Token eingeben muss. Forgejo nutzt dafür den vorhandenen SSH-Dienst des Servers und den Benutzer <code>git</code>.</p>
+<p>In der Weboberfläche hinterlegt jede Person unter „Einstellungen → SSH-Schlüssel“ ihren <strong>öffentlichen Schlüssel</strong> (die Datei <code>~/.ssh/id_ed25519.pub</code> auf dem eigenen Rechner, siehe <a href="../entwicklungs-rechner/allgemeine-einstellungen.html">Allgemeine Einstellungen</a>). Von da an funktioniert das Abliefern und Abholen ohne weitere Eingabe. Die Adresse eines Verzeichnisses sieht dann so aus:</p>
+<pre><code>git@git.meine-domain.de:redaktion/benutzerhandbuch.git
+</code></pre>
+<h2 id="aktualisieren"><a class="header" href="#aktualisieren">Aktualisieren</a></h2>
+<p>Forgejo besteht aus einer einzigen Programmdatei. Eine Aktualisierung heißt: neue Datei herunterladen, prüfen, austauschen, Dienst neu starten.</p>
+<pre><code class="language-bash">cd /tmp
+VERSION=16.0.4   # neue Versionsnummer von forgejo.org/download
+
+wget "https://code.forgejo.org/forgejo/forgejo/releases/download/v${VERSION}/forgejo-${VERSION}-linux-amd64"
+wget "https://code.forgejo.org/forgejo/forgejo/releases/download/v${VERSION}/forgejo-${VERSION}-linux-amd64.asc"
+gpg --verify "forgejo-${VERSION}-linux-amd64.asc" "forgejo-${VERSION}-linux-amd64"
+
+sudo systemctl stop forgejo
+sudo cp "forgejo-${VERSION}-linux-amd64" /usr/local/bin/forgejo
+sudo chmod 755 /usr/local/bin/forgejo
+sudo systemctl start forgejo
+</code></pre>
+<p>Vor einer Aktualisierung eine <strong>Sicherung</strong> anlegen. Forgejo bringt dafür einen Befehl mit, der Datenbank, Verzeichnisse und Konfiguration in eine einzige Datei packt:</p>
+<pre><code class="language-bash">sudo -u git forgejo dump -c /etc/forgejo/app.ini --work-path /var/lib/forgejo
+</code></pre>
+<p>Forgejo bleibt bei kleineren Versionssprüngen (etwa von 16.0 auf 16.1) verträglich. Vor einem großen Sprung (etwa von 15 auf 16) lohnt ein Blick in die Ankündigung auf <a href="https://forgejo.org/releases/">https://forgejo.org/releases/</a>, weil dort seltene Handgriffe vermerkt sind.</p>
+<h2 id="fehlersuche"><a class="header" href="#fehlersuche">Fehlersuche</a></h2>
+<p>Wenn der Browser <strong>502 Bad Gateway</strong> meldet, erreicht NGINX das Forgejo-Programm nicht. Den Grund nennt das Fehlerprotokoll:</p>
+<pre><code class="language-bash">sudo tail -n 20 /var/log/nginx/error.log
+</code></pre>
+<ul>
+<li><strong><code>connect() to unix:/run/forgejo/forgejo.sock failed (13: Permission denied)</code></strong>: Der Benutzer <code>www-data</code> ist nicht in der Gruppe <code>git</code>, oder NGINX wurde nach <code>usermod</code> nur neu geladen statt neu gestartet. <code>sudo systemctl restart nginx</code>.</li>
+<li><strong><code>connect() to unix:/run/forgejo/forgejo.sock failed (2: No such file or directory)</code></strong>: Forgejo läuft nicht, oder die Ergänzung <code>RuntimeDirectory</code> fehlt. Prüfen mit <code>systemctl status forgejo</code> und <code>ls -l /run/forgejo/</code>.</li>
+<li><strong><code>invalid URL prefix</code></strong> beim <code>nginx -t</code>: Bei <code>proxy_pass</code> auf einen Socket fehlt das <code>http://unix:</code> am Anfang oder der Doppelpunkt vor dem Pfad innerhalb der Anwendung.</li>
+</ul>
+<p>Weitere Anhaltspunkte liefert das Protokoll von Forgejo selbst:</p>
+<pre><code class="language-bash">sudo journalctl -u forgejo -f
+</code></pre>
+<ul>
+<li><strong>Falsche Links, Weiterleitungen ins Leere:</strong> <code>ROOT_URL</code> in <code>/etc/forgejo/app.ini</code> stimmt nicht mit der echten Adresse überein. Nach der Änderung <code>sudo systemctl restart forgejo</code>.</li>
+<li><strong>Der Zugang über SSH fragt nach einem Passwort:</strong> Der öffentliche Schlüssel ist in der Weboberfläche nicht (oder falsch) hinterlegt, oder der Benutzer <code>git</code> hat keine Anmelde-Shell (<code>--shell /bin/bash</code> in Schritt 3).</li>
+</ul>
+<h2 id="für-dieses-buch"><a class="header" href="#für-dieses-buch">Für dieses Buch</a></h2>
+<p>Der Text dieses Buchs und der Aufbau der Kapitel gehören in ein Git-Verzeichnis, das die Redaktion gemeinsam pflegt. <strong>Forgejo</strong> ist dafür die richtige Größe: eine Programmdatei, eine Datenbank, ein Webserver davor – mehr braucht es nicht. Die Weboberfläche bündelt an einer Stelle, was sonst über E-Mails und Dateiordner verstreut wäre: Änderungsvorschläge, Anmerkungen, eine Liste offener Aufgaben.</p>
+<p>Zwei Dinge gehören von Anfang an zum Betrieb: <strong>regelmäßige Sicherungen</strong> mit <code>forgejo dump</code> und <strong>zeitnahe Aktualisierungen</strong>, sobald eine neue Version erscheint. Weil Forgejo nur aus einer Datei besteht, ist beides schnell erledigt.</p>
+<p>Wer die automatische Veröffentlichung des Buchs einrichten will (siehe <a href="../entwicklungs-rechner/docs-as-code-webseiten.html">Webseiten und Blogs</a>), nutzt dafür <strong>Forgejo Actions</strong>: Bei jeder Änderung am Hauptzweig baut ein kurzer Ablauf das Buch und legt das Ergebnis auf dem Webserver ab.</p>
+<h2 id="fazit"><a class="header" href="#fazit">Fazit</a></h2>
+<p><strong>Git-Hosting</strong> ist die zentrale Stelle im Netz, an der alle Beteiligten ihre Änderungen an einem Git-Verzeichnis abliefern und abholen. <strong>Forgejo</strong> ist ein freies Programm dafür, getragen von einem gemeinnützigen Verein, entstanden als Abspaltung von Gitea. Es besteht aus einer einzigen ausführbaren Datei, braucht wenig Arbeitsspeicher und bietet dennoch Änderungsvorschläge, Aufgabenlisten, Pakete, ein Wiki und automatische Abläufe.</p>
+<p>Die Einrichtung auf Ubuntu 26.04: die geprüfte Programmdatei nach <code>/usr/local/bin/forgejo</code> legen, einen eigenen Benutzer <code>git</code> anlegen, die Verzeichnisse <code>/var/lib/forgejo</code> und <code>/etc/forgejo</code> einrichten, eine kurze <code>app.ini</code> schreiben und den mitgelieferten systemd-Dienst starten. Die Verbindung zu <strong>NGINX</strong> läuft über einen <strong>Unix-Socket</strong>: In <code>app.ini</code> steht <code>PROTOCOL = http+unix</code> mit einem Pfad unter <code>/run/forgejo</code>, NGINX erreicht ihn über <code>proxy_pass http://unix:/run/forgejo/forgejo.sock:/;</code>, und <code>www-data</code> wird dafür in die Gruppe <code>git</code> aufgenommen. So steht für Forgejo kein Port offen, und der Zugriff hängt allein an Dateirechten.</p>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../server-einrichten/ki-agent.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../entwicklungs-rechner/allgemeine-einstellungen.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../server-einrichten/ki-agent.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../entwicklungs-rechner/allgemeine-einstellungen.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

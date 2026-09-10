@@ -1,0 +1,472 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Backup mit PII-Ausschluss - Benutzerhandbuch</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bfa72d74.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0c2ed6dd.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Benutzerhandbuch</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="backup-mit-pii-ausschluss"><a class="header" href="#backup-mit-pii-ausschluss">Backup mit PII-Ausschluss</a></h1>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+<p>Zu jedem Programm des Web Stacks gehört eine Sicherung. Die Kapitel <a href="./mediawiki.html">MediaWiki einrichten</a>, <a href="./xwiki.html">XWiki einrichten</a> und <a href="./drupal.html">Drupal einrichten</a> beschreiben dafür jeweils die <strong>vollständige Sicherung</strong>: ein Abzug der ganzen PostgreSQL-Datenbank mit <code>pg_dump</code>, dazu der Ordner mit den hochgeladenen Dateien. Dieser Abzug enthält alles – auch die Benutzerkonten mit ihren E-Mail-Adressen und verschlüsselten Passwörtern – und lässt sich nur in genau dieselbe Umgebung zurückspielen.</p>
+<p>Dieses Kapitel behandelt einen anderen Fall: einen Export <strong>nur der Inhalte</strong>, in einem lesbaren Textformat, <strong>ohne persönliche Daten</strong>. Ein solcher Export lässt sich gefahrlos weitergeben – an ein Testsystem, an einen Übersetzungsdienst, an eine öffentliche Spiegelseite, an ein Programm, das eine <a href="../server-einrichten/ki-agent.html">RAG-Wissensdatenbank</a> daraus baut, oder an eine ganz andere Software. Für Drupal ist dieser Weg bereits im eigenen Kapitel <a href="./drupal-import-export.html">Inhalte importieren und exportieren</a> ausführlich beschrieben; hier kommen MediaWiki und XWiki dazu, und davor eine Einordnung, welche Systeme das überhaupt sauber können.</p>
+<h2 id="was-pii-bedeutet"><a class="header" href="#was-pii-bedeutet">Was „PII“ bedeutet</a></h2>
+<p><strong>PII</strong> steht für das englische „personally identifiable information“, auf Deutsch <strong>personenbezogene Daten</strong>: alle Angaben, über die sich eine Person erkennen lässt. Name, E-Mail-Adresse, Telefonnummer, Anschrift, aber auch ein Anmeldename oder die Angabe „diese Zeile hat Benutzerin X am 3. März geändert“.</p>
+<p>In einem Web Stack stecken solche Daten an mehr Stellen, als man zunächst denkt:</p>
+<ul>
+<li>in den <strong>Benutzerkonten</strong> – E-Mail-Adresse, Passwort-Hash, echter Name;</li>
+<li>in der <strong>Autorenangabe</strong> an jedem Inhalt – jeder Artikel, jeder Datensatz ist mit einem Konto verknüpft;</li>
+<li>in <strong>Kommentaren</strong> und auf <strong>Diskussionsseiten</strong> – dort stehen Namen und oft E-Mail-Adressen;</li>
+<li>in <strong>Unterschriften</strong> auf Wiki-Diskussionsseiten – <code>~~~~</code> wird zu Benutzername und Zeitstempel;</li>
+<li>in <strong>Bearbeitungskommentaren</strong> – die kurze Notiz „Tippfehler von Herrn Meier korrigiert“;</li>
+<li>in den <strong>Metadaten hochgeladener Bilder</strong> – eine Kamera schreibt Aufnahmeort und manchmal den Namen des Fotografen in die Datei;</li>
+<li>im <strong>Freitext der Inhalte selbst</strong> – in einem redaktionellen Text kann eine Telefonnummer stehen.</li>
+</ul>
+<p>Ein Export „ohne PII“ muss all diese Stellen berücksichtigen, nicht nur die Benutzertabelle. Der Grundsatz dahinter heißt <strong>Datenminimierung</strong>: Wer Inhalte weitergibt, gibt nur die Inhalte weiter – nicht die Menschen, die daran gearbeitet haben.</p>
+<h2 id="was-datenbankneutral-bedeutet"><a class="header" href="#was-datenbankneutral-bedeutet">Was „datenbankneutral“ bedeutet</a></h2>
+<p>Ein <code>pg_dump</code> ist an PostgreSQL gebunden. Ein datenbankneutraler Export ist dagegen eine Datei in einem allgemeinen Textformat – <strong>YAML</strong>, <strong>JSON</strong>, <strong>XML</strong> oder <strong>CSV</strong>. Sie hängt nicht davon ab, welche Datenbank im Hintergrund läuft, und lässt sich mit jeder Programmiersprache und jeder Tabellensoftware öffnen. Genau diese Eigenschaft macht den Export überhaupt erst weitergabefähig: Das Zielsystem muss kein PostgreSQL sprechen und kein Drupal, MediaWiki oder XWiki sein.</p>
+<h2 id="der-reifegrad-des-pii-ausschlusses"><a class="header" href="#der-reifegrad-des-pii-ausschlusses">Der Reifegrad des PII-Ausschlusses</a></h2>
+<p>Nicht jedes System kann einen sauberen, portablen Export ohne persönliche Daten gleich gut. Die folgende Einteilung ordnet die Systeme danach ein:</p>
+<ul>
+<li><strong>Stufe 4 – eingebaut und trennscharf.</strong> Getrennte Befehle für Aufbau (Konfiguration) und Inhalte, ein Textformat, die Benutzerkonten bleiben von sich aus außen vor, alles über die Kommandozeile steuerbar.</li>
+<li><strong>Stufe 3 – eingebaut, aber Nacharbeit nötig.</strong> Ein Inhaltsexport ist da, doch Autorennamen oder Bearbeitungsnotizen müssen von Hand entfernt werden.</li>
+<li><strong>Stufe 2 – nur über ein Zusatzmodul.</strong> Der Kern kann es nicht; ein nachinstalliertes Modul liefert den portablen Export.</li>
+<li><strong>Stufe 1 – nur der Datenbankabzug.</strong> Es gibt keinen inhaltlichen Export; man muss den SQL-Abzug selbst von persönlichen Daten befreien.</li>
+<li><strong>Stufe 0 – ungeeignet.</strong> Kein Kommandozeilenzugang, kein Textexport, oder das Format ist proprietär.</li>
+</ul>
+<h2 id="content-management-systeme-die-topliste"><a class="header" href="#content-management-systeme-die-topliste">Content-Management-Systeme: die Topliste</a></h2>
+<p>Geordnet nach dem Reifegrad des PII-Ausschlusses, nicht nach Verbreitung. Alle genannten Systeme sind quelloffen; einige verlangen für den gewerblichen Betrieb eine kostenpflichtige Lizenz, bei offenem Programmtext. Die Spalte „PostgreSQL“ zeigt, ob das System die im Kapitel <a href="../server-einrichten/datenbank.html">Datenbank</a> eingerichtete Datenbank gleichwertig unterstützt.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>System</th><th>Technik</th><th>PostgreSQL</th><th>Reifegrad</th><th>Weg zum Export ohne persönliche Daten</th></tr>
+</thead>
+<tbody>
+<tr><td>Drupal</td><td>PHP</td><td>gleichwertig</td><td>Stufe 4</td><td><code>drush config:export</code> für den Aufbau, <code>drush content:export</code> (Core 11.3) oder Default Content Deploy für die Inhalte; YAML, Autoren ohne persönliche Daten. Siehe <a href="./drupal-import-export.html">eigenes Kapitel</a>.</td></tr>
+<tr><td>Statamic</td><td>PHP</td><td>ohne Datenbank möglich</td><td>Stufe 4</td><td>Inhalte liegen als Markdown- und YAML-Dateien im Dateisystem; kopieren genügt, im Inhalt steht kein Konto.</td></tr>
+<tr><td>Grav</td><td>PHP</td><td>ohne Datenbank</td><td>Stufe 4</td><td>wie Statamic: die Inhalte sind Markdown-Dateien in einem Ordner.</td></tr>
+<tr><td>Strapi</td><td>JavaScript</td><td>empfohlen</td><td>Stufe 3</td><td><code>strapi export</code> (Funktion „Data Transfer“) über die Kommandozeile, verschlüsselbares Archiv; Verwaltungskonten und Zugriffstoken bleiben ausgenommen, die Konfiguration ist abwählbar.</td></tr>
+<tr><td>Wagtail</td><td>Python (Django)</td><td>gleichwertig</td><td>Stufe 3</td><td><code>manage.py dumpdata</code> mit <code>--exclude auth.user</code> (JSON); für ganze Seitenbäume das Modul <code>wagtail-import-export</code>.</td></tr>
+<tr><td>TYPO3</td><td>PHP</td><td>über Zwischenschicht</td><td>Stufe 3</td><td><code>typo3 impexp:export</code> erzeugt eine XML-Datei; Verweise auf Redaktionskonten müssen herausgefiltert werden.</td></tr>
+<tr><td>Directus</td><td>JavaScript</td><td>gleichwertig</td><td>Stufe 3</td><td><code>directus schema snapshot</code> (YAML) für den Aufbau, getrennt von den Daten; die Daten über die Schnittstelle als JSON oder CSV, die Nutzer-Sammlung dabei auslassen. Lizenzgrenze für größere Betreiber beachten.</td></tr>
+<tr><td>Payload</td><td>JavaScript</td><td>gleichwertig</td><td>Stufe 3</td><td>kein Kernbefehl; ein kurzes Skript über die eingebaute „Local API“ oder das Gemeinschaftsmodul <code>payload-plugin-import-export</code>, Ausgabe als JSON.</td></tr>
+<tr><td>Ghost</td><td>JavaScript</td><td>ohne (SQLite/MySQL)</td><td>Stufe 3</td><td>JSON-Export über das <code>ghost</code>-Werkzeug oder die Verwaltungsschnittstelle; die Ausgabe enthält den Abschnitt <code>users</code> mit E-Mail-Adressen – vor der Weitergabe entfernen.</td></tr>
+<tr><td>WordPress</td><td>PHP</td><td>ohne (MySQL/MariaDB)</td><td>Stufe 2</td><td><code>wp export</code> (WP-CLI) erzeugt eine WXR-XML-Datei; sie enthält im Autorenblock auch die E-Mail-Adresse und keine strukturierten Zusatzfelder ohne weiteres Modul.</td></tr>
+<tr><td>Plone</td><td>Python</td><td>ohne (Objektablage)</td><td>Stufe 2</td><td><code>plone.exportimport</code> (ab Plone 6.1) oder das ältere <code>collective.exportimport</code>, JSON; den Mitglieder-Ordner auslassen.</td></tr>
+<tr><td>Craft CMS</td><td>PHP</td><td>gleichwertig</td><td>Stufe 2</td><td>Projektkonfiguration als <code>project.yaml</code>; die Inhalte selbst nur über ein Zusatz-Plugin.</td></tr>
+<tr><td>October CMS</td><td>PHP</td><td>möglich</td><td>Stufe 2</td><td>Themen- und Vorlagendateien im Dateisystem; Datensätze nur über <code>php artisan</code>-Zusatzbefehle einzelner Plugins.</td></tr>
+<tr><td>Joomla</td><td>PHP</td><td>eingeschränkt</td><td>Stufe 1</td><td>kein Inhaltsexport im Kern; nur der Datenbankabzug oder eine kostenpflichtige Zusatzkomponente.</td></tr>
+<tr><td>Concrete CMS</td><td>PHP</td><td>ohne (MySQL/MariaDB)</td><td>Stufe 1</td><td>Paket- und Themenexport vorhanden, aber kein trennscharfer Inhaltsexport.</td></tr>
+<tr><td>Contao</td><td>PHP</td><td>ohne (MySQL/MariaDB)</td><td>Stufe 1</td><td>kein portabler Inhaltsexport; nur der Datenbankabzug.</td></tr>
+</tbody>
+</table>
+</div>
+<p>An der Spitze steht <strong>Drupal</strong>: Aufbau und Inhalte werden mit getrennten Befehlen über die Kommandozeile ausgegeben, im Textformat YAML, und die Autoren werden von den mitgelieferten Werkzeugen ohne Passwort und E-Mail übertragen. <strong>Statamic</strong> und <strong>Grav</strong> stehen technisch gleichauf, kommen aber ganz ohne Datenbank aus – die Inhalte sind schlicht Dateien im Dateisystem, in denen nie ein Konto steht. Sie passen damit nicht zu einem Aufbau, der bewusst auf PostgreSQL setzt, sind für den reinen PII-Ausschluss aber vorbildlich. Die <strong>Headless-Systeme</strong> Strapi, Directus und Payload liefern einen guten, über die Kommandozeile steuerbaren Export, verlangen aber bei den Nutzerdaten einen bewussten Handgriff. <strong>WordPress</strong> und <strong>Joomla</strong> fallen doppelt zurück: unsauberer Inhaltsexport und keine gleichwertige PostgreSQL-Unterstützung.</p>
+<h2 id="wissenssysteme-die-topliste"><a class="header" href="#wissenssysteme-die-topliste">Wissenssysteme: die Topliste</a></h2>
+<p>Ebenfalls nach dem Reifegrad des PII-Ausschlusses geordnet. Die Auswahl baut auf den Kapiteln <a href="./wissensystem.html">Wissenssystem</a> und <a href="../grundlagen/enterprise-wissenssystem.html">Enterprise-Wissenssystem</a> auf.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>System</th><th>Technik</th><th>PostgreSQL</th><th>Reifegrad</th><th>Weg zum Export ohne persönliche Daten</th></tr>
+</thead>
+<tbody>
+<tr><td>DokuWiki</td><td>PHP</td><td>ohne (Dateien)</td><td>Stufe 4</td><td>die Seiten liegen als reine Textdateien unter <code>data/pages/</code>; kopieren genügt. Änderungs- und Nutzerdaten stehen getrennt in <code>data/meta/</code> und <code>data/changes</code> und werden einfach weggelassen.</td></tr>
+<tr><td>Git-gestützte Wikis (Gollum, Wiki.js im Git-Modus)</td><td>verschieden</td><td>–</td><td>Stufe 4</td><td>jede Seite ist eine Markdown-Datei in einem Git-Verlauf; ein Klon ohne Verlauf (<code>git clone --depth 1</code>) enthält keine Bearbeiterangaben.</td></tr>
+<tr><td>XWiki</td><td>Java</td><td>erste Wahl</td><td>Stufe 4</td><td>XAR-Export über die Export-Aktion (<code>curl</code>), mit <code>history=false</code> und <code>backup=false</code>; die verbliebenen Autorfelder im XAR nachträglich leeren. Siehe unten.</td></tr>
+<tr><td>MediaWiki</td><td>PHP</td><td>zweitrangig</td><td>Stufe 3</td><td><code>dumpBackup</code> mit den Filtern <code>notalk</code> und Namensraum-Beschränkung; für eine öffentliche Fassung <code>&lt;contributor&gt;</code> und <code>&lt;comment&gt;</code> in der XML-Datei leeren. Siehe unten.</td></tr>
+<tr><td>Foswiki</td><td>Perl</td><td>ohne (Dateien)</td><td>Stufe 3</td><td>die „Topics“ sind Textdateien; eine Kopie des <code>data/</code>-Baums ohne das Benutzer-Web (<code>Main/</code>).</td></tr>
+<tr><td>BookStack</td><td>PHP</td><td>ohne (MySQL/MariaDB)</td><td>Stufe 3</td><td>ZIP-Export je Buch als HTML, Markdown oder PDF über Oberfläche und Schnittstelle; Autoren erscheinen nur als Klartextname.</td></tr>
+<tr><td>Outline</td><td>JavaScript</td><td>gleichwertig (+ Redis)</td><td>Stufe 3</td><td>Export als Markdown-ZIP über Oberfläche oder Schnittstelle; die Dokument-Metadaten nennen den Ersteller. Lizenz nicht mehr quelloffen im engen Sinn.</td></tr>
+<tr><td>Docmost</td><td>JavaScript</td><td>gleichwertig (+ Redis)</td><td>Stufe 3</td><td>Seiten- und Bereichsexport als Markdown- oder HTML-ZIP; sehr junges Projekt.</td></tr>
+<tr><td>PmWiki</td><td>PHP</td><td>ohne (Dateien)</td><td>Stufe 3</td><td>Seiten als Textdateien im Ordner <code>wiki.d/</code>; die Autor-Zeile (<code>author=</code>) je Datei entfernen.</td></tr>
+<tr><td>Tiki Wiki</td><td>PHP</td><td>ohne (MySQL/MariaDB)</td><td>Stufe 2</td><td>Struktur- und Seitenexport vorhanden, aber kein trennscharfer Filter für persönliche Daten.</td></tr>
+<tr><td>TWiki</td><td>Perl</td><td>ohne (Dateien)</td><td>Stufe 2</td><td>wie Foswiki, aber älter und weniger gepflegt; Foswiki ist die aktive Abspaltung.</td></tr>
+<tr><td>Trilium Notes</td><td>JavaScript</td><td>ohne (SQLite)</td><td>Stufe 2</td><td><code>.zip</code>-Export je Notizzweig als HTML oder Markdown; Einzelnutzer-System mit wenig Metadaten.</td></tr>
+<tr><td>MoinMoin</td><td>Python</td><td>ohne (Dateien)</td><td>Stufe 2</td><td>Seiten als Dateien; die neue Version 2 ist noch nicht stabil.</td></tr>
+<tr><td>Confluence</td><td>Java</td><td>–</td><td>Stufe 0</td><td>die selbst betreibbare Ausgabe wurde eingestellt; übrig bleiben Bezahldienst und eine teure „Data Center“-Lizenz.</td></tr>
+</tbody>
+</table>
+</div>
+<p>Auffällig ist, dass die <strong>dateibasierten Wikis</strong> (DokuWiki, Foswiki, PmWiki) beim PII-Ausschluss vorn liegen: Wo jede Seite eine eigene Textdatei ist und die Nutzerdaten in getrennten Dateien stehen, ist der saubere Export eine Frage des richtigen <code>cp</code>-Befehls. Der Preis dafür ist, dass diese Systeme keine Datenbank nutzen und bei sehr großen Sammlungen mit anspruchsvoller Suche zäh werden (siehe <a href="./wissensystem.html">Wissenssystem</a>). Von den datenbankgestützten Systemen ist <strong>XWiki</strong> am weitesten, weil die Export-Aktion mit dem Schalter <code>backup=false</code> genau die Metadaten weglässt, um die es geht.</p>
+<h2 id="mediawiki-inhalte-ohne-nutzerdaten-exportieren-und-importieren"><a class="header" href="#mediawiki-inhalte-ohne-nutzerdaten-exportieren-und-importieren">MediaWiki: Inhalte ohne Nutzerdaten exportieren und importieren</a></h2>
+<h3 id="wo-bei-mediawiki-persönliche-daten-stecken"><a class="header" href="#wo-bei-mediawiki-persönliche-daten-stecken">Wo bei MediaWiki persönliche Daten stecken</a></h3>
+<p>MediaWiki legt alles in der Datenbank ab. Der eingebaute XML-Export (im Kapitel <a href="./mediawiki.html">MediaWiki einrichten</a> als „inhaltliche Sicherung“ beschrieben) enthält <strong>keine</strong> E-Mail-Adressen und <strong>keine</strong> Passwörter. Er enthält aber:</p>
+<ul>
+<li>die <strong>Namensräume <code>Benutzer:</code> und <code>Benutzer_Diskussion:</code></strong> – dort legen angemeldete Personen persönliche Seiten an;</li>
+<li><strong>Diskussionsseiten</strong> zu Artikeln – mit Unterschriften aus Benutzername und Datum;</li>
+<li>in jeder <code>&lt;revision&gt;</code> einen Block <code>&lt;contributor&gt;</code> mit <code>&lt;username&gt;</code> und interner Nummer;</li>
+<li>oft ein <code>&lt;comment&gt;</code> – die Bearbeitungsnotiz, die einen Namen enthalten kann.</li>
+</ul>
+<p>Für die Weitergabe an ein <strong>eigenes zweites Wiki</strong> ist das meist unkritisch. Für eine <strong>öffentliche</strong> Fassung müssen diese Stellen raus.</p>
+<h3 id="der-export"><a class="header" href="#der-export">Der Export</a></h3>
+<p>Alle Befehle im Projektverzeichnis <code>/var/www/mediawiki</code>. Das vorangestellte <code>sudo -u www-data</code> führt sie als der Benutzer aus, dem die MediaWiki-Dateien gehören.</p>
+<pre><code class="language-bash">cd /var/www/mediawiki
+
+# Nur Inhaltsnamensräume, ohne Diskussionsseiten, ohne Versionsgeschichte
+sudo -u www-data php maintenance/run.php dumpBackup \
+  --current \
+  --filter=notalk \
+  --filter=namespace:0,6,14 \
+  --output=gzip:/home/thorsten/export/inhalt.xml.gz
+</code></pre>
+<p>Die drei Angaben im Einzelnen:</p>
+<ul>
+<li><code>--current</code> nimmt nur die jeweils neueste Fassung jeder Seite auf, nicht jede frühere Bearbeitung. Jede frühere Bearbeitung würde einen weiteren Bearbeiter nennen.</li>
+<li><code>--filter=notalk</code> lässt alle Diskussionsnamensräume weg – dort stehen die Unterschriften.</li>
+<li><code>--filter=namespace:0,6,14</code> beschränkt den Export auf Artikel (Namensraum 0), Dateibeschreibungen (6) und Kategorien (14). Damit fallen <code>Benutzer:</code> (2) und <code>Benutzer_Diskussion:</code> (3) von vornherein weg.</li>
+</ul>
+<h3 id="die-restlichen-autorennamen-entfernen"><a class="header" href="#die-restlichen-autorennamen-entfernen">Die restlichen Autorennamen entfernen</a></h3>
+<p>In den verbliebenen Seiten steht noch in jeder Fassung der letzte Bearbeiter. Für eine öffentliche Fassung werden <code>&lt;username&gt;</code> und <code>&lt;comment&gt;</code> geleert:</p>
+<pre><code class="language-bash">zcat /home/thorsten/export/inhalt.xml.gz \
+  | sed -E \
+      -e 's#&lt;username&gt;[^&lt;]*&lt;/username&gt;#&lt;username&gt;Autor&lt;/username&gt;#g' \
+      -e 's#&lt;comment&gt;[^&lt;]*&lt;/comment&gt;##g' \
+  | gzip &gt; /home/thorsten/export/inhalt-anonym.xml.gz
+</code></pre>
+<p>MediaWiki schreibt jeden dieser Einträge auf eine eigene Zeile, deshalb reicht hier die einfache Textersetzung. Die interne Bearbeiternummer im <code>&lt;contributor&gt;</code>-Block bleibt stehen – eine Zahl ohne Namen; wer auch sie entfernen will, nimmt ein richtiges XML-Werkzeug. Die fertige Datei sollte vor der Weitergabe stichprobenartig durchgesehen werden.</p>
+<p>Die <strong>hochgeladenen Bilder</strong> liegen nicht in der XML-Datei. Sie werden wie in <a href="./mediawiki.html">MediaWiki einrichten</a> beschrieben getrennt gesichert – und vor einer Weitergabe von ihren EXIF-Metadaten befreit (siehe „Was in jedem Fall zu prüfen ist“).</p>
+<h3 id="der-import"><a class="header" href="#der-import">Der Import</a></h3>
+<p>Der Export wird in ein <strong>frisch eingerichtetes</strong> Wiki eingelesen. Danach werden die abgeleiteten Verzeichnisse neu aufgebaut:</p>
+<pre><code class="language-bash">cd /var/www/mediawiki
+zcat /home/thorsten/export/inhalt-anonym.xml.gz \
+  | sudo -u www-data php maintenance/run.php importDump
+sudo -u www-data php maintenance/run.php rebuildrecentchanges
+sudo -u www-data php maintenance/run.php initSiteStats
+sudo -u www-data php maintenance/run.php refreshLinks
+</code></pre>
+<p>Für die im Export genannten Benutzernamen legt <code>importDump</code> <strong>keine</strong> vollwertigen Konten mit Passwort und E-Mail an; die Namen bleiben reiner Text an den jeweiligen Bearbeitungen. Die Datei <code>LocalSettings.php</code> mit den Einstellungen wird durch den XML-Export <strong>nicht</strong> übertragen – der Aufbau des Zielwikis wird getrennt eingerichtet.</p>
+<h2 id="drupal-der-kurzweg"><a class="header" href="#drupal-der-kurzweg">Drupal: der Kurzweg</a></h2>
+<p>Für Drupal gilt das eigene Kapitel <a href="./drupal-import-export.html">Inhalte importieren und exportieren</a>. In Kürze und über die Kommandozeile:</p>
+<pre><code class="language-bash">cd /var/www/drupal
+
+# Der Aufbau: Inhaltstypen, Felder, Ansichten – als YAML, ohne Inhalte, ohne Konten
+sudo -u www-data php vendor/bin/drush config:export --yes
+
+# Die Inhalte: alle Datensätze eines Typs mit ihren abhängigen Daten
+sudo -u www-data php core/scripts/drupal content:export node \
+  --bundle=blog --dir=/home/thorsten/export/inhalt --with-dependencies
+
+# Das durch --with-dependencies mitgezogene Autorkonto wieder entfernen
+rm -rf /home/thorsten/export/inhalt/user
+</code></pre>
+<p>Für ein Nicht-Drupal-Zielsystem tritt an die Stelle von <code>content:export</code> das Modul <strong>Views Data Export</strong> mit einer Ansicht, die bewusst kein Autorenfeld enthält, und einer Ausgabe nach CSV, JSON oder XML.</p>
+<h2 id="xwiki-xar-export-über-die-kommandozeile"><a class="header" href="#xwiki-xar-export-über-die-kommandozeile">XWiki: XAR-Export über die Kommandozeile</a></h2>
+<p>Ein <strong>XAR</strong> ist das portable Paketformat von XWiki – eine ZIP-Datei mit je einer XML-Datei pro Seite. Die Export-Aktion lässt sich mit <code>curl</code> von der Kommandozeile aufrufen:</p>
+<pre><code class="language-bash">curl -u admin:'ADMINPASSWORT' -G \
+  "https://wiki.meine-domain.de/xwiki/bin/export/XWiki/XWikiPreferences" \
+  --data-urlencode "format=xar" \
+  --data-urlencode "name=inhalt" \
+  --data-urlencode "history=false" \
+  --data-urlencode "backup=false" \
+  --data-urlencode "pages=Doku.%" \
+  --data-urlencode "pages=Handbuch.%" \
+  -o /home/thorsten/export/inhalt.xar
+</code></pre>
+<p>Die Angaben im Einzelnen:</p>
+<ul>
+<li><code>format=xar</code> wählt das Paketformat (statt HTML oder PDF).</li>
+<li><code>history=false</code> lässt die Versionsgeschichte weg – jede frühere Fassung nennt ihren Bearbeiter.</li>
+<li><code>backup=false</code> erzeugt <strong>kein</strong> „Backup-Paket“. Ein Backup-Paket würde Ersteller, Autor und Zeitstempel jeder Seite so einbetten, dass sie beim Import unverändert wiederhergestellt werden. Ohne diesen Schalter wird die importierende Person zum Autor.</li>
+<li><code>pages=Doku.%</code> nimmt alle Seiten im Bereich „Doku“ auf; das <code>%</code> ist ein Platzhalter. Die Angabe darf mehrfach stehen.</li>
+</ul>
+<p>Auch dann steht in jeder Seiten-XML im XAR noch der zuletzt speichernde Nutzer. Für eine öffentliche Fassung wird das Paket ausgepackt, gesäubert und neu gepackt:</p>
+<pre><code class="language-bash">cd /tmp &amp;&amp; rm -rf xar &amp;&amp; mkdir xar &amp;&amp; cd xar
+unzip -q /home/thorsten/export/inhalt.xar
+
+find . -name '*.xml' -exec sed -i -E \
+  -e 's#&lt;author&gt;[^&lt;]*&lt;/author&gt;#&lt;author&gt;xwiki:XWiki.Autor&lt;/author&gt;#g' \
+  -e 's#&lt;creator&gt;[^&lt;]*&lt;/creator&gt;#&lt;creator&gt;xwiki:XWiki.Autor&lt;/creator&gt;#g' \
+  -e 's#&lt;contentAuthor&gt;[^&lt;]*&lt;/contentAuthor&gt;#&lt;contentAuthor&gt;xwiki:XWiki.Autor&lt;/contentAuthor&gt;#g' \
+  -e 's#&lt;comment&gt;[^&lt;]*&lt;/comment&gt;##g' {} +
+
+zip -qr /home/thorsten/export/inhalt-anonym.xar .
+</code></pre>
+<h3 id="der-import-1"><a class="header" href="#der-import-1">Der Import</a></h3>
+<p>Auf der Zielseite wird das XAR wieder eingelesen. Zwei Wege stehen offen:</p>
+<ul>
+<li>
+<p><strong>Über die Oberfläche:</strong> Administration → Inhalt → Importieren, das XAR hochladen. Beim Import lässt sich „Verlauf zurücksetzen“ wählen, damit keine fremden Bearbeiterangaben übernommen werden.</p>
+</li>
+<li>
+<p><strong>Über die Kommandozeile</strong> mit der REST-Schnittstelle:</p>
+<pre><code class="language-bash">curl -u admin:'ADMINPASSWORT' -X POST \
+  --data-binary @/home/thorsten/export/inhalt-anonym.xar \
+  "https://ziel.meine-domain.de/xwiki/rest/wikis/xwiki?backup=false&amp;history=RESET"
+</code></pre>
+<p><code>backup=false</code> übernimmt keine eingebetteten Autor- und Wiederherstellungsdaten, <code>history=RESET</code> legt jede Seite ohne Versionsgeschichte neu an.</p>
+</li>
+</ul>
+<p>Der Import-Endpunkt der REST-Schnittstelle war in älteren XWiki-Fassungen ohne Anmeldung erreichbar (CVE-2026-33137). Vor dem Einsatz sollte eine aktuelle, gepflegte XWiki-Version installiert sein (siehe die Versionshinweise im Kapitel <a href="./xwiki.html">XWiki einrichten</a>).</p>
+<p>Die Konfigurationsdateien unter <code>/etc/xwiki/</code> – mit dem Datenbankpasswort – gehören nicht in einen weitergegebenen Export.</p>
+<h2 id="was-in-jedem-fall-zu-prüfen-ist"><a class="header" href="#was-in-jedem-fall-zu-prüfen-ist">Was in jedem Fall zu prüfen ist</a></h2>
+<p>Vor jeder Weitergabe eines Inhaltsexports, unabhängig vom System:</p>
+<ul>
+<li>
+<p><strong>Benutzer- und Mitgliederbereiche ausschließen.</strong> Eigene Namensräume, Ordner oder Sammlungen für Konten gehören nicht in den Export.</p>
+</li>
+<li>
+<p><strong>Kommentare und Diskussionsseiten weglassen.</strong> Sie enthalten Namen und oft E-Mail-Adressen.</p>
+</li>
+<li>
+<p><strong>Autor- und Bearbeiterfelder leeren</strong>, wenn der Export öffentlich wird.</p>
+</li>
+<li>
+<p><strong>Bearbeitungskommentare und Änderungsnotizen leeren</strong> – die kurze Zeile pro Speichervorgang.</p>
+</li>
+<li>
+<p><strong>Den Freitext durchsehen.</strong> In redaktionellen Inhalten können Namen, Telefonnummern und Anschriften stehen. Bei einer Weitergabe an Dritte lohnt der Blick in die exportierten Dateien.</p>
+</li>
+<li>
+<p><strong>Konfigurationsdateien prüfen.</strong> Ein Konfigurationsexport kann Absenderadressen für E-Mails, Zugangsschlüssel für Fremddienste oder ein Datenbankpasswort enthalten.</p>
+</li>
+<li>
+<p><strong>Bild-Metadaten entfernen.</strong> Fotos tragen oft Aufnahmeort und Kameradaten im EXIF-Block. Ein Sammelbefehl entfernt sie:</p>
+<pre><code class="language-bash">exiftool -all= -overwrite_original /home/thorsten/export/bilder/
+</code></pre>
+</li>
+<li>
+<p><strong>Log- und Statistiktabellen nie mitexportieren.</strong> Zugriffsprotokolle enthalten IP-Adressen.</p>
+</li>
+</ul>
+<h2 id="für-dieses-buch"><a class="header" href="#für-dieses-buch">Für dieses Buch</a></h2>
+<p>Der Web Stack dieses Buchs läuft auf <strong>MediaWiki</strong>, gegebenenfalls mit <strong>Drupal</strong> als zweitem, redaktionellem Auftritt (siehe <a href="./cms.html">Content-Management-System</a>). Für den Export ohne persönliche Daten gilt:</p>
+<ul>
+<li><strong>MediaWiki:</strong> <code>dumpBackup --current --filter=notalk --filter=namespace:0,6,14</code>. Für eine öffentliche Fassung zusätzlich <code>&lt;username&gt;</code> und <code>&lt;comment&gt;</code> leeren. Die vollständige Sicherung bleibt davon unberührt – <code>pg_dump</code> plus der Ordner <code>images/</code>, an einen zweiten Ort.</li>
+<li><strong>Drupal:</strong> der Weg aus dem Kapitel <a href="./drupal-import-export.html">Inhalte importieren und exportieren</a> – <code>drush config:export</code> für den Aufbau, <code>content:export</code> oder Default Content Deploy für die Inhalte, danach den Ordner <code>user/</code> löschen.</li>
+<li><strong>XWiki</strong> (falls es statt MediaWiki eingesetzt wird): XAR-Export über <code>curl</code> mit <code>history=false</code> und <code>backup=false</code>, danach die Autorfelder im Paket leeren.</li>
+<li>Die reinen Textformate lassen sich zusätzlich in einem Git-Repository versionieren (siehe <a href="../server-einrichten/git-hosting.html">Git Hosting</a>), sodass jede Änderung am weitergegebenen Stand nachvollziehbar bleibt.</li>
+</ul>
+<p>Diese Exporte <strong>ersetzen nicht</strong> die vollständige Sicherung mit <code>pg_dump</code>. Sie sind ein zusätzliches Werkzeug für den Fall, dass Inhalte ein anderes System erreichen sollen, ohne die Menschen mitzunehmen, die daran gearbeitet haben. Wer Inhalte aus fremden Quellen übernimmt, prüft sie davor gegen das Urheberrecht (siehe <a href="../grundlagen/urheberrecht-duplicate-content.html">Urheberrecht und Duplicate Content</a>).</p>
+<h2 id="fazit"><a class="header" href="#fazit">Fazit</a></h2>
+<p>Ein Datenbankabzug ist die schnellste Sicherung, aber die unbeweglichste: Er enthält die Benutzerkonten und passt nur in dieselbe Umgebung zurück. Für die Weitergabe an ein anderes System braucht es einen Export <strong>nur der Inhalte</strong>, in einem allgemeinen Textformat, <strong>ohne persönliche Daten</strong>. Persönliche Daten stecken dabei nicht nur in der Benutzertabelle, sondern auch in Autorenangaben, Kommentaren, Unterschriften, Bearbeitungsnotizen und Bild-Metadaten. Nach dem Reifegrad des PII-Ausschlusses stehen bei den CMS <strong>Drupal</strong> und die dateibasierten Systeme vorn, bei den Wissenssystemen die dateibasierten Wikis und <strong>XWiki</strong>. Bei MediaWiki erzeugt <code>dumpBackup</code> mit Namensraum- und <code>notalk</code>-Filter einen brauchbaren Export, der für eine öffentliche Fassung noch um die Bearbeiternamen bereinigt wird. Bei XWiki liefert die Export-Aktion mit <code>backup=false</code> ein XAR ohne einbettete Wiederherstellungs-Metadaten. In jedem Fall gilt: vor der Weitergabe die exportierten Dateien durchsehen.</p>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../web-stack/drupal-import-export.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../mobil/ide-und-gui.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../web-stack/drupal-import-export.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../mobil/ide-und-gui.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

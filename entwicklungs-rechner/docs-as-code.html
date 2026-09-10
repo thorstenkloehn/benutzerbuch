@@ -1,0 +1,380 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Docs-as-Code - Benutzerhandbuch</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bfa72d74.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0c2ed6dd.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Benutzerhandbuch</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="docs-as-code"><a class="header" href="#docs-as-code">Docs-as-Code</a></h1>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+<p>Dieses Buch ist selbst nach dem Verfahren entstanden, um das es in diesem Kapitel geht. Jedes Kapitel ist eine einfache Textdatei im Format Markdown unter dem Ordner <code>src/</code>. Aus diesen Dateien baut ein kleines Programm die fertigen HTML-Seiten. Die Textdateien liegen in einer Versionsverwaltung, jede Änderung ist nachvollziehbar, und der Bau läuft automatisch. Dieses Vorgehen heißt <strong>Docs-as-Code</strong> – auf Deutsch etwa „Dokumentation wie Programmcode“.</p>
+<p>Das Kapitel erklärt, was Docs-as-Code ist, was „robust“ in diesem Zusammenhang bedeutet, und stellt die wichtigsten Gruppen von Werkzeugen vor: Buch-Generatoren, Dokumentations-Frameworks, Notizbuch-Systeme mit ausführbarem Code, Generatoren für lokale Notizsammlungen sowie die neueren Ansätze mit Künstlicher Intelligenz. Bei jeder Gruppe geht es besonders um die Frage, welche Werkzeuge als ausgereift gelten und auch sehr große Textmengen zuverlässig verarbeiten.</p>
+<h2 id="was-docs-as-code-ist"><a class="header" href="#was-docs-as-code-ist">Was Docs-as-Code ist</a></h2>
+<p>Programmierer schreiben ihren Code als reinen Text, legen ihn in eine Versionsverwaltung, lassen Änderungen von Kollegen prüfen und bauen daraus mit einem festen Ablauf ein lauffähiges Programm. Docs-as-Code überträgt genau diesen Ablauf auf Dokumentation. Fünf Bausteine gehören dazu:</p>
+<ul>
+<li><strong>Reiner Text als Quelle.</strong> Der Inhalt wird in einer einfachen Auszeichnungssprache geschrieben – meist <strong>Markdown</strong>, seltener <strong>AsciiDoc</strong> oder <strong>reStructuredText</strong>. Das sind Textdateien, die man mit jedem Editor öffnen kann. Formatierung wie Überschriften oder Listen steht als Zeichen im Text (<code># Überschrift</code>, <code>- Listenpunkt</code>), nicht in einem unsichtbaren Format wie bei einem Textverarbeitungsprogramm.</li>
+<li><strong>Versionsverwaltung mit Git.</strong> Jede Änderung wird gespeichert, mit Datum, Verfasser und einer kurzen Beschreibung. Man kann jederzeit sehen, was sich zwischen zwei Ständen geändert hat, und zu einem alten Stand zurückkehren.</li>
+<li><strong>Prüfung vor der Übernahme.</strong> Änderungen laufen über einen sogenannten Merge Request oder Pull Request: Erst schlägt jemand eine Änderung vor, dann sieht ein anderer sie durch und übernimmt sie. So wie bei einem Vier-Augen-Prinzip.</li>
+<li><strong>Automatischer Bau.</strong> Sobald eine Änderung übernommen ist, baut ein Server ohne weiteres Zutun die Webseite neu. Dieser Ablauf heißt <strong>CI/CD</strong> (englisch für „fortlaufende Integration und Auslieferung“).</li>
+<li><strong>Ein Generator erzeugt die Ausgabe.</strong> Ein Programm, der <strong>Static-Site-Generator</strong> (Generator für statische Webseiten), macht aus den Textdateien fertige HTML-Seiten, oft auch eine PDF- oder E-Book-Fassung. „Statisch“ heißt: Es entstehen einfache Dateien, die jeder Webserver ohne Datenbank ausliefern kann.</li>
+</ul>
+<p>Der Nutzen: Der Text gehört einem selbst und steckt nicht in einem fremden Dienst fest. Man kann ihn durchsuchen, mit anderen Ständen vergleichen, offline bearbeiten und mit denselben Werkzeugen verwalten wie Code. Der Nachteil: Man muss den Umgang mit Git lernen, und es gibt keine Oberfläche, in der man den Text wie in einem Textverarbeitungsprogramm formatiert sieht, während man ihn schreibt.</p>
+<h3 id="abgrenzung-zum-wiki"><a class="header" href="#abgrenzung-zum-wiki">Abgrenzung zum Wiki</a></h3>
+<p>Die Wissenssammlung dieses Buchs läuft nicht nach Docs-as-Code, sondern auf einem <strong>Wiki</strong> (MediaWiki). Das ist Absicht. Ein Wiki ist eine laufende Anwendung mit Datenbank, in der viele Menschen direkt im Browser schreiben, ohne Git zu kennen. Docs-as-Code passt besser, wenn wenige Personen an einem abgeschlossenen Text arbeiten, die Änderungen streng geprüft werden sollen und der Text auch als Buch erscheinen soll. Beide Ansätze schließen sich nicht aus – dieses Projekt nutzt beide nebeneinander.</p>
+<h2 id="was-robust-bei-docs-as-code-bedeutet"><a class="header" href="#was-robust-bei-docs-as-code-bedeutet">Was „robust“ bei Docs-as-Code bedeutet</a></h2>
+<p>Die Frage „Welches Werkzeug verkraftet eine Million Textinhalte, ohne kaputtzugehen?“ zielt auf einen anderen Punkt als bei einer laufenden Anwendung. Fertige HTML-Seiten auszuliefern ist für jeden Webserver mühelos, egal wie viele es sind – das ist der schnelle Teil, „auf dem Blech“ (bare metal) ohne Zwischenschichten. Der Engpass liegt woanders:</p>
+<ul>
+<li><strong>Die Bauzeit.</strong> Aus einer Million Textdateien alle HTML-Seiten zu erzeugen, kann je nach Generator Sekunden oder viele Stunden dauern. Ausgereifte Generatoren bauen <strong>inkrementell</strong>: Sie erzeugen nach einer Änderung nur die betroffenen Seiten neu, nicht alles.</li>
+<li><strong>Der Suchindex.</strong> Viele Generatoren bauen eine Volltextsuche ein, die im Browser läuft. Bei sehr vielen Seiten wird diese Index-Datei zu groß zum Herunterladen. Dann braucht es eine serverseitige Suche (siehe <a href="../grundlagen/inhalt-software-verwalten.html">Inhalts-Software selbst betreiben</a>).</li>
+<li><strong>Verschiedene Inhaltstypen und Datensätze.</strong> Neben Fließtext fallen Bilder, Tabellen, Codebeispiele, Kennzahlen und ganze Datensätze an. Gute Werkzeuge trennen Inhalt und Daten: Der Text steht in Markdown, feste Angaben stehen im Kopf der Datei (<strong>Frontmatter</strong>) oder in getrennten Datendateien (YAML, JSON, CSV), aus denen der Generator Seiten oder Tabellen erzeugt.</li>
+<li><strong>Der Reifegrad.</strong> Ausgereift heißt: Das Werkzeug gibt es seit vielen Jahren, es hat einen festen Veröffentlichungsplan, eine große Gemeinschaft, eine klare Vorgehensweise beim Umstieg auf neue Versionen und bekannte, große Projekte, die es einsetzen. Das ist der Unterschied zwischen einem Werkzeug, auf das man ein Buch für zehn Jahre stellt, und einem, das nach zwei Jahren nicht mehr gepflegt wird.</li>
+</ul>
+<p>Einen einheitlichen, neutralen Geschwindigkeitsvergleich wie bei Webframeworks gibt es für Dokumentations-Generatoren nicht. Als grobe Ordnung gilt: Generatoren, die als eine einzige eigenständige Programmdatei ausgeliefert werden (geschrieben in Go oder Rust), bauen am schnellsten; Generatoren auf Basis von Python liegen im Mittelfeld; Generatoren, die im Bau ein ganzes Webprogramm mitpacken (JavaScript), sind bei sehr vielen Seiten am langsamsten. Der einzige verlässliche Test ist, die eigene Textmenge nachzubilden und die Bauzeit zu messen.</p>
+<h2 id="buch-generatoren-markdownasciidoc"><a class="header" href="#buch-generatoren-markdownasciidoc">Buch-Generatoren (Markdown/AsciiDoc)</a></h2>
+<p>Diese Werkzeuge erzeugen ein Buch: einen durchgehenden Text von vorne nach hinten, mit Kapiteln, Inhaltsverzeichnis und meist auch einer PDF- oder E-Book-Fassung. Sie eignen sich für Handbücher, Lehrbücher und Nachschlagewerke – überall dort, wo der Inhalt eine feste Reihenfolge hat.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Werkzeug</th><th>Sprache des Werkzeugs</th><th>Auszeichnungssprache</th><th>Besonders geeignet für</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>mdBook</strong></td><td>Rust</td><td>Markdown</td><td>Schlanke Handbücher, sehr schneller Bau; nutzt dieses Buch</td></tr>
+<tr><td><strong>Sphinx</strong></td><td>Python</td><td>reStructuredText, Markdown</td><td>Sehr große Nachschlagewerke mit vielen Querverweisen</td></tr>
+<tr><td><strong>Antora</strong></td><td>JavaScript</td><td>AsciiDoc</td><td>Sehr große Dokumentation aus vielen getrennten Quellen, mit Versionen</td></tr>
+<tr><td><strong>Quarto</strong></td><td>– (eigenständig)</td><td>Markdown</td><td>Wissenschaftliche Bücher mit Rechenergebnissen im Text</td></tr>
+<tr><td><strong>Bookdown</strong></td><td>R</td><td>Markdown</td><td>Bücher aus der Statistik-Welt</td></tr>
+<tr><td><strong>Pandoc</strong></td><td>Haskell</td><td>Markdown u. v. m.</td><td>Umwandlung in nahezu jedes Ausgabeformat</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Sphinx</strong> gilt als das ausgereifteste Werkzeug für sehr umfangreiche Dokumentation. Es gibt es seit 2008, die Dokumentation der Programmiersprache Python und die des Linux-Kernels werden damit gebaut. Seine Stärke sind Querverweise und Stichwortverzeichnisse über Tausende von Seiten, die auch bei einem Umbau nicht ins Leere zeigen.</p>
+<p><strong>Antora</strong> ist eigens für sehr große, aufgeteilte Dokumentation gebaut: Der Inhalt liegt in vielen getrennten Ablagen, Antora fügt ihn zu einer Webseite zusammen und verwaltet dabei mehrere Versionen nebeneinander. Der Softwarehersteller Red Hat pflegt damit seine Produkthandbücher.</p>
+<p><strong>mdBook</strong> ist bewusst einfach gehalten. Es baut auch große Bücher in Sekunden und kann eingebettete Codebeispiele beim Testen ausführen (siehe unten). Für ein Handbuch wie dieses ist es die passende Größe.</p>
+<h2 id="dokumentations-frameworks-moderne-web-dokumentation-komponenten-api-docs"><a class="header" href="#dokumentations-frameworks-moderne-web-dokumentation-komponenten-api-docs">Dokumentations-Frameworks (moderne Web-Dokumentation, Komponenten, API-Docs)</a></h2>
+<p>Diese Werkzeuge stellen nicht das Buch in den Mittelpunkt, sondern die Dokumentations-Webseite eines Produkts: mit eingebauter Suche, mehreren Versionen, mehreren Sprachen und interaktiven Bausteinen auf den Seiten. Häufig wird damit auch die Beschreibung einer Programmierschnittstelle (<strong>API</strong>) dargestellt.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Werkzeug</th><th>Grundlage</th><th>Besonders geeignet für</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Material for MkDocs</strong></td><td>Python (MkDocs)</td><td>Der einfache Einstieg; sehr gute eingebaute Suche</td></tr>
+<tr><td><strong>Docusaurus</strong></td><td>JavaScript (React), von Meta</td><td>Interaktive Bausteine in den Seiten, Versionen, viele Sprachen</td></tr>
+<tr><td><strong>Starlight</strong></td><td>JavaScript (Astro)</td><td>Moderne, schnelle Dokumentations-Webseiten</td></tr>
+<tr><td><strong>VitePress</strong></td><td>JavaScript (Vue)</td><td>Schneller Bau; baut die Dokumentation von Vue und Vite</td></tr>
+<tr><td><strong>Antora</strong></td><td>JavaScript</td><td>Dokumentation aus vielen Quellen und mit Versionen (siehe oben)</td></tr>
+<tr><td><strong>Redoc / Swagger UI</strong></td><td>JavaScript</td><td>Reine API-Beschreibungen aus einer OpenAPI-Datei</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Material for MkDocs</strong> ist unter diesen Werkzeugen am weitesten verbreitet. Es ist schnell eingerichtet, die eingebaute Suche ist gut, und es wird von sehr vielen Projekten eingesetzt. <strong>Docusaurus</strong> ist mächtiger, aber aufwendiger: Es erlaubt echte Programmbausteine mitten im Text (Format <strong>MDX</strong>, also Markdown mit eingebauten Bedienelementen) und bringt Versions- und Übersetzungsverwaltung mit. Beide sind bei großen Projekten bewährt; bei sehr vielen Seiten wächst die Bauzeit spürbar, weshalb der inkrementelle Bau wichtig wird.</p>
+<p>Für reine API-Beschreibungen erzeugen <strong>Redoc</strong> und <strong>Swagger UI</strong> die Seiten unmittelbar aus einer formalen Beschreibungsdatei (OpenAPI). Ändert sich die Schnittstelle, ändert sich die Dokumentation automatisch mit.</p>
+<h2 id="notizbuch-systeme-mit-ausführbarem-code"><a class="header" href="#notizbuch-systeme-mit-ausführbarem-code">Notizbuch-Systeme mit ausführbarem Code</a></h2>
+<p>Ein „Notizbuch“ (englisch <em>notebook</em>) mischt Text und Programmcode in einem Dokument. Beim Bau wird der Code ausgeführt, und sein Ergebnis – eine Zahl, eine Tabelle, ein Diagramm – landet direkt im fertigen Text. So bleiben Erklärung und Rechenergebnis immer zusammen und immer aktuell.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Werkzeug</th><th>Sprachen für den Code</th><th>Speicherform</th><th>Besonderheit</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Jupyter</strong></td><td>Python, R, Julia u. a.</td><td>JSON (<code>.ipynb</code>)</td><td>Der weit verbreitete Standard</td></tr>
+<tr><td><strong>Jupyter Book / MyST</strong></td><td>wie Jupyter</td><td>Markdown + Notizbücher</td><td>Ganze Bücher aus Notizbüchern; mit Zwischenspeicher</td></tr>
+<tr><td><strong>Quarto</strong></td><td>Python, R, Julia, JavaScript</td><td>Markdown (<code>.qmd</code>)</td><td>Ein System für Buch, Webseite und Folien</td></tr>
+<tr><td><strong>marimo</strong></td><td>Python</td><td>reine Python-Datei (<code>.py</code>)</td><td>Reagiert wie eine Tabellenkalkulation; gut für Git</td></tr>
+<tr><td><strong>Observable Framework</strong></td><td>JavaScript</td><td>Markdown</td><td>Datenauswertungen und Übersichtsseiten</td></tr>
+</tbody>
+</table>
+</div>
+<p>Für Docs-as-Code ist die <strong>Speicherform</strong> entscheidend. Klassische Jupyter-Notizbücher liegen als JSON-Datei vor, in der auch die Ausgaben mitgespeichert werden. Solche Dateien lassen sich mit Git schlecht vergleichen – schon ein erneuter Lauf verändert die halbe Datei. <strong>marimo</strong> speichert das Notizbuch als gewöhnliche Python-Datei, <strong>Quarto</strong> und <strong>MyST</strong> als Markdown. Diese Formen zeigen im Vergleich sauber, was sich geändert hat, und passen deshalb besser in den Docs-as-Code-Ablauf.</p>
+<p>Der Engpass bei großen Sammlungen ist die Ausführungszeit: Wird bei jedem Bau sämtlicher Code neu gerechnet, dauert es lange. Ausgereifte Systeme haben deshalb einen <strong>Zwischenspeicher</strong> (Jupyter Cache, bei Quarto „freeze“ genannt): Nur geänderter Code wird neu ausgeführt, der Rest kommt aus dem Speicher.</p>
+<p>Auch <strong>mdBook</strong> kennt eine einfache Form davon: <code>mdbook test</code> führt die in den Text eingebetteten Rust-Beispiele aus und meldet, wenn eines nicht mehr stimmt.</p>
+<h2 id="generatoren-für-lokale-notizsammlungen"><a class="header" href="#generatoren-für-lokale-notizsammlungen">Generatoren für lokale Notizsammlungen</a></h2>
+<p>Hier geht es um die persönliche Wissensablage: viele kleine, untereinander verlinkte Notizen, lokal auf dem eigenen Rechner geschrieben, oft mit <strong>Rückverweisen</strong> (Backlinks – jede Notiz zeigt, welche anderen Notizen auf sie verweisen). Im Netz wird eine solche veröffentlichte Sammlung „digitaler Garten“ genannt.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Werkzeug</th><th>Art</th><th>Besonderheit</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Obsidian</strong></td><td>Schreibprogramm</td><td>Arbeitet auf einem Ordner lokaler Markdown-Dateien; sehr große Sammlungen</td></tr>
+<tr><td><strong>Quartz</strong></td><td>Generator</td><td>Macht aus einem Obsidian-Ordner eine Webseite mit Rückverweisen</td></tr>
+<tr><td><strong>Logseq</strong></td><td>Schreibprogramm</td><td>Gliederung in Stichpunkten, lokale Markdown-Dateien</td></tr>
+<tr><td><strong>Hugo</strong></td><td>Generator (Go)</td><td>Extrem schnell, verkraftet Zehntausende Seiten in Sekunden</td></tr>
+<tr><td><strong>Zola</strong></td><td>Generator (Rust)</td><td>Eine einzige Programmdatei, sehr schneller Bau</td></tr>
+<tr><td><strong>Eleventy</strong></td><td>Generator (JavaScript)</td><td>Sehr anpassbar</td></tr>
+<tr><td><strong>Jekyll</strong></td><td>Generator (Ruby)</td><td>Standard bei GitHub Pages, bei vielen Seiten aber langsam</td></tr>
+</tbody>
+</table>
+</div>
+<p>Für die Sammlung selbst ist <strong>Obsidian</strong> verbreitet; es kommt auch mit vielen Tausend Notizen gut zurecht, weil es einfach lokale Textdateien bearbeitet. Für die Veröffentlichung ist dann der Generator der Engpass. <strong>Quartz</strong> ist eigens für digitale Gärten gemacht und stellt Rückverweise und eine Übersichtskarte dar. Wer allein auf Geschwindigkeit bei sehr vielen Seiten achtet, wählt <strong>Hugo</strong> oder <strong>Zola</strong>: Beide bauen große Sammlungen in unter einer Sekunde bis wenigen Sekunden. <strong>Jekyll</strong> ist am längsten im Umlauf, wird bei großen Sammlungen aber deutlich langsam.</p>
+<h2 id="ki--und-llm-wiki-konzepte"><a class="header" href="#ki--und-llm-wiki-konzepte">KI- und LLM-Wiki-Konzepte</a></h2>
+<p>Mit den Sprachmodellen sind zwei neuere Ansätze entstanden, bei denen eine Künstliche Intelligenz an der Wissenssammlung mitarbeitet. „LLM“ steht für <em>Large Language Model</em>, also ein großes Sprachmodell.</p>
+<p><strong>LLM-Wiki.</strong> Ein Agent baut die Wissenssammlung selbst auf – aus vorhandenem Material wie Programmcode oder Dokumenten – und hält sie danach fortlaufend aktuell. Der Gedanke dahinter: Das Verständnis sammelt sich an, statt bei jeder Frage neu erarbeitet zu werden. Bekannte Vertreter sind <strong>DeepWiki</strong>, das aus einer Code-Ablage auf GitHub ein durchblätterbares Wiki mit Chat-Funktion erzeugt, sowie <strong>OpenWiki</strong> und ähnliche quelloffene Werkzeuge, die ein solches Wiki über die Änderungen im Git regelmäßig nachführen.</p>
+<p><strong>Co-Wiki.</strong> Mensch und Agent bearbeiten dieselbe Sammlung gemeinsam: Der Agent schreibt Entwürfe, ergänzt fehlende Abschnitte oder beantwortet Fragen auf Grundlage der vorhandenen Artikel; ein Mensch prüft und gibt frei. Dienste wie GitBook oder Mintlify bauen eine solche KI-Unterstützung fest in die Dokumentations-Webseite ein.</p>
+<p>Wichtig ist dabei die redaktionelle Kontrolle. Von einer KI erzeugte Inhalte können falsch sein und müssen geprüft werden, bevor sie stehen bleiben – genau das schreibt auch die Arbeitsweise dieses Buchs vor (Prüfschritte und der Transparenzhinweis nach Art. 50 EU AI Act). Die verlässliche Fassung bleibt der von Menschen geprüfte Text unter Git; das KI-Wiki ist eine Zuarbeit, keine Quelle der Wahrheit.</p>
+<h2 id="ki-agenten-tauglichkeit-und-rag-integration"><a class="header" href="#ki-agenten-tauglichkeit-und-rag-integration">KI-Agenten-Tauglichkeit und RAG-Integration</a></h2>
+<p>Docs-as-Code ist die beste Grundlage, wenn ein KI-Agent (siehe <a href="../server-einrichten/ki-agent.html">KI-Agenten auf dem Server</a>) auf die Inhalte zugreifen soll. Der übliche Weg dafür heißt <strong>RAG</strong> (englisch für „Erzeugung mit Anreicherung durch Abruf“): Der Agent sucht zuerst die passenden Textstellen heraus und schreibt seine Antwort dann nur auf deren Grundlage. Reiner Markdown-Text hilft dabei an mehreren Stellen:</p>
+<ul>
+<li><strong>Sauberes Zerteilen.</strong> RAG zerlegt die Texte in Häppchen. Überschriften in Markdown sind natürliche Trennstellen – jeder Abschnitt wird ein sinnvolles Häppchen.</li>
+<li><strong>Feste Adressen.</strong> Jede Seite und jeder Abschnitt hat eine feste Web-Adresse. Der Agent kann seine Antwort damit belegen und auf die Stelle verweisen.</li>
+<li><strong>Angaben im Dateikopf.</strong> Das Frontmatter (Titel, Datum, Schlagworte) lässt sich zum Filtern nutzen.</li>
+<li><strong>Git-Verlauf.</strong> Der Agent kann erkennen, was sich seit wann geändert hat.</li>
+</ul>
+<p>Dazu gibt es einen jungen Standard namens <strong><code>llms.txt</code></strong>: eine Datei im Wurzelverzeichnis der Webseite, die alle wichtigen Seiten mit einer kurzen Beschreibung auflistet – ähnlich wie <code>robots.txt</code> für Suchmaschinen. Oft kommt eine zweite Datei <code>llms-full.txt</code> dazu, die den gesamten Inhalt als reinen Markdown-Text enthält. Für einen Agenten ist das viel sparsamer als die HTML-Seiten: Der Verbrauch an Recheneinheiten (Token) sinkt um etwa 90 Prozent. Nach Angaben des Anbieters GitBook stammen inzwischen rund 40 Prozent der Zugriffe auf Dokumentations-Seiten von KI-Agenten und nicht mehr von Menschen.</p>
+<p>Manche Werkzeuge erzeugen <code>llms.txt</code> von selbst (etwa Mintlify), für andere gibt es Zusatzbausteine (für MkDocs und Docusaurus). Den Abruf durch den Agenten übernehmen entweder eine selbst gebaute RAG-Kette (mit Bausteinkästen wie LlamaIndex, LangChain oder Haystack) oder ein fertiger Dienst, der die Dokumentation als Chat zugänglich macht.</p>
+<h2 id="reifegrad-im-überblick"><a class="header" href="#reifegrad-im-überblick">Reifegrad im Überblick</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Aufgabe</th><th>Ausgereifte Wahl für große Mengen</th><th>Warum</th></tr>
+</thead>
+<tbody>
+<tr><td>Handbuch, schlank</td><td>mdBook</td><td>Sehr schneller Bau, einfache Struktur</td></tr>
+<tr><td>Nachschlagewerk, sehr groß</td><td>Sphinx</td><td>Seit 2008, Querverweise über Tausende Seiten, große Projekte</td></tr>
+<tr><td>Dokumentation aus vielen Quellen, mit Versionen</td><td>Antora</td><td>Eigens dafür gebaut, im Einsatz bei großen Herstellern</td></tr>
+<tr><td>Produkt-Dokumentation mit Suche</td><td>Material for MkDocs, Docusaurus</td><td>Weit verbreitet, bei großen Projekten bewährt</td></tr>
+<tr><td>Text mit Rechenergebnissen</td><td>Quarto, Jupyter Book</td><td>Zwischenspeicher für den Code, mehrere Sprachen</td></tr>
+<tr><td>Lokale Notizsammlung, sehr viele Seiten</td><td>Hugo, Zola</td><td>Bau in Sekunden auch bei Zehntausenden Seiten</td></tr>
+<tr><td>Zugriff durch KI-Agenten</td><td>jedes Markdown-Werkzeug + <code>llms.txt</code></td><td>Reiner Text zerteilt und belegt sich sauber</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="für-dieses-buch"><a class="header" href="#für-dieses-buch">Für dieses Buch</a></h2>
+<p>Dieses Handbuch nutzt <strong>mdBook</strong>. Das passt: Der Inhalt hat eine feste Reihenfolge, die Menge bleibt überschaubar, der Bau ist in Sekunden fertig, und eingebettete Codebeispiele lassen sich testen.</p>
+<p>Die eigentliche Wissenssammlung läuft bewusst nicht nach Docs-as-Code, sondern als <strong>Wiki</strong> – weil dort viele Personen ohne Git-Kenntnisse direkt im Browser schreiben sollen. Beide Wege bestehen nebeneinander.</p>
+<p>Für die Zusammenarbeit mit einem KI-Agenten gilt: Die Kapitel bleiben reiner Markdown-Text, und sobald die Webseite online geht, kommt eine <code>llms.txt</code>-Datei dazu. Der Agent bekommt sowohl das Buch als auch das Wiki über eine RAG-Kette zugänglich gemacht.</p>
+<p>Sollte das Buch sehr stark wachsen oder mehrere Versionen nebeneinander brauchen, sind <strong>Antora</strong> oder <strong>Sphinx</strong> die ausgereiften Alternativen.</p>
+<h2 id="fazit"><a class="header" href="#fazit">Fazit</a></h2>
+<p>Docs-as-Code heißt, Dokumentation wie Programmcode zu behandeln: als reinen Text in Git, mit Prüfung vor der Übernahme und automatischem Bau. Ob ein Werkzeug „eine Million Inhalte aushält“, entscheidet sich nicht am Ausliefern der Seiten – das ist für jeden Webserver mühelos –, sondern an der Bauzeit, am Suchindex und an der sauberen Trennung von Text und Daten. Als besonders ausgereift gelten <strong>Sphinx</strong> und <strong>Antora</strong> für sehr große Nachschlagewerke, <strong>Material for MkDocs</strong> und <strong>Docusaurus</strong> für Produkt-Dokumentation, <strong>mdBook</strong> für schlanke Handbücher, <strong>Quarto</strong> und <strong>Jupyter Book</strong> für Text mit Rechenergebnissen sowie <strong>Hugo</strong> und <strong>Zola</strong> für sehr große lokale Notizsammlungen. Von KI erzeugte Wikis sind eine nützliche Zuarbeit, ersetzen aber nicht die redaktionelle Prüfung. Für den Zugriff durch KI-Agenten ist reiner Markdown-Text zusammen mit einer <code>llms.txt</code>-Datei die beste Grundlage. Für dieses Buch bleibt es bei mdBook, mit dem Wiki daneben und einer geplanten <code>llms.txt</code> für den Agenten.</p>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../entwicklungs-rechner/unix-socket.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../entwicklungs-rechner/docs-as-code-webseiten.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../entwicklungs-rechner/unix-socket.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../entwicklungs-rechner/docs-as-code-webseiten.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

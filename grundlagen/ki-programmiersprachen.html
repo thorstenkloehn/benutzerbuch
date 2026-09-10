@@ -1,0 +1,311 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Programmiersprachen für KI - Benutzerhandbuch</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bfa72d74.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0c2ed6dd.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Benutzerhandbuch</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="programmiersprachen-für-ki"><a class="header" href="#programmiersprachen-für-ki">Programmiersprachen für KI</a></h1>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+<p>Für die reine Schreibarbeit an diesem Buch muss niemand programmieren. Sobald aber ein eigener KI-Agent, ein Skript oder eine Anbindung an das Redaktionssystem entsteht (siehe <a href="../server-einrichten/ki-agent.html">KI-Agenten auf dem Server</a> und <a href="../web-stack/cms.html">Content-Management-System</a>), stellt sich die Frage: In welcher Sprache schreibt man so etwas?</p>
+<p>Die Antwort ist nicht „in einer“, sondern „in mehreren – je nach Aufgabe“. Eine KI-Anwendung besteht aus drei übereinanderliegenden Schichten, und jede Schicht hat ihre eigene bevorzugte Programmiersprache. Eine <strong>Programmiersprache</strong> ist die Sprache, in der ein Mensch einem Computer Anweisungen aufschreibt. Ein Überblick über die einzelnen Sprachen und ihre Einrichtung auf dem eigenen Rechner steht im Kapitel <a href="../entwicklungs-rechner/programmiersprachen.html">Programmiersprachen</a>; dieses Kapitel ordnet sie nach ihrer Rolle im KI-Umfeld ein.</p>
+<h2 id="die-drei-schichten-im-überblick"><a class="header" href="#die-drei-schichten-im-überblick">Die drei Schichten im Überblick</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Schicht</th><th>Aufgabe</th><th>Übliche Sprachen</th></tr>
+</thead>
+<tbody>
+<tr><td>Entwicklung und Training</td><td>ein Modell bauen, trainieren, ausprobieren</td><td>Python</td></tr>
+<tr><td>Laufzeit und Beschleunigung</td><td>ein fertiges Modell schnell rechnen lassen</td><td>C++, Rust, CUDA</td></tr>
+<tr><td>Integration und Orchestrierung</td><td>das Modell mit Datenbank, Oberfläche und Suche verbinden</td><td>TypeScript, Go, C#, Java, Python</td></tr>
+</tbody>
+</table>
+</div>
+<p>Ein <strong>Modell</strong> ist die trainierte Datei, die aus einer Eingabe eine Antwort errechnet. <strong>Trainieren</strong> heißt, dem Modell diese Fähigkeit über viele Beispiele beizubringen. Die oberste Schicht baut das Modell, die mittlere lässt es schnell laufen, die dritte bindet es in eine nutzbare Anwendung ein.</p>
+<p>Neben diesem Aufbau gab es früher einen ganz anderen Ansatz, wie ein Computer „intelligent“ wird – mit eigenen Programmiersprachen. Er wird weiter unten im Abschnitt „Eine ältere Linie“ beschrieben.</p>
+<h2 id="schicht-1-entwicklung-und-training--python"><a class="header" href="#schicht-1-entwicklung-und-training--python">Schicht 1: Entwicklung und Training – Python</a></h2>
+<p>Wer ein Modell entwirft, trainiert oder mit neuen Ideen ausprobiert, arbeitet fast immer mit <strong>Python</strong>. Python ist eine Sprache, die auf gut lesbaren Code setzt und Anweisungen Zeile für Zeile abarbeitet, ohne sie vorher in Maschinencode zu übersetzen.</p>
+<p>Für diese Schicht zählt Python aus drei Gründen:</p>
+<ul>
+<li><strong>Schnelles Ausprobieren.</strong> Eine Idee lässt sich in wenigen Zeilen aufschreiben und sofort testen. Wer forscht, ändert seinen Code ständig – langes Übersetzen würde nur bremsen.</li>
+<li><strong>Rechnen mit Zahlengittern.</strong> Ein Modell ist im Kern eine riesige Sammlung von Zahlen, angeordnet in Gittern (<strong>Matrizen</strong>). Python-Bausteine wie <strong>NumPy</strong> rechnen mit solchen Gittern in einem Schritt statt Zahl für Zahl.</li>
+<li><strong>Ein großes Ökosystem.</strong> Rund um Python sind über Jahre die Werkzeuge für Künstliche Intelligenz gewachsen: <strong>PyTorch</strong> und <strong>TensorFlow</strong> zum Bauen und Trainieren von Modellen, dazu tausende fertige Bausteine für Datenaufbereitung und Auswertung.</li>
+</ul>
+<p>Dass Python selbst langsam rechnet, fällt dabei kaum ins Gewicht: Die eigentliche Rechenarbeit geben diese Bausteine an hardwarenahen Code weiter (siehe Schicht 2). Python gibt nur die Anweisungen und wartet auf das Ergebnis.</p>
+<h2 id="schicht-2-laufzeit-und-beschleunigung--c-rust-cuda"><a class="header" href="#schicht-2-laufzeit-und-beschleunigung--c-rust-cuda">Schicht 2: Laufzeit und Beschleunigung – C++, Rust, CUDA</a></h2>
+<p>Ist ein Modell fertig trainiert, soll es im Betrieb möglichst schnell und sparsam antworten. Jetzt zählen andere Dinge: hoher <strong>Durchsatz</strong> (viele Anfragen pro Sekunde), kurze <strong>Latenz</strong> (wenig Wartezeit bis zum ersten Wort) und ein geringer Speicherverbrauch. Dafür ist Python zu langsam.</p>
+<p>Die eigentlichen Rechenkerne laufen darum in <strong>hardwarenahem Maschinencode</strong> – erzeugt aus Sprachen, die vollständig in Befehle für einen bestimmten Rechnertyp übersetzt werden und danach ohne Zwischenschicht laufen:</p>
+<ul>
+<li><strong>C++</strong> ist die verbreitetste Sprache für diese Schicht. Der Kern von PyTorch ist in C++ geschrieben, ebenso das Programm <strong>llama.cpp</strong>, das Sprachmodelle auf dem eigenen Rechner ausführt (siehe <a href="../server-einrichten/sprachmodell-selbst-betreiben.html">Sprachmodell selbst betreiben</a>).</li>
+<li><strong>CUDA</strong> ist eine Erweiterung von C++ von der Firma NVIDIA. Damit schreibt man Code, der direkt auf der <strong>Grafikkarte</strong> (englisch „GPU“) rechnet. Eine Grafikkarte kann tausende einfache Rechnungen gleichzeitig ausführen – genau die Art Arbeit, die ein Modell verlangt.</li>
+<li><strong>Rust</strong> ist eine jüngere hardwarenahe Sprache. Sie ist ähnlich schnell wie C++, verhindert aber schon beim Übersetzen eine ganze Klasse von Speicherfehlern. Neuere Projekte für den Modellbetrieb setzen zunehmend auf Rust.</li>
+</ul>
+<p>Von dieser Schicht bekommt man als Anwender wenig zu sehen. Sie steckt fertig in den Programmen und Bausteinen der anderen beiden Schichten. Man müsste sie nur anfassen, wenn man eine Rechenbibliothek selbst verbessern will.</p>
+<h2 id="schicht-3-integration-und-orchestrierung"><a class="header" href="#schicht-3-integration-und-orchestrierung">Schicht 3: Integration und Orchestrierung</a></h2>
+<p>Die dritte Schicht baut aus dem fertigen Modell eine nutzbare Anwendung. Sie <strong>orchestriert</strong> – das heißt, sie steuert das Zusammenspiel vieler Teile: Sie nimmt die Anfrage eines Nutzers entgegen, holt passende Texte aus einer Datenbank dazu, schickt alles an das Modell, prüft die Antwort und gibt sie an die Benutzeroberfläche zurück.</p>
+<p>Hier gibt es keine einzelne vorherrschende Sprache. Gewählt wird meist die, in der die übrige Anwendung schon geschrieben ist:</p>
+<ul>
+<li><strong>TypeScript</strong> (und <strong>JavaScript</strong>): die Sprache für Weboberflächen. Ein Chatfenster im Browser und der zugehörige kleine Server sind oft in TypeScript geschrieben. Viele KI-Werkzeugkästen gibt es zuerst für diese Sprache.</li>
+<li><strong>Go</strong>: eine Sprache von Google für Server- und Kommandozeilenwerkzeuge. Sie übersetzt zu einer eigenständigen Datei, startet schnell und kommt mit vielen gleichzeitigen Anfragen gut zurecht. Ollama selbst ist in Go geschrieben.</li>
+<li><strong>C#</strong> und <strong>Java</strong>: die üblichen Sprachen in Firmen mit größerer bestehender Software. Beide haben inzwischen offizielle Bausteine, um Modelle einzubinden.</li>
+<li><strong>Python</strong>: taugt auch für diese Schicht und wird oft gewählt, wenn das Team ohnehin aus Schicht 1 kommt.</li>
+</ul>
+<p>Für dieses Buch fällt der KI-Agent Claude Code in diese Schicht: Er ruft ein Modell auf, liest und schreibt dabei selbst Dateien und führt Befehle aus (siehe <a href="./text-erstellen.html">Text erstellen</a>).</p>
+<h2 id="eine-ältere-linie-wissensbasierte-systeme-lisp-und-prolog"><a class="header" href="#eine-ältere-linie-wissensbasierte-systeme-lisp-und-prolog">Eine ältere Linie: wissensbasierte Systeme (Lisp und Prolog)</a></h2>
+<p>Die drei Schichten oben beschreiben den heute üblichen Weg: ein Modell, das aus riesigen Textmengen selbst gelernt hat. Davor gab es eine andere Vorstellung davon, wie ein Computer „intelligent“ werden kann – und dazu gehörten zwei eigene Programmiersprachen.</p>
+<p>Bei einem <strong>wissensbasierten System</strong> lernt der Computer nichts aus Beispielen. Stattdessen schreibt ein Mensch das Wissen von Hand auf: als <strong>Fakten</strong> (etwa „Ein Hund ist ein Säugetier“) und als <strong>Regeln</strong> (etwa „Wenn ein Tier Fieber und Husten hat, dann prüfe auf Lungenentzündung“). Ein zweiter Programmteil, der <strong>Schlussfolgerer</strong> (auch „Inferenzmaschine“), kombiniert diese Regeln und beantwortet damit Fragen. Die bekannteste Bauform heißt <strong>Expertensystem</strong> – ein Programm, das das Wissen eines Fachmanns in Regeln nachbildet. Der Vorteil: Jede Antwort ist nachvollziehbar, weil man genau sehen kann, welche Regeln zu ihr geführt haben.</p>
+<p><strong>Lisp</strong> (von englisch „list processing“, „Listen verarbeiten“) ist von 1958 und damit eine der ältesten Programmiersprachen, die noch benutzt werden. Ihre Besonderheit: Programm und Daten haben dieselbe Form – beide sind Listen. Ein Lisp-Programm kann darum andere Programme wie Daten behandeln, sie also selbst zusammenbauen und verändern. Für die frühe KI-Forschung, vor allem in den USA, war Lisp jahrzehntelang die Hauptsprache; es gab sogar Rechner, die eigens dafür gebaut waren. Heute ist Lisp eine Nische, lebt aber in Abkömmlingen wie <strong>Clojure</strong> und <strong>Scheme</strong> weiter. Manches, was Lisp früh hatte, steckt inzwischen in fast jeder Sprache: die automatische Speicherverwaltung und das zeilenweise Ausprobieren im laufenden Programm.</p>
+<p><strong>Prolog</strong> (von französisch „programmation en logique“, „Programmierung in Logik“) ist von 1972 und geht einen ungewöhnlichen Weg: Man beschreibt keine Arbeitsschritte, sondern nur Fakten und Regeln. Dann stellt man eine Frage, und das Programm sucht selbst nach einer Antwort, die zu den Regeln passt.</p>
+<pre><code class="language-prolog">elternteil(anna, ben).
+elternteil(ben, carla).
+grosselternteil(X, Z) :- elternteil(X, Y), elternteil(Y, Z).
+</code></pre>
+<p>Auf die Frage <code>grosselternteil(anna, carla)</code> antwortet Prolog mit „wahr“ – es hat die beiden Fakten über die Regel von selbst verknüpft. Prolog war in Europa und Japan verbreitet und wurde für Expertensysteme und für die Verarbeitung von Sprache eingesetzt.</p>
+<p>Warum trat diese Linie in den Hintergrund? Alle Regeln von Hand aufzuschreiben ist mühsam, und an den Rändern wurden die Systeme schnell unzuverlässig. Als die großen Versprechen der 1980er-Jahre ausblieben, brach die Förderung ein – diese Zeit heißt der <strong>„KI-Winter“</strong>. Die heutigen Sprachmodelle gehen den umgekehrten Weg: Sie lernen Muster aus vielen Texten, statt Regeln vorgesetzt zu bekommen.</p>
+<p>Ganz verschwunden ist der Ansatz aber nicht. <strong>Regelwerke</strong> in Firmensoftware, <strong>Wissensgraphen</strong> hinter Suchmaschinen und Prüfprogramme für technische Konfigurationen arbeiten bis heute so. Und es gibt neues Interesse daran, beides zu verbinden – ein gelerntes Modell zusammen mit von Hand geschriebener Logik –, was <strong>neuro-symbolische KI</strong> genannt wird. Für die Arbeit an diesem Buch ist das Hintergrundwissen: Die drei Schichten oben betreffen den Modell-Weg, und weder Lisp noch Prolog braucht man dafür.</p>
+<h2 id="warum-nicht-eine-sprache-für-alles"><a class="header" href="#warum-nicht-eine-sprache-für-alles">Warum nicht eine Sprache für alles?</a></h2>
+<p>Die Trennung hat einen einfachen Grund: Was eine Sprache leicht macht, macht eine andere schwer.</p>
+<p>Python ist bequem zum Ausprobieren, weil es viele technische Details verbirgt – genau das kostet aber Tempo. C++ und Rust sind schnell, weil der Programmierer jedes Detail selbst bestimmt – das macht die Arbeit langsamer und fehleranfälliger. Eine Sprache, die beides zugleich könnte, gibt es nicht.</p>
+<p>Die Lösung ist Arbeitsteilung: Jede Schicht nutzt die Sprache, die zu ihrer Aufgabe passt, und übergibt das Ergebnis an die nächste. Die Übergabestelle zwischen Schicht 2 und Schicht 3 ist fast immer eine Schnittstelle im sogenannten <strong>OpenAI-Format</strong>, das sich als gemeinsame Sprache zwischen den Programmen durchgesetzt hat (siehe <a href="../server-einrichten/sprachmodell-selbst-betreiben.html">Sprachmodell selbst betreiben</a>).</p>
+<h2 id="für-dieses-buch"><a class="header" href="#für-dieses-buch">Für dieses Buch</a></h2>
+<ul>
+<li><strong>Nichts davon ist Pflicht.</strong> Die Kapitel sind einfache Markdown-Dateien; zum Schreiben genügt ein Editor und ein KI-Abo (siehe <a href="./ki-abo.html">KI-Abo auswählen</a>).</li>
+<li><strong>Ein eigenes Hilfsskript</strong> (etwa zum Stapel-Prüfen von Texten) schreibt man am einfachsten in <strong>Python</strong> – das ist die Sprache mit den meisten fertigen KI-Bausteinen.</li>
+<li><strong>Eine Weboberfläche</strong> oder eine Erweiterung für das Redaktionssystem entsteht in der Sprache dieses Systems – bei Drupal ist das <strong>PHP</strong> (siehe <a href="../web-stack/cms.html">Content-Management-System</a>).</li>
+<li><strong>Ein Modell selbst betreiben</strong> verlangt keine dieser Sprachen: Fertige Programme wie Ollama bringen die Schichten 2 und 3 schon mit (siehe <a href="../server-einrichten/sprachmodell-selbst-betreiben.html">Sprachmodell selbst betreiben</a>).</li>
+</ul>
+<h2 id="fazit"><a class="header" href="#fazit">Fazit</a></h2>
+<p>Eine KI-Anwendung besteht aus drei Schichten mit je eigener bevorzugter Sprache. Die <strong>Entwicklungs- und Trainingsschicht</strong> gehört <strong>Python</strong>, weil sich damit schnell experimentieren lässt und alle Modellwerkzeuge dort zu Hause sind. Die <strong>Laufzeit- und Beschleunigungsschicht</strong> läuft in hardwarenahem Maschinencode aus <strong>C++</strong>, <strong>CUDA</strong> und zunehmend <strong>Rust</strong>, weil dort Tempo und Speicher zählen. Die <strong>Integrations- und Orchestrierungsschicht</strong> verbindet das Modell mit Datenbank, Oberfläche und Suche – meist in <strong>TypeScript</strong>, <strong>Go</strong>, <strong>C#</strong> oder ebenfalls Python, je nachdem, worin die übrige Anwendung geschrieben ist. Neben diesem Modell-Weg steht eine ältere Linie der KI: <strong>wissensbasierte Systeme</strong> mit den Sprachen <strong>Lisp</strong> und <strong>Prolog</strong>, die Wissen als von Hand geschriebene Regeln ablegen, statt es aus Daten zu lernen – heute eine Nische, aber in Regelwerken und Wissensgraphen weiter vorhanden. Für die Arbeit an diesem Buch reicht ein Editor; eigene Skripte schreibt man am besten in Python.</p>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../grundlagen/text-erstellen.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../grundlagen/enterprise-web-stack.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../grundlagen/text-erstellen.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../grundlagen/enterprise-web-stack.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

@@ -1,0 +1,352 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>KI-Agenten auf dem Server - Benutzerhandbuch</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bfa72d74.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0c2ed6dd.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Benutzerhandbuch</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="ki-agenten-auf-dem-server"><a class="header" href="#ki-agenten-auf-dem-server">KI-Agenten auf dem Server</a></h1>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+<p>Ein KI-Agent ist ein Programm, das eine Aufgabe nicht nur beantwortet, sondern selbstständig ausführt: mehrere Schritte hintereinander, mit Werkzeugen, die es selbst bedient. Das Kapitel <a href="../grundlagen/desktop-agenten.html">Desktop-Agenten</a> beschreibt solche Programme für den eigenen Computer. Dieses Kapitel geht einen Schritt weiter: Der Agent läuft dann nicht mehr auf dem Arbeitsplatzrechner, sondern rund um die Uhr auf dem gemieteten Server (siehe <a href="./server-mieten.html">Server mieten</a>).</p>
+<p>Das ist nützlich, wenn ein Agent Dinge tun soll, während niemand am Rechner sitzt: neue Seiten der Wissenssammlung nachts prüfen, auf eingehende Nachrichten reagieren, regelmäßig Daten zusammentragen. Damit die Inhalte dabei im eigenen Haus bleiben, arbeiten alle hier vorgestellten Programme mit <strong>Ollama</strong> zusammen – dem Dienst, der Sprachmodelle auf dem eigenen Rechner ausführt (siehe <a href="../grundlagen/inhalt-software-verwalten.html">Inhalts-Software selbst betreiben</a>).</p>
+<p>Dieses Kapitel stellt drei Programme vor – <strong>n8n</strong>, <strong>OpenClaw</strong> und <strong>Hermes Agent</strong> –, richtet einen Ubuntu-Server dafür ein und zeigt, wie jedes von ihnen mit einem lokalen Sprachmodell verbunden wird.</p>
+<h2 id="die-drei-programme-im-überblick"><a class="header" href="#die-drei-programme-im-überblick">Die drei Programme im Überblick</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Programm</th><th>Grundidee</th><th>Bedienung</th></tr>
+</thead>
+<tbody>
+<tr><td>n8n</td><td>Abläufe als Baukasten aus verbundenen Kästchen</td><td>Weboberfläche im Browser</td></tr>
+<tr><td>OpenClaw</td><td>ein Assistent, den man über Messenger anspricht</td><td>Chat-App (Signal, Telegram …) plus Textkonsole</td></tr>
+<tr><td>Hermes Agent</td><td>ein Agent für die Textkonsole, der dazulernt</td><td>Textkonsole, zusätzlich über Messenger erreichbar</td></tr>
+</tbody>
+</table>
+</div>
+<p>Alle drei sind quelloffen und dürfen kostenlos selbst betrieben werden. Sie schließen sich nicht aus – man kann mit einem beginnen und die anderen später daneben stellen.</p>
+<h3 id="n8n--abläufe-zusammenstecken"><a class="header" href="#n8n--abläufe-zusammenstecken">n8n – Abläufe zusammenstecken</a></h3>
+<p>n8n ist ein Werkzeug für <strong>Automatisierung</strong>. Man baut einen Ablauf (dort „Workflow“ genannt) aus einzelnen Bausteinen zusammen, die wie Kästchen auf einer Fläche liegen und mit Linien verbunden werden. Ein Baustein holt zum Beispiel eine neue Wiki-Seite ab, der nächste schickt ihren Text an ein Sprachmodell, der übernächste trägt das Ergebnis irgendwo ein. Für Hunderte Dienste gibt es fertige Bausteine; ein eigener Baustein „AI Agent“ lässt das Modell selbst entscheiden, welche Werkzeuge es in welcher Reihenfolge benutzt.</p>
+<p>n8n eignet sich, wenn der Ablauf klar umrissen ist und immer gleich abläuft. Die Weboberfläche macht sichtbar, was in welchem Schritt passiert, und das erleichtert die Fehlersuche. n8n steht unter einer quelloffenen Lizenz (der „Sustainable Use License“): Der Quelltext liegt offen, und der Betrieb für eigene Zwecke ist kostenlos; nur das Weiterverkaufen als eigener Dienst ist eingeschränkt.</p>
+<h3 id="openclaw--der-assistent-im-messenger"><a class="header" href="#openclaw--der-assistent-im-messenger">OpenClaw – der Assistent im Messenger</a></h3>
+<p>OpenClaw ist ein selbst betriebener Assistent, den man über gewohnte Chat-Programme anspricht – etwa Signal, Telegram, Slack oder WhatsApp. Auf dem Server läuft ein Vermittler (im Projekt „Gateway“ genannt), der die Nachrichten entgegennimmt, an ein Sprachmodell weiterreicht und die Antworten zurückschickt. Der Agent kann dabei auf dem Server Befehle ausführen, im Browser klicken, Dateien bearbeiten oder E-Mails schreiben.</p>
+<p>OpenClaw eignet sich, wenn man den Agenten wie eine Person im Chat behandeln möchte: kurze Anweisung schicken, Ergebnis abwarten. Das Projekt ist noch jung, entwickelt sich schnell und wird von einer gemeinnützigen Stiftung offen gepflegt. Es steht unter der MIT-Lizenz, einer der freizügigsten Lizenzen überhaupt.</p>
+<p>Ein Hinweis zur Vorsicht: Ein Agent, der Nachrichten aus einem Messenger annimmt und daraufhin Befehle auf dem Server ausführt, ist eine mächtige und zugleich heikle Kombination. Er sollte nur mit den nötigsten Rechten laufen und nicht auf demselben Server wie die öffentliche Wissenssammlung.</p>
+<h3 id="hermes-agent--der-lernende-agent-in-der-konsole"><a class="header" href="#hermes-agent--der-lernende-agent-in-der-konsole">Hermes Agent – der lernende Agent in der Konsole</a></h3>
+<p>Hermes Agent stammt von der Forschungsgruppe Nous Research und läuft in der <strong>Textkonsole</strong>. Er führt Aufgaben mit über 40 Werkzeugen aus, kann Teilaufgaben an Unter-Agenten abgeben und Abläufe zu festen Zeiten starten. Die Besonderheit ist eine eingebaute Lernschleife: Aus erledigten Aufgaben legt der Agent kleine wiederverwendbare „Skills“ an und erinnert sich über Sitzungen hinweg an frühere Gespräche.</p>
+<p>Hermes Agent eignet sich für alle, die ohnehin auf dem Server über die Textkonsole arbeiten und einen Helfer für wiederkehrende Handgriffe suchen. Wie OpenClaw kann er über einen eingebauten Zugang zusätzlich aus Messengern angesprochen werden. Er steht unter der MIT-Lizenz und arbeitet mit lokalen Modellen über Ollama, LM Studio oder vergleichbare Dienste.</p>
+<h2 id="den-server-vorbereiten"><a class="header" href="#den-server-vorbereiten">Den Server vorbereiten</a></h2>
+<p>Grundlage ist ein Server mit <strong>Ubuntu 26.04 LTS</strong> (siehe <a href="./betriebssystem.html">Betriebssystem</a>). Alle Befehle werden in der Textkonsole des Servers eingegeben. <code>sudo</code> am Anfang bedeutet: mit Verwaltungsrechten ausführen.</p>
+<h3 id="schritt-1-das-system-aktualisieren"><a class="header" href="#schritt-1-das-system-aktualisieren">Schritt 1: Das System aktualisieren</a></h3>
+<pre><code class="language-bash">sudo apt update &amp;&amp; sudo apt upgrade -y
+</code></pre>
+<h3 id="schritt-2-docker-einrichten"><a class="header" href="#schritt-2-docker-einrichten">Schritt 2: Docker einrichten</a></h3>
+<p>n8n wird am einfachsten als Container betrieben, OpenClaw und Hermes Agent lassen sich ebenfalls in einen Container packen. Die Einrichtung von Docker beschreibt das Kapitel <a href="./containerisierung.html">Containerisierung von Software</a> Schritt für Schritt. Kurz zusammengefasst:</p>
+<pre><code class="language-bash">sudo apt-get install -y ca-certificates curl
+sudo install -m 0755 -d /etc/apt/keyrings
+sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg \
+  -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] \
+  https://download.docker.com/linux/ubuntu $(. /etc/os-release &amp;&amp; echo "$VERSION_CODENAME") stable" \
+  | sudo tee /etc/apt/sources.list.d/docker.list &gt; /dev/null
+sudo apt-get update
+sudo apt-get install -y docker-ce docker-ce-cli containerd.io \
+  docker-buildx-plugin docker-compose-plugin
+</code></pre>
+<h3 id="schritt-3-ollama-einrichten"><a class="header" href="#schritt-3-ollama-einrichten">Schritt 3: Ollama einrichten</a></h3>
+<p>Ollama stellt die Sprachmodelle bereit, die alle drei Agenten nutzen. Es wird mit einem Befehl installiert:</p>
+<pre><code class="language-bash">curl -fsSL https://ollama.com/install.sh | sh
+</code></pre>
+<p>Danach lädt man ein Modell herunter, zum Beispiel ein kleineres, das auch ohne starke Grafikkarte läuft:</p>
+<pre><code class="language-bash">ollama pull llama3.1:8b
+</code></pre>
+<p>Ollama lauscht danach auf dem eigenen Rechner unter der Adresse <code>http://localhost:11434</code>. Läuft ein Agent in einem Docker-Container, erreicht er Ollama nicht über <code>localhost</code>, sondern über die besondere Adresse <code>http://host.docker.internal:11434</code>. Diese muss dem Container beim Start mit dem Zusatz <code>--add-host=host.docker.internal:host-gateway</code> bekannt gemacht werden.</p>
+<p>Für den echten Betrieb („Produktionsserver“) gelten zwei Regeln:</p>
+<ul>
+<li><strong>Ollama nicht ins Internet öffnen.</strong> Der Dienst hat keine Anmeldung. Er darf nur vom Server selbst und von den Containern darauf erreichbar sein, niemals von außen. Die Firewall des Anbieters sollte den Port <code>11434</code> von außen sperren.</li>
+<li><strong>Modellgröße zur Hardware wählen.</strong> Ein Modell mit 8 Milliarden Parametern (Kurzform „8b“) läuft auf bescheidener Hardware, antwortet aber langsamer. Für flüssige Antworten braucht der Server eine Grafikkarte mit ausreichend Speicher. Ohne Grafikkarte bleibt man besser bei kleinen Modellen und plant längere Wartezeiten ein.</li>
+</ul>
+<h2 id="n8n-einrichten"><a class="header" href="#n8n-einrichten">n8n einrichten</a></h2>
+<p>n8n wird als einzelner Container gestartet. Zuerst wird ein dauerhafter Speicherbereich angelegt, damit die Abläufe einen Neustart überstehen:</p>
+<pre><code class="language-bash">docker volume create n8n_data
+
+docker run -d --restart unless-stopped --name n8n \
+  -p 127.0.0.1:5678:5678 \
+  --add-host=host.docker.internal:host-gateway \
+  -v n8n_data:/home/node/.n8n \
+  docker.n8n.io/n8nio/n8n
+</code></pre>
+<p>Der Zusatz <code>-p 127.0.0.1:5678:5678</code> sorgt dafür, dass die Weboberfläche nur vom Server selbst erreichbar ist. Für den Zugriff über das Internet stellt man einen Webserver mit Verschlüsselung und Passwortschutz davor; wie das geht, gehört in ein eigenes Kapitel.</p>
+<p>Die Oberfläche ist danach unter <code>http://localhost:5678</code> erreichbar (bei Fernzugriff über einen verschlüsselten Tunnel). Beim ersten Aufruf legt man ein Benutzerkonto an.</p>
+<h3 id="n8n-mit-ollama-verbinden"><a class="header" href="#n8n-mit-ollama-verbinden">n8n mit Ollama verbinden</a></h3>
+<p>In einem Ablauf fügt man einen Baustein vom Typ <strong>AI Agent</strong> ein und weist ihm ein Sprachmodell zu. Als Modell wählt man <strong>Ollama Chat Model</strong> und trägt bei den Zugangsdaten die Adresse <code>http://host.docker.internal:11434</code> ein. Anschließend lässt sich der gewünschte Modellname (etwa <code>llama3.1:8b</code>) auswählen. Ab jetzt bearbeitet der Baustein jede Anfrage mit dem lokalen Modell.</p>
+<h2 id="openclaw-einrichten"><a class="header" href="#openclaw-einrichten">OpenClaw einrichten</a></h2>
+<p>OpenClaw wird mit einem Skript installiert. Das Projekt entwickelt sich schnell – die aktuelle Anleitung steht unter <code>docs.openclaw.ai</code>. Zum Zeitpunkt der Erstellung dieses Kapitels lautet der Weg:</p>
+<pre><code class="language-bash">curl -fsSL https://openclaw.ai/install.sh | bash
+openclaw onboard --install-daemon
+</code></pre>
+<p>Der Befehl <code>onboard</code> führt durch die Einrichtung: Man wählt einen Messenger aus, hinterlegt die Zugangsdaten dafür und legt fest, welches Sprachmodell benutzt wird. Mit <code>--install-daemon</code> richtet OpenClaw sich als Hintergrunddienst ein, der nach jedem Server-Neustart von selbst wieder startet.</p>
+<blockquote>
+<p><strong>Wichtig:</strong> Skripte aus dem Internet direkt auszuführen, sollte man nur bei Quellen tun, denen man vertraut. Wer sichergehen will, lädt das Skript zuerst herunter, liest es und führt es dann aus. Alternativ bietet das Projekt eine <code>docker-compose.yml</code> an, mit der OpenClaw in einem Container läuft.</p>
+</blockquote>
+<h3 id="openclaw-mit-ollama-verbinden"><a class="header" href="#openclaw-mit-ollama-verbinden">OpenClaw mit Ollama verbinden</a></h3>
+<p>Bei der Einrichtung – oder später in der Einstellungsdatei von OpenClaw – wählt man als Modellanbieter einen lokalen Dienst und trägt die Ollama-Adresse ein: <code>http://localhost:11434</code> bei direkter Installation, <code>http://host.docker.internal:11434</code> im Container. Als Modell wird der Name des mit <code>ollama pull</code> geladenen Modells angegeben. Danach laufen alle Anfragen über den eigenen Server, ohne dass Nachrichten an einen fremden Anbieter gehen.</p>
+<h2 id="hermes-agent-einrichten"><a class="header" href="#hermes-agent-einrichten">Hermes Agent einrichten</a></h2>
+<p>Auch Hermes Agent wird per Skript installiert:</p>
+<pre><code class="language-bash">curl -fsSL https://hermes-agent.nousresearch.com/install.sh | bash
+</code></pre>
+<p>Das Installationsprogramm bringt die nötigen Hilfsprogramme (unter anderem Python und Node.js) selbst mit. Gestartet wird der Agent danach mit dem Befehl <code>hermes</code> in der Textkonsole. Beim ersten Start fragt er nach dem Modellanbieter.</p>
+<p>Hinweis: Läuft die Verbindung zum Server über SSH, endet ein per Konsole gestarteter Agent, sobald die Verbindung getrennt wird. Damit er weiterläuft, startet man ihn in einer Sitzungsverwaltung wie <code>tmux</code> oder <code>screen</code> oder richtet ihn als Dienst ein. Der gleiche Sicherheitshinweis wie bei OpenClaw gilt auch hier.</p>
+<h3 id="hermes-agent-mit-ollama-verbinden"><a class="header" href="#hermes-agent-mit-ollama-verbinden">Hermes Agent mit Ollama verbinden</a></h3>
+<p>In der Einrichtung wählt man einen lokalen, OpenAI-kompatiblen Anbieter und trägt als Adresse die Ollama-Schnittstelle ein: <code>http://localhost:11434/v1</code>. Als Modell wird der geladene Ollama-Modellname eingetragen. Ollama bietet neben seiner eigenen auch eine Schnittstelle im OpenAI-Format an; darüber sprechen die meisten Agenten mit lokalen Modellen.</p>
+<h2 id="welches-programm-wofür"><a class="header" href="#welches-programm-wofür">Welches Programm wofür</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Aufgabe</th><th>Passendes Programm</th></tr>
+</thead>
+<tbody>
+<tr><td>Fester, wiederkehrender Ablauf mit vielen Diensten</td><td>n8n</td></tr>
+<tr><td>Agent wie ein Chat-Kontakt per Messenger bedienen</td><td>OpenClaw</td></tr>
+<tr><td>Helfer in der Textkonsole für Server-Handgriffe</td><td>Hermes Agent</td></tr>
+<tr><td>Nur ausprobieren, ohne den Server zu verändern</td><td>jedes davon als Docker-Container</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="für-dieses-buch"><a class="header" href="#für-dieses-buch">Für dieses Buch</a></h2>
+<p>Für die Wissenssammlung dieses Buchs ist ein KI-Agent auf dem Server kein Pflichtbestandteil. Er wird interessant, sobald wiederkehrende Aufgaben anfallen: neue Seiten automatisch einordnen, Zusammenfassungen erzeugen, die Bedeutungssuche mit frischen Zahlenreihen versorgen. Für solche festen Abläufe ist <strong>n8n</strong> der übersichtlichste Einstieg, weil jeder Schritt sichtbar bleibt. <strong>OpenClaw</strong> und <strong>Hermes Agent</strong> sind die richtige Wahl, wenn man den Agenten frei anweisen möchte statt einen festen Ablauf zu bauen – mit dem Bewusstsein, dass ein frei handelnder Agent auf einem Server sorgfältig abgesichert werden muss.</p>
+<h2 id="fazit"><a class="header" href="#fazit">Fazit</a></h2>
+<p>Ein KI-Agent auf dem Server erledigt Aufgaben, während niemand am Rechner sitzt. <strong>n8n</strong> baut feste Abläufe aus verbundenen Bausteinen und zeigt sie in einer Weboberfläche. <strong>OpenClaw</strong> macht aus einem Messenger die Fernbedienung für einen Assistenten. <strong>Hermes Agent</strong> ist ein lernender Helfer für die Textkonsole. Alle drei sind quelloffen, laufen auf einem Ubuntu-Server mit Docker und arbeiten mit lokalen Sprachmodellen über <strong>Ollama</strong> zusammen, sodass keine Inhalte an fremde Anbieter abfließen. Im echten Betrieb gilt: Ollama nie ins Internet öffnen, die Modellgröße zur Hardware wählen und einem frei handelnden Agenten nur die nötigsten Rechte geben.</p>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../server-einrichten/sprachmodell-selbst-betreiben.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../server-einrichten/git-hosting.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../server-einrichten/sprachmodell-selbst-betreiben.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../server-einrichten/git-hosting.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

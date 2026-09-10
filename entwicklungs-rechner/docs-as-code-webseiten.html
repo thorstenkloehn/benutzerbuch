@@ -1,0 +1,327 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Webseiten und Blogs - Benutzerhandbuch</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bfa72d74.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0c2ed6dd.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Benutzerhandbuch</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="docs-as-code-für-webseiten-und-blogs"><a class="header" href="#docs-as-code-für-webseiten-und-blogs">Docs-as-Code für Webseiten und Blogs</a></h1>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+<p>Das Kapitel <a href="./docs-as-code.html">Docs-as-Code</a> beschreibt das Verfahren am Beispiel eines Buchs: ein durchgehender Text mit fester Reihenfolge. Für eine allgemeine Webseite oder einen Blog gilt dasselbe Verfahren – reiner Text in Git, Prüfung vor der Übernahme, automatischer Bau –, aber die Anforderungen sind andere. Es gibt keine feste Lesereihenfolge, dafür viele einzelne Beiträge, Übersichtsseiten, Schlagwort-Seiten, Archive nach Jahr und Monat, Autorenseiten und oft auch Seiten, die aus reinen Datensätzen entstehen.</p>
+<p>Dieses Kapitel beantwortet die Frage: Welche Werkzeuge für Webseiten und Blogs sind so ausgereift und so robust, dass sie auch sehr große Inhaltsmengen – bis in den Bereich einer Million einzelner Beiträge – zuverlässig verarbeiten, verschiedene Inhaltstypen und Datensätze sauber verwalten, dabei schnell bleiben und sich verlässlich messen lassen?</p>
+<h2 id="worauf-es-bei-großen-mengen-ankommt"><a class="header" href="#worauf-es-bei-großen-mengen-ankommt">Worauf es bei großen Mengen ankommt</a></h2>
+<p>Eine fertige Webseite besteht am Ende nur aus HTML-, CSS- und Bilddateien. Diese Dateien auszuliefern ist für jeden Webserver mühelos – ob es hundert oder eine Million sind, spielt kaum eine Rolle. Das ist der schnelle Teil: einfache Dateien direkt „vom Blech“ (bare metal), ohne Datenbank, ohne Programm dazwischen. Ein vorgelagertes Auslieferungsnetz (<strong>CDN</strong>, ein Netz aus Zwischenspeichern nah bei den Besuchern) liefert sie mit nahezu Leitungsgeschwindigkeit aus.</p>
+<p>Der Engpass liegt nicht beim Ausliefern, sondern beim <strong>Bau</strong>:</p>
+<ul>
+<li><strong>Die Bauzeit von Grund auf.</strong> Aus einer Million Textdateien alle HTML-Seiten neu zu erzeugen, dauert je nach Werkzeug wenige Minuten oder viele Stunden. Werkzeuge, die für große Mengen taugen, brauchen für die volle Million höchstens einige Minuten.</li>
+<li><strong>Der inkrementelle Bau.</strong> Nach einer kleinen Änderung darf nicht alles neu gebaut werden, sondern nur die betroffenen Seiten. Ausgereifte Werkzeuge erkennen, welche Seiten von einer Änderung abhängen, und bauen nur diese neu.</li>
+<li><strong>Der Speicherbedarf.</strong> Manche Werkzeuge halten während des Baus die gesamte Webseite im Arbeitsspeicher. Bei sehr vielen Seiten reicht der Speicher dann nicht mehr, und der Bau bricht ab.</li>
+<li><strong>Die Suche.</strong> Eine im Browser laufende Volltextsuche lädt eine Index-Datei herunter. Bei sehr vielen Seiten wird diese Datei zu groß. Dann braucht es eine serverseitige Suche (siehe <a href="../grundlagen/inhalt-software-verwalten.html">Inhalts-Software selbst betreiben</a>).</li>
+<li><strong>Verschiedene Inhaltstypen und Datensätze.</strong> Neben Beiträgen fallen Bilder, Tabellen, Kennzahlen und ganze Datensätze an. Gute Werkzeuge trennen Text und Daten sauber (siehe unten).</li>
+</ul>
+<h2 id="was-ausgereift-bedeutet"><a class="header" href="#was-ausgereift-bedeutet">Was „ausgereift“ bedeutet</a></h2>
+<p>Ausgereift heißt bei diesen Werkzeugen dasselbe wie im Kapitel <a href="./docs-as-code.html">Docs-as-Code</a>: Das Werkzeug gibt es seit vielen Jahren, es hat einen festen Veröffentlichungsplan, eine große Gemeinschaft, eine klare Vorgehensweise beim Umstieg auf neue Versionen und bekannte große Webseiten, die darauf laufen. Für einen Blog, der zehn Jahre bestehen soll, ist das der entscheidende Punkt – wichtiger als jede einzelne Funktion.</p>
+<h2 id="die-werkzeuge-im-überblick"><a class="header" href="#die-werkzeuge-im-überblick">Die Werkzeuge im Überblick</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Werkzeug</th><th>Sprache des Werkzeugs</th><th>Im Umlauf seit</th><th>Besonders geeignet für</th></tr>
+</thead>
+<tbody>
+<tr><td><strong>Hugo</strong></td><td>Go</td><td>2013</td><td>Sehr große Blogs und Webseiten; schnellster Bau; eine einzige Programmdatei</td></tr>
+<tr><td><strong>Zola</strong></td><td>Rust</td><td>2017</td><td>Wie Hugo, sehr schneller Bau, eine Programmdatei; kleinere Gemeinschaft</td></tr>
+<tr><td><strong>Jekyll</strong></td><td>Ruby</td><td>2008</td><td>Am längsten erprobt; Standard bei GitHub Pages; bei großen Mengen langsam</td></tr>
+<tr><td><strong>Eleventy (11ty)</strong></td><td>JavaScript</td><td>2018</td><td>Sehr anpassbar; schlanke Ausgabe ohne unnötiges JavaScript</td></tr>
+<tr><td><strong>Astro</strong></td><td>JavaScript</td><td>2021</td><td>Moderne inhaltslastige Webseiten; Inhalts-Sammlungen mit Prüfung</td></tr>
+<tr><td><strong>Next.js</strong></td><td>JavaScript (React)</td><td>2016</td><td>Sehr großes Ökosystem; auch gemischter Betrieb (siehe <a href="../server-einrichten/webframework.html">Webframework</a>)</td></tr>
+<tr><td><strong>Gatsby</strong></td><td>JavaScript (React)</td><td>2015</td><td>War lange verbreitet; Bau bei vielen Seiten sehr langsam; rückläufig</td></tr>
+<tr><td><strong>Pelican</strong></td><td>Python</td><td>2010</td><td>Blogs in der Python-Welt</td></tr>
+<tr><td><strong>Hexo</strong></td><td>JavaScript</td><td>2012</td><td>Blogs; im asiatischen Raum weit verbreitet</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="hugo--die-ausgereifte-wahl-für-sehr-große-webseiten"><a class="header" href="#hugo--die-ausgereifte-wahl-für-sehr-große-webseiten">Hugo – die ausgereifte Wahl für sehr große Webseiten</a></h3>
+<p><strong>Hugo</strong> wird als eine einzige eigenständige Programmdatei ausgeliefert; es gibt keine weiteren Teile zu installieren. Nach eigenen Angaben baut Hugo eine durchschnittliche Seite in unter einer Millisekunde, sodass selbst Webseiten mit vielen Tausend Seiten in unter einer Sekunde fertig sind. Für eine Million Beiträge bewegt sich der vollständige Bau je nach Rechner im Bereich weniger Minuten. Hugo baut auch inkrementell und meldet auf Wunsch, wie viel Zeit und Speicher der Bau gebraucht hat. Große Nachrichten- und Unternehmensseiten laufen damit. Wenn allein die schiere Menge zählt, ist Hugo die naheliegende Wahl.</p>
+<p>Für Fälle, in denen selbst Hugo an Grenzen kommt, kann Hugo den Bau in <strong>Abschnitte</strong> teilen und nur einzelne Abschnitte neu erzeugen. So lässt sich eine sehr große Webseite in mehreren Läufen bauen, statt in einem einzigen.</p>
+<h3 id="zola--gleiche-idee-andere-grundlage"><a class="header" href="#zola--gleiche-idee-andere-grundlage">Zola – gleiche Idee, andere Grundlage</a></h3>
+<p><strong>Zola</strong> verfolgt denselben Ansatz wie Hugo: eine einzige Programmdatei, sehr schneller Bau, keine Zusatzteile. Es ist in der Sprache Rust geschrieben und in manchen Vergleichen noch etwas schneller als Hugo. Die Gemeinschaft ist kleiner, es gibt weniger fertige Vorlagen und Erweiterungen. Für eine überschaubare, aber sehr große Webseite mit klaren Anforderungen ist Zola eine gute Wahl; wo viele fertige Bausteine gebraucht werden, ist Hugo im Vorteil.</p>
+<h3 id="jekyll--am-längsten-erprobt-aber-langsam"><a class="header" href="#jekyll--am-längsten-erprobt-aber-langsam">Jekyll – am längsten erprobt, aber langsam</a></h3>
+<p><strong>Jekyll</strong> ist der Urvater dieser Werkzeuge und die Standard-Grundlage von GitHub Pages. Es ist außerordentlich stabil und gut dokumentiert. Sein Nachteil zeigt sich genau bei der Frage dieses Kapitels: Bei mehreren Tausend Seiten wird der Bau spürbar langsam, bei Hunderttausenden ist er kaum noch praktikabel. Für einen kleinen bis mittleren Blog ist Jekyll solide; für sehr große Mengen ist es die falsche Wahl.</p>
+<h3 id="eleventy-und-astro--flexibel-und-modern"><a class="header" href="#eleventy-und-astro--flexibel-und-modern">Eleventy und Astro – flexibel und modern</a></h3>
+<p><strong>Eleventy</strong> ist bewusst schlank und lässt sich weitgehend anpassen. Es erzeugt standardmäßig reines HTML ohne mitgeliefertes JavaScript, was die Seiten leicht macht. Bei sehr großen Mengen liegt es in der Geschwindigkeit im Mittelfeld – schneller als Jekyll, langsamer als Hugo.</p>
+<p><strong>Astro</strong> ist auf inhaltslastige Webseiten ausgelegt. Es liefert ebenfalls überwiegend reines HTML aus und lädt JavaScript nur dort nach, wo es wirklich gebraucht wird (dieses Vorgehen heißt „Inseln“, englisch <em>islands</em>). Astro bringt <strong>Inhalts-Sammlungen</strong> mit: Man legt für jeden Inhaltstyp fest, welche Angaben im Dateikopf stehen müssen, und der Bau bricht ab, wenn ein Beitrag diese Vorgabe verletzt. Das hält große Sammlungen sauber. Astro ist noch vergleichsweise jung, wächst aber schnell und wird bereits von großen Webseiten eingesetzt.</p>
+<h3 id="nextjs-und-gatsby--die-react-werkzeuge"><a class="header" href="#nextjs-und-gatsby--die-react-werkzeuge">Next.js und Gatsby – die React-Werkzeuge</a></h3>
+<p><strong>Next.js</strong> kann Seiten beim Bau als statische Dateien erzeugen, aber auch beim Aufruf durch den Server (siehe <a href="../server-einrichten/webframework.html">Webframework</a>). Für sehr große Webseiten bietet es einen Mittelweg: Nur die wichtigsten Seiten werden beim Bau erzeugt, die übrigen entstehen beim ersten Aufruf und werden dann zwischengespeichert. So lässt sich eine Million Seiten betreiben, ohne sie alle im Voraus zu bauen. Der Preis dafür ist ein laufender Server statt reiner Dateien.</p>
+<p><strong>Gatsby</strong> war einige Jahre sehr beliebt, gilt inzwischen aber als rückläufig. Der Bau ist bei vielen Seiten langsam und speicherhungrig. Für neue Projekte in großem Umfang ist es nicht die erste Wahl.</p>
+<h2 id="verschiedene-inhaltstypen-und-datensätze-verwalten"><a class="header" href="#verschiedene-inhaltstypen-und-datensätze-verwalten">Verschiedene Inhaltstypen und Datensätze verwalten</a></h2>
+<p>Ein Blog besteht nicht nur aus Fließtext. Ausgereifte Werkzeuge trennen drei Dinge:</p>
+<ul>
+<li><strong>Der Text</strong> steht in Markdown, eine Datei je Beitrag.</li>
+<li><strong>Feste Angaben zum Beitrag</strong> – Titel, Datum, Autor, Schlagworte, Kurzbeschreibung – stehen im Kopf der Datei, dem <strong>Frontmatter</strong>. Daraus baut das Werkzeug automatisch Übersichts-, Schlagwort- und Archivseiten.</li>
+<li><strong>Reine Datensätze</strong> – etwa eine Liste von Produkten, Orten oder Kennzahlen – stehen in getrennten Datendateien (Formate YAML, JSON, TOML oder CSV). Das Werkzeug erzeugt daraus Tabellen oder ganze Seiten, ohne dass man jede von Hand anlegt.</li>
+</ul>
+<p>Größere Redaktionen legen die Inhalte oft nicht als Dateien ab, sondern in einem <strong>Headless-CMS</strong> – einer Inhaltsverwaltung, die eine bequeme Schreiboberfläche bietet, die Inhalte aber nicht selbst anzeigt, sondern nur über eine Schnittstelle herausgibt. Der Generator holt die Inhalte beim Bau von dort ab und macht daraus statische Seiten. So schreiben Redakteure in einer vertrauten Oberfläche, und die ausgelieferte Webseite bleibt trotzdem eine Sammlung einfacher Dateien.</p>
+<p>Für Bilder haben Hugo, Astro und Eleventy eine eingebaute <strong>Bildverarbeitung</strong>: Sie erzeugen beim Bau verkleinerte Fassungen in mehreren Größen und modernen Formaten, sodass jeder Besucher nur die passende Größe lädt.</p>
+<h2 id="messbarkeit-den-eigenen-fall-nachbauen"><a class="header" href="#messbarkeit-den-eigenen-fall-nachbauen">Messbarkeit: den eigenen Fall nachbauen</a></h2>
+<p>Einen einheitlichen, neutralen Geschwindigkeitsvergleich – wie ihn Webframeworks mit dem TechEmpower-Vergleich haben (siehe <a href="../server-einrichten/webframework.html">Webframework</a>) – gibt es für diese Werkzeuge nicht. Veröffentlichte Vergleiche messen unterschiedliche Seiten, unterschiedliche Vorlagen und unterschiedliche Rechner; ihre Zahlen sind nur grobe Anhaltspunkte.</p>
+<p>Der einzige verlässliche Test ist, die eigene Inhaltsmenge nachzubilden und selbst zu messen:</p>
+<ol>
+<li><strong>Testinhalte erzeugen.</strong> Ein kleines Skript legt so viele Beispielbeiträge an, wie später erwartet werden – etwa hunderttausend oder eine Million, mit realistischem Frontmatter und realistischer Textlänge.</li>
+<li><strong>Den Bau von Grund auf messen.</strong> Wie lange dauert ein vollständiger Bau ohne Zwischenspeicher? Wie viel Arbeitsspeicher wird dabei belegt?</li>
+<li><strong>Den inkrementellen Bau messen.</strong> Wie lange dauert der Bau, nachdem sich ein einziger Beitrag geändert hat?</li>
+<li><strong>Auf der Zielumgebung messen.</strong> Der Bau-Server im automatischen Ablauf (<strong>CI/CD</strong>) hat oft weniger Leistung als der eigene Rechner. Die Messung zählt nur dort, wo später wirklich gebaut wird.</li>
+</ol>
+<p>Hugo bringt für Schritt 2 und 3 eigene Anzeigen mit (Bauzeit je Vorlage, belegter Speicher). Bei den anderen Werkzeugen misst man die Gesamtzeit von außen.</p>
+<p>Als grobe Ordnung – wie im Kapitel <a href="./docs-as-code.html">Docs-as-Code</a> – gilt: Werkzeuge, die als eine einzige Programmdatei in Go oder Rust ausgeliefert werden (<strong>Hugo</strong>, <strong>Zola</strong>), bauen am schnellsten und verkraften die größten Mengen. Werkzeuge auf Basis von Python oder Ruby (<strong>Pelican</strong>, <strong>Jekyll</strong>) liegen im Mittelfeld bis hinten. Werkzeuge, die im Bau ein ganzes Webprogramm mitführen (<strong>Gatsby</strong>, teils <strong>Next.js</strong>), sind bei sehr vielen Seiten am langsamsten und brauchen am meisten Speicher.</p>
+<h2 id="reifegrad-im-überblick"><a class="header" href="#reifegrad-im-überblick">Reifegrad im Überblick</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Anforderung</th><th>Ausgereifte Wahl</th><th>Warum</th></tr>
+</thead>
+<tbody>
+<tr><td>Sehr großer Blog, reine Dateien</td><td>Hugo</td><td>Bau in Minuten auch bei einer Million Beiträgen; eine Programmdatei; große Gemeinschaft</td></tr>
+<tr><td>Sehr große Webseite, klare Anforderungen</td><td>Hugo, Zola</td><td>Schnellster Bau, geringster Speicherbedarf</td></tr>
+<tr><td>Eine Million Seiten ohne vollständigen Vorab-Bau</td><td>Next.js</td><td>Wichtige Seiten beim Bau, der Rest beim ersten Aufruf mit Zwischenspeicher</td></tr>
+<tr><td>Kleiner bis mittlerer Blog, höchste Stabilität</td><td>Jekyll</td><td>Seit 2008, Standard bei GitHub Pages</td></tr>
+<tr><td>Inhaltslastige Webseite mit vielen Inhaltstypen</td><td>Astro</td><td>Inhalts-Sammlungen mit Prüfung; schlanke Ausgabe</td></tr>
+<tr><td>Schlanke, stark angepasste Ausgabe</td><td>Eleventy</td><td>Reines HTML, weitgehend anpassbar</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="für-dieses-buch"><a class="header" href="#für-dieses-buch">Für dieses Buch</a></h2>
+<p>Dieses Handbuch ist ein Buch mit fester Reihenfolge und nutzt daher <a href="./docs-as-code.html">mdBook</a>. Entstünde stattdessen ein Blog oder eine allgemeine Webseite in großem Umfang, wäre <strong>Hugo</strong> die ausgereifte Wahl: reine Dateien in Git, Bau in Minuten auch bei sehr großen Mengen, saubere Trennung von Text und Daten und eine einzige Programmdatei ohne weitere Abhängigkeiten. Erst wenn die Zahl der Seiten so groß wird, dass sich ein vollständiger Vorab-Bau nicht mehr lohnt, käme der gemischte Betrieb mit <strong>Next.js</strong> in Frage – um den Preis eines laufenden Servers statt reiner Dateien.</p>
+<h2 id="fazit"><a class="header" href="#fazit">Fazit</a></h2>
+<p>Für Webseiten und Blogs gilt dasselbe Docs-as-Code-Verfahren wie für ein Buch, nur mit vielen einzelnen Beiträgen statt einem durchgehenden Text. Ob ein Werkzeug „eine Million Beiträge aushält“, entscheidet sich nicht am Ausliefern der Seiten – das ist für jeden Webserver und jedes Auslieferungsnetz mühelos –, sondern an der Bauzeit von Grund auf, am inkrementellen Bau, am Speicherbedarf und an der sauberen Trennung von Text und Daten. Am besten schneiden die Werkzeuge ab, die als eine einzige Programmdatei ausgeliefert werden: <strong>Hugo</strong> und, mit kleinerer Gemeinschaft, <strong>Zola</strong>. <strong>Jekyll</strong> ist am längsten erprobt, aber bei großen Mengen zu langsam. <strong>Astro</strong> und <strong>Eleventy</strong> sind moderne, flexible Alternativen im Mittelfeld. Wo eine Million Seiten nicht mehr sinnvoll im Voraus gebaut werden können, bietet <strong>Next.js</strong> einen Mittelweg mit laufendem Server. Verlässliche Zahlen liefert nur ein eigener Test mit der eigenen Inhaltsmenge auf der eigenen Bau-Umgebung.</p>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../entwicklungs-rechner/docs-as-code.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../web-stack/wissensystem.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../entwicklungs-rechner/docs-as-code.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../web-stack/wissensystem.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

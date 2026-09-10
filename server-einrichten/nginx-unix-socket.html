@@ -1,0 +1,337 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Unix-Socket bei NGINX - Benutzerhandbuch</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bfa72d74.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0c2ed6dd.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Benutzerhandbuch</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="unix-socket-bei-nginx"><a class="header" href="#unix-socket-bei-nginx">Unix-Socket bei NGINX</a></h1>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+<p>Der Webserver <strong>NGINX</strong> (siehe <a href="./webserver.html">Webserver</a>) sitzt zwischen dem Internet und den Programmen, die eine Seite erst erzeugen müssen – bei MediaWiki ist das PHP-FPM, bei XWiki der Anwendungsserver Tomcat. An zwei Stellen muss dabei eine Verbindung zustande kommen:</p>
+<ol>
+<li><strong>vorne:</strong> Ein Besucher aus dem Internet erreicht NGINX.</li>
+<li><strong>hinten:</strong> NGINX erreicht das Programm im Hintergrund und holt sich von dort die fertige Seite.</li>
+</ol>
+<p>Beide Verbindungen können über einen <strong>Netzwerk-Port</strong> laufen oder über eine <strong>Socket-Datei</strong> – einen sogenannten Unix-Socket. Dieses Kapitel zeigt, wann sich der Unix-Socket lohnt und wie man ihn in der NGINX-Konfiguration einträgt: hinten als Weg zu PHP-FPM oder Tomcat, vorne als eigener Lauschposten und, als dritte Möglichkeit, als dauerhafte Brücke zwischen einem Port und einer Socket-Datei.</p>
+<p>Alle Befehle werden in der Textkonsole des Servers eingegeben. Ein vorangestelltes <code>sudo</code> bedeutet: mit Verwaltungsrechten ausführen. Nach jeder Änderung an der Konfiguration prüft <code>sudo nginx -t</code> die Dateien auf Fehler, <code>sudo systemctl reload nginx</code> übernimmt sie.</p>
+<h2 id="was-ein-unix-socket-ist"><a class="header" href="#was-ein-unix-socket-ist">Was ein Unix-Socket ist</a></h2>
+<p>Ein <strong>Netzwerk-Port</strong> ist der bekannte Weg: Ein Programm lauscht auf einer Nummer wie 9000, ein anderes verbindet sich mit <code>127.0.0.1:9000</code>. Das funktioniert auch über Rechnergrenzen hinweg.</p>
+<p>Ein <strong>Unix-Socket</strong> ist der zweite Weg. Statt einer Portnummer gibt es eine Datei im Dateisystem, zum Beispiel <code>/run/php/php8.5-fpm.sock</code>. Ein Programm lauscht an dieser Datei, ein anderes verbindet sich mit ihr. Beide müssen dafür auf demselben Rechner laufen. Zwei Eigenschaften machen den Unix-Socket für Server interessant:</p>
+<ul>
+<li><strong>Kein offener Port.</strong> Eine Socket-Datei ist grundsätzlich nur auf demselben Rechner erreichbar. Sie kann nicht aus Versehen für das ganze Netz geöffnet werden.</li>
+<li><strong>Zugriff über Dateirechte.</strong> Wer die Socket-Datei benutzen darf, regeln dieselben Lese- und Schreibrechte wie bei jeder anderen Datei.</li>
+</ul>
+<p>Eine ausführliche Erklärung – auch dazu, wie man eine Socket-Datei zum Testen kurz als Port erreichbar macht – steht im Kapitel <a href="../entwicklungs-rechner/unix-socket.html">Unix-Socket</a>.</p>
+<h2 id="die-zwei-verbindungen-von-nginx"><a class="header" href="#die-zwei-verbindungen-von-nginx">Die zwei Verbindungen von NGINX</a></h2>
+<p>In der NGINX-Konfiguration tauchen die beiden Verbindungen an unterschiedlichen Stellen auf.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Stelle</th><th>Aufgabe</th><th>über einen Port</th><th>über einen Unix-Socket</th></tr>
+</thead>
+<tbody>
+<tr><td><code>listen</code></td><td>wo NGINX auf Besucher wartet</td><td><code>listen 80;</code></td><td><code>listen unix:/run/nginx-intern.sock;</code></td></tr>
+<tr><td><code>fastcgi_pass</code></td><td>Weg zu PHP-FPM</td><td><code>fastcgi_pass 127.0.0.1:9000;</code></td><td><code>fastcgi_pass unix:/run/php/php8.5-fpm.sock;</code></td></tr>
+<tr><td><code>proxy_pass</code></td><td>Weg zu einem anderen Programm (z. B. Tomcat)</td><td><code>proxy_pass http://127.0.0.1:9000/;</code></td><td><code>proxy_pass http://unix:/var/lib/tomcat10/xwiki.sock:/;</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Der häufigste Fall ist die hintere Verbindung über <code>fastcgi_pass</code> oder <code>proxy_pass</code>. Die vordere Verbindung über <code>listen unix:</code> braucht man selten und nur in besonderen Aufbauten.</p>
+<h2 id="hinten-nginx-erreicht-das-hintergrundprogramm-über-einen-socket"><a class="header" href="#hinten-nginx-erreicht-das-hintergrundprogramm-über-einen-socket">Hinten: NGINX erreicht das Hintergrundprogramm über einen Socket</a></h2>
+<h3 id="php-fpm"><a class="header" href="#php-fpm">PHP-FPM</a></h3>
+<p>PHP-FPM legt seine Socket-Datei bei einer Standardinstallation von selbst an, bei PHP 8.5 unter <code>/run/php/php8.5-fpm.sock</code>. Diese Datei gehört dem Benutzer <code>www-data</code>, und unter genau diesem Benutzer läuft auch NGINX. Der Zugriff ist damit ohne weitere Einstellung möglich. In der Server-Konfiguration steht dann statt einer Adresse der Pfad:</p>
+<pre><code class="language-nginx">    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php8.5-fpm.sock;
+    }
+</code></pre>
+<p>Das Kapitel <a href="../web-stack/mediawiki.html">MediaWiki einrichten</a> verwendet genau diesen Weg. Ein Port für PHP-FPM wird dabei nirgends geöffnet.</p>
+<h3 id="ein-anderes-programm-über-den-reverse-proxy"><a class="header" href="#ein-anderes-programm-über-den-reverse-proxy">Ein anderes Programm über den Reverse Proxy</a></h3>
+<p>Für Programme, die selbst HTTP sprechen – etwa Tomcat hinter XWiki –, benutzt NGINX <code>proxy_pass</code>. Auch hier kann statt der Adresse <code>http://127.0.0.1:9000/</code> eine Socket-Datei stehen. Die Schreibweise ist etwas ungewohnt: Nach <code>http://unix:</code> folgt der Pfad, dann ein Doppelpunkt und der Pfad innerhalb der Anwendung.</p>
+<pre><code class="language-nginx">    location / {
+        proxy_pass http://unix:/var/lib/tomcat10/xwiki.sock:/;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+</code></pre>
+<p>Anders als bei PHP-FPM gehört diese Socket-Datei nicht <code>www-data</code>, sondern dem Benutzer des jeweiligen Dienstes. Damit NGINX sie benutzen darf, wird <code>www-data</code> in dessen Gruppe aufgenommen – im XWiki-Beispiel ist das die Gruppe <code>tomcat</code>:</p>
+<pre><code class="language-bash">sudo usermod -aG tomcat www-data
+sudo systemctl restart tomcat10 nginx
+</code></pre>
+<p>Der genaue Weg für XWiki steht im Kapitel <a href="../web-stack/xwiki.html">XWiki einrichten</a>.</p>
+<h3 id="warum-überhaupt-ein-socket-hinten"><a class="header" href="#warum-überhaupt-ein-socket-hinten">Warum überhaupt ein Socket hinten?</a></h3>
+<p>Der Geschwindigkeitsunterschied zwischen Port und Socket ist auf einem einzelnen Server winzig und im Alltag nicht zu bemerken. Der eigentliche Gewinn liegt woanders:</p>
+<ul>
+<li>Es wird <strong>kein Port</strong> belegt, der versehentlich nach außen geöffnet werden könnte. Man muss ihn auch nicht in der Firewall ausdrücklich sperren.</li>
+<li>Der Zugriff hängt an <strong>Dateirechten</strong>. Nur wer in der richtigen Gruppe ist, kommt an den Dienst.</li>
+</ul>
+<p>Für einen Aufbau, bei dem Webserver und Hintergrundprogramm ohnehin auf demselben Rechner liegen, ist der Unix-Socket deshalb die sauberere Wahl.</p>
+<h2 id="vorne-nginx-wartet-an-einem-socket-auf-besucher"><a class="header" href="#vorne-nginx-wartet-an-einem-socket-auf-besucher">Vorne: NGINX wartet an einem Socket auf Besucher</a></h2>
+<p>Statt <code>listen 80;</code> kann ein NGINX-Server auch an einer Socket-Datei lauschen:</p>
+<pre><code class="language-nginx">server {
+    listen unix:/run/nginx-intern.sock;
+    # ...
+}
+</code></pre>
+<p>Das ergibt nur Sinn, wenn vor diesem NGINX noch etwas anderes steht, das die Anfragen über die Socket-Datei hereinreicht – zum Beispiel ein zweiter NGINX, ein Zwischenspeicher oder ein Anwendungsserver auf demselben Rechner. Für den normalen Betrieb, bei dem NGINX direkt die Verbindungen aus dem Internet annimmt, bleibt es bei <code>listen 80;</code> und <code>listen 443 ssl;</code>, denn aus dem Netz ist eine Socket-Datei nicht erreichbar.</p>
+<h2 id="die-dauerhafte-brücke-der-stream-baustein"><a class="header" href="#die-dauerhafte-brücke-der-stream-baustein">Die dauerhafte Brücke: der <code>stream</code>-Baustein</a></h2>
+<p>Manchmal soll ein Werkzeug, das nur Ports kennt, dauerhaft an eine Socket-Datei kommen – oder umgekehrt. Für einen kurzen Test erledigt das der Befehl <code>socat</code> (siehe <a href="../entwicklungs-rechner/unix-socket.html">Unix-Socket</a>). Läuft NGINX auf dem Server ohnehin, kann es diese Brücke dauerhaft übernehmen. Zuständig ist der <code>stream</code>-Baustein. Er arbeitet nicht mit HTTP-Seiten, sondern reicht rohe Verbindungen unverändert weiter.</p>
+<p>Der <code>stream</code>-Block steht auf der obersten Ebene der Datei <code>/etc/nginx/nginx.conf</code>, außerhalb des <code>http</code>-Blocks:</p>
+<pre><code class="language-nginx">stream {
+    server {
+        listen 127.0.0.1:9000;
+        proxy_pass unix:/var/lib/tomcat10/xwiki.sock;
+    }
+}
+</code></pre>
+<p>Solange NGINX läuft, nimmt es auf Port 9000 – nur auf dem Rechner selbst, wegen <code>127.0.0.1</code> – Verbindungen an und leitet sie an die Socket-Datei weiter. Die umgekehrte Richtung geht genauso: <code>listen unix:/run/meine.sock;</code> und <code>proxy_pass 127.0.0.1:9000;</code>.</p>
+<p>Der <code>stream</code>-Baustein gehört bei Ubuntu zum Standardpaket <code>nginx</code> und muss nicht nachinstalliert werden. Anders als ein <code>socat</code>-Befehl im Terminal übersteht diese Brücke einen Neustart des Servers.</p>
+<h2 id="fehlersuche"><a class="header" href="#fehlersuche">Fehlersuche</a></h2>
+<p>Wenn NGINX das Hintergrundprogramm nicht erreicht, meldet der Browser <strong>502 Bad Gateway</strong>. Den genauen Grund nennt das Fehlerprotokoll:</p>
+<pre><code class="language-bash">sudo tail -n 20 /var/log/nginx/error.log
+</code></pre>
+<ul>
+<li><strong><code>connect() to unix:/… failed (13: Permission denied)</code></strong>: Der Benutzer <code>www-data</code> darf die Socket-Datei nicht benutzen. Die Rechte zeigt <code>ls -l /run/php/php8.5-fpm.sock</code> (bzw. der jeweilige Pfad). Meist fehlt <code>www-data</code> in der richtigen Gruppe; nach <code>sudo usermod -aG &lt;gruppe&gt; www-data</code> muss NGINX neu gestartet werden (<code>sudo systemctl restart nginx</code>), ein bloßes <code>reload</code> reicht für die neue Gruppenzugehörigkeit nicht.</li>
+<li><strong><code>connect() to unix:/… failed (2: No such file or directory)</code></strong>: Der Pfad stimmt nicht, oder der Dienst läuft nicht und hat die Socket-Datei deshalb nicht angelegt. Prüfen mit <code>systemctl status php8.5-fpm</code> bzw. <code>systemctl status tomcat10</code>.</li>
+<li><strong><code>invalid URL prefix in …</code></strong> beim <code>nginx -t</code>: Bei <code>proxy_pass</code> auf einen Socket fehlt das <code>http://unix:</code> am Anfang oder der Doppelpunkt vor dem Pfad innerhalb der Anwendung.</li>
+<li><strong><code>unknown directive "stream"</code></strong>: Der <code>stream</code>-Block wurde in eine Server-Datei unter <code>sites-available/</code> geschrieben. Er gehört auf die oberste Ebene von <code>/etc/nginx/nginx.conf</code>.</li>
+</ul>
+<h2 id="für-dieses-buch"><a class="header" href="#für-dieses-buch">Für dieses Buch</a></h2>
+<p>Für die Wissenssammlung dieses Buchs erreicht NGINX <strong>PHP-FPM über dessen Socket-Datei</strong> <code>/run/php/php8.5-fpm.sock</code> – das ist die Standardeinstellung und braucht keine weitere Anpassung (siehe <a href="../web-stack/mediawiki.html">MediaWiki einrichten</a>). Wer XWiki betreibt, kann Tomcat auf dieselbe Weise über einen Unix-Socket ansprechen und spart sich damit den offenen Port 9000 (siehe <a href="../web-stack/xwiki.html">XWiki einrichten</a>).</p>
+<p>Die vordere Seite bleibt bei Ports: <code>listen 80;</code> und <code>listen 443 ssl;</code>. Der <code>stream</code>-Baustein ist nur dann nötig, wenn eine Socket-Datei auf dem Server dauerhaft auch als Port bereitstehen soll; für den einmaligen Test genügt <code>socat</code>.</p>
+<h2 id="fazit"><a class="header" href="#fazit">Fazit</a></h2>
+<p>NGINX verbindet sich an zwei Stellen: vorne mit dem Besucher, hinten mit dem Programm, das die Seite erzeugt. Die hintere Verbindung läuft am besten über einen <strong>Unix-Socket</strong> – bei PHP-FPM mit <code>fastcgi_pass unix:/run/php/php8.5-fpm.sock;</code>, bei einem HTTP-Programm mit <code>proxy_pass http://unix:/pfad/zur.sock:/;</code>. Der Vorteil ist nicht die Geschwindigkeit, sondern dass kein Port offensteht und der Zugriff an Dateirechten hängt; deshalb muss <code>www-data</code> oft in die Gruppe des Dienstes aufgenommen werden. Die vordere Verbindung bleibt bei Ports. Soll eine Socket-Datei dauerhaft als Port erreichbar sein, übernimmt der <strong><code>stream</code>-Baustein</strong> von NGINX diese Brücke – zuverlässiger als ein <code>socat</code>-Befehl im Terminal.</p>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../server-einrichten/webserver.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../server-einrichten/webframework.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../server-einrichten/webserver.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../server-einrichten/webframework.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

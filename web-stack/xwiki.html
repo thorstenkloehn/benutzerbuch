@@ -1,0 +1,433 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>XWiki einrichten - Benutzerhandbuch</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bfa72d74.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0c2ed6dd.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Benutzerhandbuch</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="xwiki-einrichten"><a class="header" href="#xwiki-einrichten">XWiki einrichten</a></h1>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+<p>Das Kapitel <a href="./wissensystem.html">Wissenssystem</a> grenzt die Auswahl auf zwei Programme ein: <strong>MediaWiki</strong> und <strong>XWiki</strong>. XWiki ist die passende Wahl, wenn die Datenbank fest auf <strong>PostgreSQL</strong> steht (siehe <a href="../server-einrichten/datenbank.html">Datenbank</a>) oder wenn die Sammlung neben Fließtext auch feste Datenfelder führen soll – etwa eine Liste von Geräten mit Hersteller, Baujahr und Standort.</p>
+<p>Dieses Kapitel zeigt Schritt für Schritt, wie XWiki auf einem Server mit <strong>Ubuntu 26.04 LTS</strong> (siehe <a href="../server-einrichten/betriebssystem.html">Betriebssystem</a>) eingerichtet wird: von der Paketquelle über die Datenbank und die Ersteinrichtung bis zum öffentlichen Zugang über einen Webserver. Alle Befehle werden in der Textkonsole des Servers eingegeben. Das vorangestellte <code>sudo</code> bedeutet: mit Verwaltungsrechten ausführen.</p>
+<h2 id="was-bei-xwiki-zusammenspielt"><a class="header" href="#was-bei-xwiki-zusammenspielt">Was bei XWiki zusammenspielt</a></h2>
+<p>XWiki ist in der Programmiersprache <strong>Java</strong> geschrieben. Ein Java-Webprogramm läuft nicht allein, sondern braucht einen <strong>Anwendungsserver</strong> – ein Programm, das das Webprogramm lädt, am Laufen hält und Anfragen an es weiterreicht. Für XWiki ist das <strong>Apache Tomcat</strong>. Man kann sich Tomcat wie einen Motorraum vorstellen: XWiki ist der Motor, Tomcat das Gehäuse mit Halterungen, Anschlüssen und Anlasser drumherum.</p>
+<p>Vier Teile arbeiten also zusammen:</p>
+<ul>
+<li><strong>Java</strong> – die Laufzeitumgebung, die den Programmcode ausführt (siehe <a href="../server-einrichten/laufzeitumgebung.html">Laufzeitumgebung</a>).</li>
+<li><strong>Tomcat</strong> – der Anwendungsserver, der XWiki hält und auf einem Netzwerk-Port lauscht.</li>
+<li><strong>PostgreSQL</strong> – die Datenbank, in der alle Seiten, Versionen und Einstellungen liegen (siehe <a href="../server-einrichten/datenbank.html">Datenbank</a>).</li>
+<li><strong>Ein Webserver</strong> davor – nimmt die Anfragen aus dem Internet entgegen, verschlüsselt die Verbindung (HTTPS) und reicht sie an Tomcat weiter (siehe <a href="../server-einrichten/webserver.html">Webserver</a>). In diesem Buch ist das <strong>NGINX</strong>.</li>
+</ul>
+<p>Die XWiki-Pakete des Projekts bringen Java und Tomcat als Abhängigkeiten mit; man muss sie nicht getrennt installieren. PostgreSQL und den Webserver richtet man wie in den genannten Kapiteln beschrieben ein.</p>
+<h2 id="voraussetzungen"><a class="header" href="#voraussetzungen">Voraussetzungen</a></h2>
+<p>Bevor es losgeht, sollte Folgendes vorhanden sein:</p>
+<ul>
+<li>Ein Server mit Ubuntu 26.04 und mindestens <strong>2 GB freiem Arbeitsspeicher</strong> allein für XWiki. Weniger führt im Betrieb zu Abstürzen.</li>
+<li><strong>PostgreSQL</strong> ist eingerichtet (siehe <a href="../server-einrichten/datenbank.html">Datenbank</a>). Falls die Datenbank für XWiki noch fehlt, legt der Installationsassistent sie in Schritt 3 selbst an.</li>
+<li>Eine <strong>Domain</strong>, die auf die IP-Adresse des Servers zeigt, zum Beispiel <code>wiki.meine-domain.de</code>. Sie wird für das SSL-Zertifikat und den Webserver gebraucht.</li>
+<li><strong>NGINX</strong> ist installiert (siehe <a href="../server-einrichten/webserver.html">Webserver</a>).</li>
+</ul>
+<h2 id="schritt-1-die-paketquelle-von-xwiki-eintragen"><a class="header" href="#schritt-1-die-paketquelle-von-xwiki-eintragen">Schritt 1: Die Paketquelle von XWiki eintragen</a></h2>
+<p>XWiki wird nicht aus den normalen Ubuntu-Paketquellen installiert, sondern aus einer eigenen Paketquelle, die das XWiki-Projekt selbst betreibt. Damit <code>apt</code> diese Quelle nutzen kann, sind zwei Dateien nötig: ein digitaler Schlüssel, mit dem Ubuntu die Echtheit der Pakete prüft, und eine Datei mit der Adresse der Quelle.</p>
+<pre><code class="language-bash">sudo wget https://maven.xwiki.org/xwiki-keyring.gpg -O /usr/share/keyrings/xwiki-keyring.gpg
+sudo wget "https://maven.xwiki.org/stable/xwiki-stable.list" -O /etc/apt/sources.list.d/xwiki-stable.list
+</code></pre>
+<p>Die Quelle <code>stable</code> enthält alle fertigen Versionen ohne Vorabausgaben. Wer lieber eine Version mit besonders langer Pflegezusage möchte, ersetzt in beiden Zeilen <code>stable</code> durch <code>lts</code> (englisch für „Long Term Support“, also Langzeitunterstützung).</p>
+<p>Danach die Paketliste neu einlesen, damit die neue Quelle bekannt wird:</p>
+<pre><code class="language-bash">sudo apt update
+</code></pre>
+<h2 id="schritt-2-nach-verfügbaren-versionen-sehen"><a class="header" href="#schritt-2-nach-verfügbaren-versionen-sehen">Schritt 2: Nach verfügbaren Versionen sehen</a></h2>
+<p>Ein kurzer Blick zeigt, welche XWiki-Pakete jetzt zur Auswahl stehen:</p>
+<pre><code class="language-bash">apt-cache search xwiki
+</code></pre>
+<p>Und welche Version das Paket für PostgreSQL mitbringt:</p>
+<pre><code class="language-bash">apt-cache policy xwiki-tomcat10-pgsql
+</code></pre>
+<p>Das Paket <code>xwiki-tomcat10-pgsql</code> ist ein <strong>Sammelpaket</strong>: Es zieht XWiki selbst, den Anwendungsserver Tomcat 10, die Java-Laufzeit und die Anbindung an PostgreSQL in einem Rutsch nach.</p>
+<h2 id="schritt-3-xwiki-installieren"><a class="header" href="#schritt-3-xwiki-installieren">Schritt 3: XWiki installieren</a></h2>
+<pre><code class="language-bash">sudo apt install xwiki-tomcat10-pgsql
+</code></pre>
+<p>Während der Installation stellt der Assistent einige Fragen zur Datenbank:</p>
+<ul>
+<li>Ob die Datenbank automatisch eingerichtet werden soll – hier <strong>Ja</strong> wählen.</li>
+<li>Den Namen der Datenbank und des Datenbankbenutzers (Vorschlag: beides <code>xwiki</code>).</li>
+<li>Ein Passwort für diesen Datenbankbenutzer. Es wird gleich zweimal abgefragt und danach automatisch in die XWiki-Konfiguration eingetragen.</li>
+</ul>
+<p>Sind die Angaben gemacht, legt der Assistent die leere Datenbank an, verbindet XWiki damit und startet Tomcat. Für die nächsten Schritte wird Tomcat zunächst wieder angehalten:</p>
+<pre><code class="language-bash">sudo systemctl stop tomcat10
+</code></pre>
+<p>Nach der Installation liegen die wichtigsten Dateien an diesen Stellen:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Datei oder Ordner</th><th>Inhalt</th></tr>
+</thead>
+<tbody>
+<tr><td><code>/etc/xwiki/</code></td><td>Konfiguration von XWiki (unter anderem die Datenbankverbindung)</td></tr>
+<tr><td><code>/etc/tomcat10/server.xml</code></td><td>Einstellungen des Anwendungsservers, zum Beispiel der Port</td></tr>
+<tr><td><code>/etc/default/tomcat10</code></td><td>Starteinstellungen für Tomcat, zum Beispiel der Arbeitsspeicher</td></tr>
+<tr><td><code>/var/lib/xwiki/</code></td><td>Daten von XWiki, etwa hochgeladene Dateien</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="schritt-4-arbeitsspeicher-für-tomcat-festlegen"><a class="header" href="#schritt-4-arbeitsspeicher-für-tomcat-festlegen">Schritt 4: Arbeitsspeicher für Tomcat festlegen</a></h2>
+<p>Java teilt sich seinen Arbeitsspeicher nicht nach Bedarf zu, sondern bekommt eine feste Obergrenze vorgegeben. Ist sie zu niedrig, bricht XWiki unter Last ab. Für eine kleine bis mittlere Sammlung sind 2 GB ein guter Startwert. Die Grenze wird in der Datei <code>/etc/default/tomcat10</code> gesetzt:</p>
+<pre><code class="language-bash">sudo nano /etc/default/tomcat10
+</code></pre>
+<p>Dort die Zeile mit <code>JAVA_OPTS</code> suchen oder ergänzen, sodass sie so aussieht:</p>
+<pre><code>JAVA_OPTS="-Xms512m -Xmx2048m -XX:+UseG1GC"
+</code></pre>
+<ul>
+<li><code>-Xms512m</code> ist der Speicher, den Java gleich beim Start belegt.</li>
+<li><code>-Xmx2048m</code> ist die Obergrenze – hier 2048 MB, also 2 GB. Auf einem größeren Server darf dieser Wert höher liegen, aber nie an die Grenze des gesamten Arbeitsspeichers reichen; das Betriebssystem und PostgreSQL brauchen ebenfalls Platz.</li>
+<li><code>-XX:+UseG1GC</code> wählt ein Aufräumverfahren, das für Programme mit vielen gleichzeitigen Zugriffen gut geeignet ist.</li>
+</ul>
+<h2 id="schritt-5-tomcat-nur-auf-den-eigenen-server-hören-lassen"><a class="header" href="#schritt-5-tomcat-nur-auf-den-eigenen-server-hören-lassen">Schritt 5: Tomcat nur auf den eigenen Server hören lassen</a></h2>
+<p>Von Haus aus lauscht Tomcat auf Port 8080 und nimmt Verbindungen aus dem ganzen Netz an. Beides wird geändert: Der Port wird auf <strong>9000</strong> gelegt (damit er nicht mit anderen Diensten kollidiert), und Tomcat soll nur noch auf <code>127.0.0.1</code> hören – das ist der Rechner selbst, von außen nicht erreichbar.</p>
+<p>Der Grund für die zweite Einschränkung: Beim allerersten Aufruf zeigt XWiki einen Einrichtungsassistenten („Distribution Wizard“), der das Administratorkonto anlegt. Solange dieser Assistent nicht durchlaufen ist, darf die Seite auf keinen Fall öffentlich erreichbar sein. Statt den Port kurz in der Firewall zu öffnen, bleibt er komplett auf dem Server und wird für die Ersteinrichtung über einen verschlüsselten Tunnel erreicht (Schritt 6).</p>
+<pre><code class="language-bash">sudo nano /etc/tomcat10/server.xml
+</code></pre>
+<p>In der Datei den folgenden Abschnitt suchen:</p>
+<pre><code class="language-xml">&lt;Connector port="8080" protocol="HTTP/1.1"
+           connectionTimeout="20000"
+           redirectPort="8443" /&gt;
+</code></pre>
+<p>Und ihn so ändern – der Port wird zu <code>9000</code>, und das neue Attribut <code>address</code> bindet den Dienst an den eigenen Rechner:</p>
+<pre><code class="language-xml">&lt;Connector address="127.0.0.1" port="9000" protocol="HTTP/1.1"
+           connectionTimeout="20000"
+           redirectPort="8443" /&gt;
+</code></pre>
+<p>Die Bindung an <code>127.0.0.1</code> bleibt dauerhaft bestehen. NGINX läuft auf demselben Server und erreicht Tomcat über diese lokale Adresse; ein Zugang von außen über Port 9000 ist im normalen Betrieb nie nötig.</p>
+<h2 id="schritt-6-die-ersteinrichtung-über-einen-ssh-tunnel"><a class="header" href="#schritt-6-die-ersteinrichtung-über-einen-ssh-tunnel">Schritt 6: Die Ersteinrichtung über einen SSH-Tunnel</a></h2>
+<p>Jetzt Tomcat starten:</p>
+<pre><code class="language-bash">sudo systemctl start tomcat10
+</code></pre>
+<p>XWiki läuft nun, ist aber nur vom Server selbst erreichbar. Um den Einrichtungsassistenten trotzdem im Browser des eigenen Rechners zu öffnen, wird ein <strong>SSH-Tunnel</strong> aufgebaut. Der folgende Befehl wird auf dem <strong>eigenen Rechner</strong> eingegeben, nicht auf dem Server:</p>
+<pre><code class="language-bash">ssh -L 9000:127.0.0.1:9000 admin@SERVER-IP
+</code></pre>
+<p>Der Teil <code>-L 9000:127.0.0.1:9000</code> heißt „Local Forwarding“, auf Deutsch etwa „örtliche Weiterleitung“. Er öffnet auf dem eigenen Rechner den Port 9000 und verbindet ihn durch die verschlüsselte SSH-Verbindung mit Port 9000 auf dem Server. Solange dieses SSH-Fenster offen ist, landet jeder Aufruf von <code>http://localhost:9000/</code> im Browser des eigenen Rechners bei Tomcat auf dem Server.</p>
+<p>Nun im Browser <code>http://localhost:9000/</code> aufrufen. Der Einrichtungsassistent erscheint. Er führt durch drei Punkte:</p>
+<ol>
+<li>Ein Passwort für das Administratorkonto festlegen.</li>
+<li>Die Grundausstattung („Flavor“) installieren – die Standardauswahl übernehmen.</li>
+<li>Am Ende bestätigen, dass die Einrichtung abgeschlossen ist.</li>
+</ol>
+<p>Danach das SSH-Fenster schließen; der Tunnel wird nicht mehr gebraucht.</p>
+<h2 id="schritt-7-nginx-als-reverse-proxy-einrichten"><a class="header" href="#schritt-7-nginx-als-reverse-proxy-einrichten">Schritt 7: NGINX als Reverse Proxy einrichten</a></h2>
+<p>Damit die Wissenssammlung öffentlich und verschlüsselt erreichbar ist, kommt NGINX davor. Es nimmt die Anfragen auf Port 443 (HTTPS) entgegen und reicht sie an Tomcat auf Port 9000 weiter. Diese Rolle heißt <strong>Reverse Proxy</strong> (siehe <a href="../server-einrichten/webserver.html">Webserver</a>).</p>
+<p>Zuerst das SSL-Zertifikat besorgen. Wie das mit <strong>Certbot</strong> und <strong>Let’s Encrypt</strong> geht, steht ausführlich im Kapitel <a href="../server-einrichten/webserver.html">Webserver</a>; für eine feste Domain genügt:</p>
+<pre><code class="language-bash">sudo certbot certonly --nginx -d wiki.meine-domain.de
+</code></pre>
+<p>Dann die Konfigurationsdatei <code>/etc/nginx/sites-available/xwiki</code> anlegen:</p>
+<pre><code class="language-nginx">server {
+    listen 443 ssl;
+    listen [::]:443 ssl;
+    http2 on;
+    server_name wiki.meine-domain.de;
+
+    ssl_certificate     /etc/letsencrypt/live/wiki.meine-domain.de/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/wiki.meine-domain.de/privkey.pem;
+
+    # Große Anhänge zulassen
+    client_max_body_size 100m;
+
+    location / {
+        proxy_pass http://127.0.0.1:9000/;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}
+
+server {
+    listen 80;
+    listen [::]:80;
+    server_name wiki.meine-domain.de;
+    # Alle unverschlüsselten Aufrufe auf HTTPS umleiten
+    return 301 https://$host$request_uri;
+}
+</code></pre>
+<p>Die vier <code>proxy_set_header</code>-Zeilen geben Tomcat weiter, wer die Anfrage ursprünglich gestellt hat und dass sie über HTTPS kam. Ohne sie baut XWiki falsche Links und hält jeden Besucher für den Server selbst.</p>
+<p>Die Datei aktiv schalten, prüfen und übernehmen:</p>
+<pre><code class="language-bash">sudo ln -s /etc/nginx/sites-available/xwiki /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+</code></pre>
+<p>Jetzt ist die Wissenssammlung unter <code>https://wiki.meine-domain.de/</code> erreichbar.</p>
+<h2 id="schritt-8-port-9000-in-der-firewall-sperren"><a class="header" href="#schritt-8-port-9000-in-der-firewall-sperren">Schritt 8: Port 9000 in der Firewall sperren</a></h2>
+<p>Die Bindung an <code>127.0.0.1</code> aus Schritt 5 schützt Port 9000 bereits auf Netzwerkebene. Als zweite, unabhängige Absicherung wird der Port zusätzlich in der Firewall gesperrt – für den Fall, dass die Bindung später versehentlich wieder geöffnet wird. Ubuntu bringt dafür <strong>UFW</strong> mit („Uncomplicated Firewall“, also unkomplizierte Firewall):</p>
+<pre><code class="language-bash">sudo ufw allow "Nginx Full"
+sudo ufw deny 9000/tcp
+sudo ufw enable
+sudo ufw status verbose
+</code></pre>
+<ul>
+<li><code>Nginx Full</code> öffnet die Ports 80 und 443 für den Webserver.</li>
+<li><code>deny 9000/tcp</code> schließt Port 9000 ausdrücklich. Bei der UFW-Standardeinstellung (alles Eingehende ist ohnehin gesperrt) ist diese Regel technisch überflüssig, macht die Absicht aber in <code>ufw status</code> sichtbar.</li>
+</ul>
+<p>Für spätere Wartungszugriffe direkt auf Port 9000 – etwa zur Fehlersuche ohne NGINX – eignet sich weiterhin der SSH-Tunnel aus Schritt 6, ohne dass ein Port geöffnet werden muss.</p>
+<h2 id="noch-strikter-ein-unix-socket-statt-eines-ports"><a class="header" href="#noch-strikter-ein-unix-socket-statt-eines-ports">Noch strikter: ein Unix-Socket statt eines Ports</a></h2>
+<p>Statt eines Netzwerk-Ports kann Tomcat auch über eine <strong>Socket-Datei</strong> ansprechbar sein – einen sogenannten Unix-Socket. Das ist ein besonderer Eintrag im Dateisystem, über den zwei Programme auf demselben Rechner miteinander reden, ganz ohne Netzwerk. Der Vorteil: Es gibt keinen Port, der aus Versehen geöffnet werden könnte, und die Zugriffsrechte regelt das Dateisystem.</p>
+<p><strong>In Tomcat</strong> wird dazu in <code>/etc/tomcat10/server.xml</code> der <code>&lt;Connector&gt;</code> ohne Port, aber mit einem Pfad zur Socket-Datei angelegt:</p>
+<pre><code class="language-xml">&lt;Connector protocol="HTTP/1.1"
+           unixDomainSocketPath="/var/lib/tomcat10/xwiki.sock"
+           unixDomainSocketPathPermissions="rw-rw----"
+           connectionTimeout="20000" /&gt;
+</code></pre>
+<p>Damit NGINX (das als Benutzer <code>www-data</code> läuft) die Socket-Datei benutzen darf, wird dieser Benutzer in die Gruppe <code>tomcat</code> aufgenommen:</p>
+<pre><code class="language-bash">sudo usermod -aG tomcat www-data
+sudo systemctl restart tomcat10 nginx
+</code></pre>
+<p><strong>In NGINX</strong> verweist <code>proxy_pass</code> dann auf die Socket-Datei statt auf eine Adresse:</p>
+<pre><code class="language-nginx">    location / {
+        proxy_pass http://unix:/var/lib/tomcat10/xwiki.sock:/;
+        proxy_set_header Host              $host;
+        proxy_set_header X-Real-IP         $remote_addr;
+        proxy_set_header X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+</code></pre>
+<p>Auch die Ersteinrichtung lässt sich über einen Tunnel zu dieser Socket-Datei erledigen. SSH kann einen lokalen Port mit einer entfernten Socket-Datei verbinden. Der Befehl auf dem eigenen Rechner lautet dann:</p>
+<pre><code class="language-bash">ssh -L 9000:/var/lib/tomcat10/xwiki.sock admin@SERVER-IP
+</code></pre>
+<p>Der Unterschied zu Schritt 6: Hinter dem lokalen Port <code>9000</code> steht diesmal kein entfernter Port, sondern der Pfad <code>/var/lib/tomcat10/xwiki.sock</code> auf dem Server. Im Browser wird weiterhin <code>http://localhost:9000/</code> aufgerufen; die Anfrage läuft durch den Tunnel und endet an der Socket-Datei, an der Tomcat lauscht.</p>
+<p>Der Socket-Weg ist etwas aufwendiger einzurichten und bei der Fehlersuche unhandlicher (man kann nicht eben mit einem Browser auf einen Port schauen). Wer es einfach halten will, bleibt bei Port 9000 auf <code>127.0.0.1</code> aus Schritt 5. Wer jede Möglichkeit eines offenen Ports ausschließen möchte, nimmt den Socket.</p>
+<h2 id="für-dieses-buch"><a class="header" href="#für-dieses-buch">Für dieses Buch</a></h2>
+<p>XWiki bringt eine eigene Volltextsuche mit (auf Basis von Apache Solr); der separate Suchdienst <strong>Meilisearch</strong> oder <strong>Typesense</strong> aus dem Kapitel <a href="../server-einrichten/datenbank.html">Datenbank</a> ist auf MediaWiki gemünzt und für XWiki nicht nötig. Die <strong>Bedeutungssuche</strong> mit <code>pgvector</code> bleibt möglich, ist bei XWiki aber ein eigenes Zusatzprojekt und kein fertiger Baustein.</p>
+<p>Empfohlen wird der Betrieb <strong>direkt auf dem Server</strong> (ohne Container, siehe <a href="../server-einrichten/containerisierung.html">Containerisierung von Software</a>): Java, Tomcat, XWiki und PostgreSQL laufen nebeneinander, NGINX steht davor. Für den Zugang von außen genügt Port 9000 auf <code>127.0.0.1</code>; der Unix-Socket ist die strengere, aber aufwendigere Alternative.</p>
+<p>Zwei Dinge gehören von Anfang an zum Betrieb dazu: eine ausreichend hohe Speichergrenze für Tomcat (Schritt 4) und eine regelmäßige, automatische Sicherung der PostgreSQL-Datenbank an einen zweiten Ort (<code>pg_dump</code>, siehe <a href="../server-einrichten/datenbank.html">Datenbank</a>).</p>
+<h2 id="fazit"><a class="header" href="#fazit">Fazit</a></h2>
+<p>XWiki besteht aus vier zusammenspielenden Teilen: der Java-Laufzeit, dem Anwendungsserver Tomcat, der Datenbank PostgreSQL und einem Webserver davor. Die Installation läuft über die eigene Paketquelle des XWiki-Projekts; das Sammelpaket <code>xwiki-tomcat10-pgsql</code> bringt alles Nötige mit und fragt bei der Einrichtung die Datenbankdaten ab. Tomcat wird auf Port 9000 gelegt und an <code>127.0.0.1</code> gebunden, sodass die unfertige Installation nicht öffentlich erreichbar ist; die einmalige Kontoanlage im Einrichtungsassistenten geschieht über einen SSH-Tunnel. Anschließend stellt NGINX als Reverse Proxy die verschlüsselte, öffentliche Adresse bereit, und die Firewall sperrt Port 9000 zusätzlich ab. Wer den Port ganz vermeiden will, lässt Tomcat über eine Unix-Socket-Datei sprechen.</p>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../web-stack/mediawiki.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../web-stack/cms.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../web-stack/mediawiki.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../web-stack/cms.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

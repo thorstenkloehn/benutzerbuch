@@ -1,0 +1,428 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Datenbank - Benutzerhandbuch</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bfa72d74.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0c2ed6dd.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Benutzerhandbuch</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="datenbank"><a class="header" href="#datenbank">Datenbank</a></h1>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+<p>Im Kapitel <a href="../grundlagen/inhalt-software-verwalten.html">Inhalts-Software selbst betreiben</a> taucht die Datenbank als einer der Bausteine auf: Sie ist der Ort, an dem alle Texte, alle früheren Versionen und alle Einstellungen der Wissenssammlung dauerhaft liegen. MediaWiki selbst speichert nichts – es zeigt Seiten an und nimmt Änderungen entgegen, aber ablegen tut es sie in der Datenbank. Fällt die Datenbank aus, ist das Wiki leer.</p>
+<p>Dieses Kapitel erklärt, was eine Datenbank ist, was es bedeutet, dass sie „robust“ sein soll, und welche Programme dafür in Frage kommen. Danach zeigt es Schritt für Schritt, wie <strong>PostgreSQL</strong> auf einem Server mit <strong>Ubuntu 26.04 LTS</strong> (siehe <a href="./betriebssystem.html">Betriebssystem</a>) eingerichtet wird, und ergänzt die Suchdienste <strong>Meilisearch</strong> und <strong>Typesense</strong> sowie die Erweiterungen für die Suche nach Bedeutung. Alle Befehle werden in der Textkonsole des Servers eingegeben. Das vorangestellte <code>sudo</code> bedeutet: mit Verwaltungsrechten ausführen.</p>
+<h2 id="was-eine-datenbank-ist"><a class="header" href="#was-eine-datenbank-ist">Was eine Datenbank ist</a></h2>
+<p>Eine Datenbank ist ein gut sortiertes Lager mit Katalog. Man kann Dinge hineingeben, ohne sich zu merken, in welchem Regal sie landen, und man bekommt sie auf eine kurze Anfrage hin sofort wieder heraus – auch dann, wenn Millionen Dinge im Lager liegen. Das Programm, das dieses Lager verwaltet, heißt <strong>Datenbankmanagementsystem</strong>; im Alltag sagt man einfach „die Datenbank“.</p>
+<p>Die hier betrachteten Datenbanken sind <strong>relational</strong>. Das heißt: Die Daten stehen in Tabellen, ähnlich wie in einer Tabellenkalkulation. Eine Tabelle für die Seiten, eine für die Versionen, eine für die Benutzerkonten. Zwischen den Tabellen gibt es Verweise – eine Version gehört zu einer Seite, eine Änderung zu einem Konto. Abgefragt werden die Tabellen in einer eigenen Sprache namens <strong>SQL</strong> (gesprochen „Es-Ku-El“ oder „Sieckwel“). MediaWiki setzt diese Abfragen selbst zusammen; man bekommt SQL im Normalbetrieb nie zu sehen.</p>
+<p>Zwei Eigenschaften machen eine Datenbank zu mehr als einer Sammlung von Dateien:</p>
+<ul>
+<li><strong>Sie hält Ordnung, auch bei gleichzeitigen Zugriffen.</strong> Wenn zwei Personen dieselbe Seite im selben Moment speichern, sorgt die Datenbank dafür, dass kein Mischmasch entsteht, sondern ein klares Vorher und Nachher.</li>
+<li><strong>Sie lässt nichts halb Fertiges zurück.</strong> Eine Änderung wird entweder ganz gespeichert oder gar nicht. Stürzt der Server mitten im Schreiben ab, ist danach kein zerrissener Datensatz da. Fachleute nennen diese Eigenschaft <strong>ACID</strong>.</li>
+</ul>
+<h2 id="was-robust-bei-einer-datenbank-bedeutet"><a class="header" href="#was-robust-bei-einer-datenbank-bedeutet">Was „robust“ bei einer Datenbank bedeutet</a></h2>
+<p>Die Ausgangsfrage lautete: Welche Datenbank ist quelloffen, industrietauglich, sehr belastbar, verwaltet eine Million Texteinträge mit verschiedenen Inhaltstypen – und geht dabei nicht kaputt? Diese Anforderungen lassen sich einzeln beantworten.</p>
+<ul>
+<li><strong>Eine Million Einträge sind wenig.</strong> Für eine ausgewachsene Datenbank ist das eine kleine bis mittlere Größe. Die deutschsprachige Wikipedia hat ein Vielfaches davon. Entscheidend für die Geschwindigkeit ist nicht die Menge, sondern ob die Datenbank die passenden <strong>Indizes</strong> hat – ein Index ist ein zusätzliches Verzeichnis, das das Suchen abkürzt, so wie das Stichwortverzeichnis am Ende eines Buchs.</li>
+<li><strong>Verschiedene Inhaltstypen</strong> – Artikel, Bilder, Kategorien, Verweise, Kommentare – bildet man über das <strong>Datenmodell</strong> ab, also über den Zuschnitt der Tabellen. Jede der hier genannten Datenbanken kann beliebig viele solcher Typen verwalten. Die Arbeit steckt im sauberen Entwurf, nicht in der Wahl des Programms.</li>
+<li><strong>„Geht nicht kaputt“</strong> heißt zweierlei: Die Daten bleiben auch bei einem Absturz unversehrt (das leistet ACID), und das Programm wird über viele Jahre gepflegt, sodass Sicherheitslücken geschlossen werden und der Umstieg auf neue Versionen geregelt ist. Genau das ist mit <strong>Reifegrad</strong> gemeint.</li>
+<li><strong>„Auf dem Metall“</strong> (englisch „bare metal“) bedeutet: Die Datenbank läuft direkt auf dem Server, ohne Zwischenschicht wie einen Container (siehe <a href="./containerisierung.html">Containerisierung von Software</a>). Das ist der Weg, den dieses Buch beschreibt – wenige bewegliche Teile, volle Geschwindigkeit.</li>
+<li><strong>Benchmarks</strong> – vergleichende Messungen unter gleichen Bedingungen – gibt es für Datenbanken reichlich. Sie sind mit Vorsicht zu lesen; dazu weiter unten mehr.</li>
+</ul>
+<h2 id="datenbanken-und-suchdienste-im-überblick"><a class="header" href="#datenbanken-und-suchdienste-im-überblick">Datenbanken und Suchdienste im Überblick</a></h2>
+<p>Die genannten Programme lösen unterschiedliche Aufgaben. Es hilft, sie in drei Gruppen zu ordnen.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Programm</th><th>Gruppe</th><th>Aufgabe</th></tr>
+</thead>
+<tbody>
+<tr><td>PostgreSQL</td><td>relationale Datenbank</td><td>speichert alle Inhalte dauerhaft und geordnet</td></tr>
+<tr><td>MariaDB</td><td>relationale Datenbank</td><td>dasselbe; MediaWikis Standard-Datenbank</td></tr>
+<tr><td>Meilisearch</td><td>Suchdienst</td><td>schnelle Wortsuche über die Texte, verzeiht Tippfehler</td></tr>
+<tr><td>Typesense</td><td>Suchdienst</td><td>dasselbe wie Meilisearch, anderer Anbieter</td></tr>
+<tr><td>pgvector, pg_trgm</td><td>PostgreSQL-Erweiterungen</td><td>Suche nach Bedeutung bzw. nach ähnlicher Schreibweise</td></tr>
+<tr><td>Qdrant</td><td>Vektordatenbank</td><td>eigenständige Datenbank nur für die Suche nach Bedeutung</td></tr>
+</tbody>
+</table>
+</div>
+<p><strong>Die relationale Datenbank ist das Fundament.</strong> Sie muss vorhanden sein, sonst läuft MediaWiki nicht. Alles Übrige ist Ergänzung, die die Suche verbessert.</p>
+<h3 id="postgresql-oder-mariadb"><a class="header" href="#postgresql-oder-mariadb">PostgreSQL oder MariaDB</a></h3>
+<p>Beide sind quelloffen, seit Jahrzehnten im Einsatz, in großen Unternehmen bewährt und werden auf absehbare Zeit gepflegt. Beide verkraften die beschriebene Wissenssammlung mühelos.</p>
+<ul>
+<li><strong>MariaDB</strong> ist eine Abspaltung von MySQL und die Datenbank, die MediaWiki von Haus aus erwartet. Die meisten MediaWiki-Anleitungen gehen von ihr aus. Sie gilt als einfach einzurichten.</li>
+<li><strong>PostgreSQL</strong> ist besonders streng bei der Datenkorrektheit und lässt sich um zusätzliche Fähigkeiten erweitern. Für dieses Buch ist das der Ausschlag: Die Suche nach Bedeutung (<strong>pgvector</strong>) und die Ähnlichkeitssuche (<strong>pg_trgm</strong>) sind solche Erweiterungen. Mit PostgreSQL wird aus der ohnehin nötigen Datenbank zugleich eine Vektordatenbank – ein zweites Programm dafür entfällt.</li>
+</ul>
+<p>Dieses Kapitel richtet <strong>PostgreSQL</strong> ein. Wer MariaDB bevorzugt, folgt der offiziellen MediaWiki-Anleitung; die übrigen Kapitel bleiben davon unberührt.</p>
+<h3 id="suchdienst-meilisearch-oder-typesense"><a class="header" href="#suchdienst-meilisearch-oder-typesense">Suchdienst: Meilisearch oder Typesense</a></h3>
+<p>Die eingebaute Suche von MediaWiki wird bei vielen Seiten langsam und ungenau. Ein eigener Suchdienst führt ein separates Wörterverzeichnis und liefert Treffer schon während des Tippens. <strong>Meilisearch</strong> und <strong>Typesense</strong> sind zwei sehr ähnliche Programme dieser Art: schlank, schnell, quelloffen, für moderne Suchfelder auf Webseiten gemacht. Meilisearch ist etwas weiter verbreitet und einfacher einzurichten; Typesense ist beim Umgang mit sehr großen Datenmengen etwas flexibler. Für die Wissenssammlung dieses Buchs genügt eines von beiden.</p>
+<h3 id="suche-nach-bedeutung-pgvector-oder-qdrant"><a class="header" href="#suche-nach-bedeutung-pgvector-oder-qdrant">Suche nach Bedeutung: pgvector oder Qdrant</a></h3>
+<p>Manchmal steht das gesuchte Wort nicht im Text – man sucht „Auto reparieren“, die Seite heißt „Wagen instand setzen“. Dafür wird jeder Text in eine lange Zahlenreihe umgerechnet, die seine Bedeutung beschreibt (fachlich: ein <strong>Vektor</strong> oder <strong>Embedding</strong>). Ähnliche Texte ergeben ähnliche Zahlenreihen. Diese Zahlenreihen müssen gespeichert und schnell verglichen werden.</p>
+<ul>
+<li><strong>pgvector</strong> ist eine Erweiterung von PostgreSQL. Die Zahlenreihen liegen dann in derselben Datenbank wie die Texte. Kein zusätzliches Programm, keine zusätzliche Sicherung.</li>
+<li><strong>Qdrant</strong> ist eine eigenständige Vektordatenbank. Sie ist spezialisiert und bei sehr vielen Vektoren schneller, bringt aber ein weiteres Programm ins Spiel, das eingerichtet, überwacht und gesichert werden will.</li>
+</ul>
+<p>Für den beschriebenen Umfang reicht <strong>pgvector</strong>. Qdrant lohnt sich erst, wenn die Bedeutungssuche zum Kern einer eigenen Anwendung wird.</p>
+<h2 id="postgresql-auf-ubuntu-einrichten"><a class="header" href="#postgresql-auf-ubuntu-einrichten">PostgreSQL auf Ubuntu einrichten</a></h2>
+<p>Ubuntu 26.04 bringt PostgreSQL 18 bereits in seinen eigenen Paketquellen mit. Die folgende Anleitung fügt zusätzlich die <strong>offizielle Paketquelle des PostgreSQL-Projekts</strong> hinzu. Das hat zwei Gründe: Man bekommt die neuesten Fehlerkorrekturen früher, und die Erweiterungspakete wie <code>postgresql-18-pgvector</code> liegen dort verlässlich bereit.</p>
+<h3 id="schritt-1-die-paketquelle-eintragen"><a class="header" href="#schritt-1-die-paketquelle-eintragen">Schritt 1: Die Paketquelle eintragen</a></h3>
+<pre><code class="language-bash">sudo apt install -y curl ca-certificates
+sudo install -d /usr/share/postgresql-common/pgdg
+sudo curl -o /usr/share/postgresql-common/pgdg/apt.postgresql.org.asc --fail \
+  https://www.postgresql.org/media/keys/ACCC4CF8.asc
+
+. /etc/os-release
+sudo sh -c "echo 'deb [signed-by=/usr/share/postgresql-common/pgdg/apt.postgresql.org.asc] https://apt.postgresql.org/pub/repos/apt $VERSION_CODENAME-pgdg main' &gt; /etc/apt/sources.list.d/pgdg.list"
+
+sudo apt update
+</code></pre>
+<p>Die erste Zeile lädt einen digitalen Schlüssel herunter, mit dem Ubuntu prüft, dass die Pakete echt sind. Die mittlere Zeile schreibt die Adresse der Paketquelle in eine Datei; <code>$VERSION_CODENAME</code> setzt dabei automatisch den Namen der Ubuntu-Ausgabe ein.</p>
+<h3 id="schritt-2-postgresql-installieren"><a class="header" href="#schritt-2-postgresql-installieren">Schritt 2: PostgreSQL installieren</a></h3>
+<pre><code class="language-bash">sudo apt install -y postgresql-18
+</code></pre>
+<p>Nach der Installation läuft PostgreSQL bereits als Hintergrunddienst und startet nach jedem Server-Neustart von selbst wieder. Zur Kontrolle:</p>
+<pre><code class="language-bash">sudo systemctl status postgresql
+psql --version
+</code></pre>
+<h3 id="schritt-3-benutzer-und-datenbank-anlegen"><a class="header" href="#schritt-3-benutzer-und-datenbank-anlegen">Schritt 3: Benutzer und Datenbank anlegen</a></h3>
+<p>PostgreSQL legt bei der Installation einen Systembenutzer <code>postgres</code> an, der die Datenbank verwaltet. Über ihn wird ein eigener Datenbankbenutzer für das Wiki angelegt und eine leere Datenbank, die ihm gehört. Die Namen (<code>wiki</code>) sind frei wählbar; sie müssen später in der MediaWiki-Konfiguration genau so eingetragen werden.</p>
+<pre><code class="language-bash"># Datenbankbenutzer anlegen, dabei nach einem Passwort fragen
+sudo -u postgres createuser --pwprompt wiki
+
+# Datenbank mit UTF-8-Zeichensatz anlegen, Eigentümer ist "wiki"
+sudo -u postgres createdb -E UTF8 -O wiki wiki
+</code></pre>
+<p><code>UTF8</code> ist der Zeichensatz, der alle Buchstaben und Zeichen der Welt kennt – wichtig für Umlaute, Anführungszeichen und fremdsprachige Inhalte.</p>
+<h3 id="schritt-4-erweiterungen-einschalten"><a class="header" href="#schritt-4-erweiterungen-einschalten">Schritt 4: Erweiterungen einschalten</a></h3>
+<p>Erweiterungen werden als Paket installiert und danach in der jeweiligen Datenbank mit einem SQL-Befehl aktiviert.</p>
+<pre><code class="language-bash"># Pakete installieren
+sudo apt install -y postgresql-18-pgvector
+
+# Erweiterungen in der Datenbank "wiki" einschalten
+sudo -u postgres psql -d wiki -c "CREATE EXTENSION IF NOT EXISTS vector;"
+sudo -u postgres psql -d wiki -c "CREATE EXTENSION IF NOT EXISTS pg_trgm;"
+sudo -u postgres psql -d wiki -c "CREATE EXTENSION IF NOT EXISTS hstore;"
+</code></pre>
+<ul>
+<li><strong>vector</strong> (aus dem Paket <code>pgvector</code>) speichert und vergleicht die Zahlenreihen für die Bedeutungssuche.</li>
+<li><strong>pg_trgm</strong> findet ähnlich geschriebene Wörter. Es zerlegt jedes Wort in Dreier-Gruppen von Buchstaben und vergleicht diese – so wird „Müller“ auch bei der Eingabe „Mueller“ gefunden.</li>
+<li><strong>hstore</strong> erlaubt es, zu einem Datensatz beliebige zusätzliche Schlüssel-Wert-Paare zu speichern, ohne die Tabelle umzubauen. Einige MediaWiki-Erweiterungen und Zusatzwerkzeuge setzen das voraus.</li>
+</ul>
+<h3 id="schritt-5-zugriff-absichern"><a class="header" href="#schritt-5-zugriff-absichern">Schritt 5: Zugriff absichern</a></h3>
+<p>Standardmäßig nimmt PostgreSQL nur Verbindungen vom selben Rechner an. Das ist die sichere Voreinstellung und für dieses Buch richtig: MediaWiki läuft auf demselben Server wie die Datenbank. Die Datenbank sollte <strong>nicht</strong> aus dem Internet erreichbar sein. Ob das eingehalten ist, zeigt:</p>
+<pre><code class="language-bash">sudo ss -tlnp | grep 5432
+</code></pre>
+<p>Erscheint dort <code>127.0.0.1:5432</code> (und gegebenenfalls <code>[::1]:5432</code>), hört die Datenbank nur lokal. Erscheint <code>0.0.0.0:5432</code>, ist sie nach außen offen – dann in der Datei <code>/etc/postgresql/18/main/postgresql.conf</code> die Zeile <code>listen_addresses</code> auf <code>'localhost'</code> setzen und <code>sudo systemctl restart postgresql</code> ausführen.</p>
+<h2 id="optionales-beispiel-geodaten-aus-openstreetmap-laden"><a class="header" href="#optionales-beispiel-geodaten-aus-openstreetmap-laden">Optionales Beispiel: Geodaten aus OpenStreetMap laden</a></h2>
+<p>Dieser Abschnitt ist kein Pflichtteil des Wiki-Aufbaus. Er zeigt an einem konkreten Fall, wie sich PostgreSQL mit der <strong>Geo-Erweiterung PostGIS</strong> um fremde Datenbestände erweitern lässt – hier das freie Kartenmaterial von OpenStreetMap für einen kleinen Ausschnitt (das Beispiel nimmt die Stadt Ahrensburg).</p>
+<p>Zuerst die Geo-Erweiterung installieren und in der Datenbank einschalten:</p>
+<pre><code class="language-bash">sudo apt install -y postgis postgresql-18-postgis-3
+sudo -u postgres psql -d wiki -c "CREATE EXTENSION IF NOT EXISTS postgis;"
+</code></pre>
+<p><strong>PostGIS</strong> lehrt PostgreSQL den Umgang mit Orten, Linien und Flächen: Entfernungen berechnen, prüfen, ob ein Punkt in einem Gebiet liegt, Umkreissuchen. Ohne PostGIS kennt die Datenbank nur Zahlen und Text, keine Landkarte.</p>
+<p>Dann die Kartendaten herunterladen, auf den gewünschten Ausschnitt zuschneiden und in die Datenbank einlesen:</p>
+<pre><code class="language-bash">cd $HOME
+wget https://download.geofabrik.de/europe/germany/schleswig-holstein-latest.osm.pbf
+sudo apt install -y osmosis osm2pgsql
+
+# Auf einen rechteckigen Ausschnitt zuschneiden (Längen- und Breitengrade)
+osmosis --read-pbf file=schleswig-holstein-latest.osm.pbf \
+  --bounding-box left=10.1141 right=10.3716 top=53.7136 bottom=53.6249 \
+  --write-pbf file=ahrensburg.pbf
+
+# Den Ausschnitt in die Datenbank "wiki" schreiben
+osm2pgsql -d wiki -H localhost -U wiki --create -G --hstore -W ahrensburg.pbf
+</code></pre>
+<ul>
+<li><strong><code>schleswig-holstein-latest.osm.pbf</code></strong> ist die komprimierte Kartendatei für das gesamte Bundesland, bezogen vom Anbieter Geofabrik.</li>
+<li><strong><code>osmosis</code></strong> schneidet daraus mit <code>--bounding-box</code> ein Rechteck heraus; die vier Werte sind die Grenzen in Längen- und Breitengraden.</li>
+<li><strong><code>osm2pgsql</code></strong> liest den Ausschnitt in die Datenbank. <code>--create</code> legt die nötigen Tabellen an, <code>-G</code> erzeugt einfache Geometrien, <code>--hstore</code> übernimmt alle zusätzlichen Angaben (Straßennamen, Öffnungszeiten und so weiter) in ein hstore-Feld, <code>-W</code> fragt nach dem Datenbankpasswort.</li>
+</ul>
+<p>Danach stehen die Straßen, Gebäude und Punkte des Ausschnitts als Tabellen in der Datenbank und lassen sich mit SQL abfragen.</p>
+<h2 id="suchdienst-einrichten"><a class="header" href="#suchdienst-einrichten">Suchdienst einrichten</a></h2>
+<h3 id="meilisearch"><a class="header" href="#meilisearch">Meilisearch</a></h3>
+<p>Meilisearch wird über die Paketquelle des Anbieters installiert:</p>
+<pre><code class="language-bash">echo "deb [trusted=yes] https://apt.fury.io/meilisearch/ /" \
+  | sudo tee /etc/apt/sources.list.d/meilisearch.list
+sudo apt update
+sudo apt install -y meilisearch-http
+</code></pre>
+<p>Meilisearch braucht einen <strong>Hauptschlüssel</strong> (englisch „master key“), ohne den jeder mit Zugang zum Server die Suchdaten lesen und ändern könnte. Einen zufälligen Schlüssel erzeugen und zusammen mit den übrigen Einstellungen in einer Konfigurationsdatei ablegen:</p>
+<pre><code class="language-bash">openssl rand -base64 32
+</code></pre>
+<p>Datei <code>/etc/meilisearch.toml</code> anlegen (der Wert bei <code>master_key</code> ist der eben erzeugte Schlüssel):</p>
+<pre><code class="language-toml">env = "production"
+master_key = "HIER_DEN_ERZEUGTEN_SCHLUESSEL_EINSETZEN"
+http_addr = "127.0.0.1:7700"
+db_path = "/var/lib/meilisearch/data"
+</code></pre>
+<p>Die Adresse <code>127.0.0.1</code> sorgt dafür, dass Meilisearch nur vom selben Server aus erreichbar ist. Anschließend als Hintergrunddienst einrichten. Dazu die Datei <code>/etc/systemd/system/meilisearch.service</code> anlegen:</p>
+<pre><code class="language-ini">[Unit]
+Description=Meilisearch
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/meilisearch --config-file-path /etc/meilisearch.toml
+Restart=on-failure
+DynamicUser=yes
+StateDirectory=meilisearch
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>Starten und für den automatischen Start nach einem Neustart vormerken:</p>
+<pre><code class="language-bash">sudo systemctl daemon-reload
+sudo systemctl enable --now meilisearch
+</code></pre>
+<h3 id="typesense"><a class="header" href="#typesense">Typesense</a></h3>
+<p>Typesense wird als fertiges Paket von der Seite des Anbieters heruntergeladen und installiert:</p>
+<pre><code class="language-bash">curl -O https://dl.typesense.org/releases/29.0/typesense-server-29.0-amd64.deb
+sudo apt install -y ./typesense-server-29.0-amd64.deb
+</code></pre>
+<p>Bei der Installation fragt das Paket nach einem <strong>API-Schlüssel</strong> (dieselbe Rolle wie Meilisearchs Hauptschlüssel) und legt selbst einen Hintergrunddienst an. Die Einstellungen stehen danach in <code>/etc/typesense/typesense-server.ini</code>. Dort sollte <code>api-address = 127.0.0.1</code> eingetragen sein, damit der Dienst nur lokal erreichbar ist. Nach einer Änderung:</p>
+<pre><code class="language-bash">sudo systemctl restart typesense-server
+sudo systemctl enable typesense-server
+</code></pre>
+<h2 id="zur-geschwindigkeit-was-benchmarks-sagen--und-was-nicht"><a class="header" href="#zur-geschwindigkeit-was-benchmarks-sagen--und-was-nicht">Zur Geschwindigkeit: Was Benchmarks sagen – und was nicht</a></h2>
+<p>Für PostgreSQL und MariaDB gibt es zahllose Vergleichsmessungen, und je nach Testaufbau gewinnt mal die eine, mal die andere. Für den Alltag einer Wissenssammlung ist das ohne Bedeutung. Drei Punkte zählen mehr als jede Messung:</p>
+<ul>
+<li><strong>Die richtigen Indizes.</strong> Eine Abfrage ohne passenden Index durchsucht die ganze Tabelle; mit Index springt sie sofort zum Ziel. Der Unterschied ist oft der Faktor Tausend. MediaWiki bringt seine Indizes mit; bei eigenen Zusatzprogrammen muss man selbst daran denken.</li>
+<li><strong>Nur laden, was gebraucht wird.</strong> Ein Programm, das immer alle Einträge holt und dann wegwirft, was es nicht braucht, wird mit jeder Zeile langsamer. Gute Programme holen seitenweise.</li>
+<li><strong>Ein Zwischenspeicher.</strong> Wird eine fertige Antwort für kurze Zeit vorgehalten (etwa mit Redis oder direkt im Webserver, siehe <a href="./webserver.html">Webserver</a>), spielt die Geschwindigkeit der Datenbank für diese Anfrage keine Rolle mehr.</li>
+</ul>
+<p>Kurz: Die Wahl zwischen zwei ausgereiften Datenbanken entscheidet über die Geschwindigkeit weit weniger als der Umgang mit ihnen.</p>
+<h2 id="für-dieses-buch"><a class="header" href="#für-dieses-buch">Für dieses Buch</a></h2>
+<p>Die Wissenssammlung braucht genau eine relationale Datenbank. Dieses Buch nimmt <strong>PostgreSQL</strong>, weil sich damit die Bedeutungssuche (<code>pgvector</code>) und die Ähnlichkeitssuche (<code>pg_trgm</code>) ohne ein weiteres Programm abdecken lassen. Wer nur MediaWiki betreiben und der offiziellen Anleitung folgen will, kann ebenso gut <strong>MariaDB</strong> einsetzen.</p>
+<p>Als Suchdienst genügt <strong>Meilisearch</strong> oder <strong>Typesense</strong> – eines von beiden, nicht beide. Für die Bedeutungssuche bleibt es bei <strong>pgvector</strong>; <strong>Qdrant</strong> ist für diesen Umfang zu viel.</p>
+<p>Die Datenbank läuft direkt auf dem Server und ist nur von dort erreichbar, nicht aus dem Internet. Gesichert werden muss vor allem ihr Inhalt: ein regelmäßiger, automatischer Export (<code>pg_dump</code>) an einen zweiten Ort gehört zu jedem Datenbankbetrieb dazu.</p>
+<h2 id="fazit"><a class="header" href="#fazit">Fazit</a></h2>
+<p>Eine Datenbank legt die Inhalte der Wissenssammlung geordnet ab und gibt sie schnell wieder heraus, ohne bei gleichzeitigen Zugriffen oder einem Absturz Schaden zu nehmen. <strong>PostgreSQL</strong> und <strong>MariaDB</strong> sind beide quelloffen, ausgereift und für eine Million Einträge weit mehr als ausreichend; dieses Buch wählt PostgreSQL wegen seiner Erweiterungen. Auf Ubuntu 26.04 wird PostgreSQL 18 über die offizielle Paketquelle eingerichtet, danach werden Benutzer, Datenbank und die Erweiterungen <code>vector</code>, <code>pg_trgm</code> und <code>hstore</code> angelegt. <strong>Meilisearch</strong> oder <strong>Typesense</strong> ergänzen die schnelle Wortsuche, <strong>pgvector</strong> die Suche nach Bedeutung. Ob die Sammlung schnell bleibt, entscheidet nicht die Wahl der Datenbank, sondern die richtigen Indizes, sparsames Laden und ein Zwischenspeicher.</p>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../server-einrichten/tomcat.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../server-einrichten/tileserver.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../server-einrichten/tomcat.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../server-einrichten/tileserver.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

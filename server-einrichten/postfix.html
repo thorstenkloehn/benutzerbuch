@@ -1,0 +1,553 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Postfix - Benutzerhandbuch</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bfa72d74.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0c2ed6dd.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Benutzerhandbuch</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="postfix"><a class="header" href="#postfix">Postfix</a></h1>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+<p>MediaWiki – die Grundlage der Wissenssammlung dieses Buchs – und Drupal, ein weiteres Inhaltssystem, das auf demselben Server laufen kann, verschicken an vielen Stellen E-Mails: Ein neues Benutzerkonto bekommt einen Bestätigungslink, ein vergessenes Passwort einen Link zum Zurücksetzen, eine beobachtete Seite eine Änderungsmeldung. Damit diese Nachrichten den Server verlassen, fehlt ein Programm, das sie annimmt und an den Mailanbieter des Empfängers zustellt. Dieses Programm heißt <strong>Mail Transfer Agent</strong> (MTA). Der auf Linux mit Abstand verbreitetste ist <strong>Postfix</strong>.</p>
+<p>Das Schwierige ist nicht die Installation – die ist ein einziger Befehl. Das Schwierige ist, dass große Anbieter wie <strong>Gmail</strong> (Google Mail) sehr genau prüfen, welche Post sie annehmen. Ein Server, der einfach „irgendwie“ sendet, landet im Spam oder wird ganz abgewiesen. Dieses Kapitel zeigt Schritt für Schritt, wie man Postfix auf einem Server mit <strong>Ubuntu 26.04 LTS</strong> (siehe <a href="./betriebssystem.html">Betriebssystem</a>) so einrichtet, dass eine Gmail-Adresse die Post im Posteingang annimmt: mit verschlüsselten Verbindungen und einem Zertifikat von <strong>Certbot</strong> (siehe <a href="./webserver.html">Webserver</a>) sowie den drei DNS-Einträgen SPF, DKIM und DMARC.</p>
+<p>Alle Befehle werden in der Textkonsole des Servers eingegeben. Das vorangestellte <code>sudo</code> bedeutet: mit Verwaltungsrechten ausführen. Platzhalter wie <code>meine-domain.de</code> und die Beispiel-IP <code>203.0.113.10</code> müssen überall durch die eigenen Werte ersetzt werden.</p>
+<h2 id="was-postfix-macht"><a class="header" href="#was-postfix-macht">Was Postfix macht</a></h2>
+<p>Man kann sich Postfix wie die Poststelle einer Firma vorstellen. Mitarbeiter (die Programme auf dem Server) legen ihre fertigen Briefe in ein Fach. Die Poststelle nimmt sie heraus, schaut auf die Anschrift, sucht den richtigen Zustellweg und übergibt den Brief nach draußen. Um die Zustellung im Haus kümmert sie sich getrennt davon.</p>
+<p>Postfix kann in zwei Betriebsarten laufen:</p>
+<ul>
+<li><strong>Nur senden.</strong> Postfix nimmt Post ausschließlich von Programmen auf demselben Server an und leitet sie nach außen weiter. Es gibt keine Postfächer, und von außen ist nichts erreichbar. Genau das brauchen MediaWiki und Drupal – und genau das richtet dieses Kapitel ein.</li>
+<li><strong>Vollständiger Mailserver.</strong> Zusätzlich nimmt Postfix Post aus dem Internet an, legt sie in Postfächern ab, macht sie über IMAP abrufbar (mit dem Zusatzprogramm Dovecot), filtert Spam und so weiter. Das ist deutlich aufwendiger, ein eigenes Thema und hier nicht nötig.</li>
+</ul>
+<h2 id="warum-gmail-so-wählerisch-ist"><a class="header" href="#warum-gmail-so-wählerisch-ist">Warum Gmail so wählerisch ist</a></h2>
+<p>Der Grund ist Spam. Bei jeder eingehenden Nachricht prüft Gmail unter anderem:</p>
+<ul>
+<li><strong>Rückwärtsauflösung (PTR).</strong> Hat die IP-Adresse des sendenden Servers einen Namen, und zeigt dieser Name auf dieselbe IP zurück? Post von IPs ohne passenden PTR-Eintrag wird fast immer abgewiesen.</li>
+<li><strong>SPF.</strong> Darf dieser Server überhaupt Post für diese Domain verschicken? Das legt ein DNS-Eintrag fest.</li>
+<li><strong>DKIM.</strong> Ist die Nachricht digital unterschrieben, und passt die Unterschrift zu einem Schlüssel, der im DNS veröffentlicht ist? Das beweist, dass die Nachricht unterwegs nicht verändert wurde und wirklich von der Domain stammt.</li>
+<li><strong>DMARC.</strong> Ein DNS-Eintrag, der dem Empfänger sagt, was er tun soll, wenn SPF oder DKIM nicht passen – und der Berichte anfordert.</li>
+<li><strong>Verschlüsselung (TLS).</strong> Wird die Verbindung zwischen den Servern verschlüsselt?</li>
+<li><strong>Ruf der IP-Adresse.</strong> Kam von dieser IP schon einmal Spam?</li>
+</ul>
+<p>Seit Februar 2024 verlangt Gmail auch von kleinen Absendern mindestens SPF <strong>oder</strong> DKIM; bei größeren Mengen SPF <strong>und</strong> DKIM <strong>und</strong> DMARC. Am einfachsten richtet man von Anfang an alles ein.</p>
+<h2 id="voraussetzungen"><a class="header" href="#voraussetzungen">Voraussetzungen</a></h2>
+<ul>
+<li>
+<p><strong>Eine eigene Domain</strong> mit Zugang zu den DNS-Einträgen (meist beim Anbieter, bei dem die Domain registriert ist).</p>
+</li>
+<li>
+<p><strong>Ein Server mit fester öffentlicher IPv4-Adresse</strong> – ein gewöhnlicher gemieteter Server genügt (siehe <a href="./server-mieten.html">Server mieten</a>).</p>
+</li>
+<li>
+<p><strong>Ausgehender Port 25 offen.</strong> Viele Anbieter sperren Port 25 zunächst, um Spam zu verhindern. Prüfen:</p>
+<pre><code class="language-bash">nc -zv gmail-smtp-in.l.google.com 25
+</code></pre>
+<p>Bleibt der Befehl hängen oder meldet „timed out“, muss man den Anbieter über den Support bitten, Port 25 freizuschalten. Ohne offenen Port 25 verlässt keine einzige Nachricht den Server.</p>
+</li>
+<li>
+<p><strong>Die Möglichkeit, den PTR-Eintrag</strong> für die Server-IP zu setzen – meist im Kundenbereich des Anbieters unter „Reverse DNS“, „rDNS“ oder „PTR“.</p>
+</li>
+<li>
+<p>Eine frische IP ohne schlechte Vorgeschichte hilft. Prüfen lässt sich das unter <code>check.spamhaus.org</code>.</p>
+</li>
+</ul>
+<h2 id="schritt-1-den-hostnamen-des-servers-festlegen"><a class="header" href="#schritt-1-den-hostnamen-des-servers-festlegen">Schritt 1: Den Hostnamen des Servers festlegen</a></h2>
+<p>Der Server braucht einen vollständigen Namen, mit dem er sich bei anderen Mailservern meldet. Üblich ist <code>mail.meine-domain.de</code>.</p>
+<pre><code class="language-bash">sudo hostnamectl set-hostname mail.meine-domain.de
+</code></pre>
+<p>Danach die Datei <code>/etc/hosts</code> ergänzen, damit der Name auch lokal auflösbar ist. Eine Zeile hinzufügen:</p>
+<pre><code>203.0.113.10  mail.meine-domain.de  mail
+</code></pre>
+<p>Kontrolle:</p>
+<pre><code class="language-bash">hostname --fqdn
+# muss  mail.meine-domain.de  ausgeben
+</code></pre>
+<h2 id="schritt-2-dns-einträge-für-den-mailnamen"><a class="header" href="#schritt-2-dns-einträge-für-den-mailnamen">Schritt 2: DNS-Einträge für den Mailnamen</a></h2>
+<p>Beim DNS-Anbieter für die Domain anlegen:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name/Host</th><th>Typ</th><th>Wert</th></tr>
+</thead>
+<tbody>
+<tr><td><code>mail</code></td><td>A</td><td><code>203.0.113.10</code></td></tr>
+<tr><td><code>@</code> (die Domain selbst)</td><td>MX</td><td><code>10 mail.meine-domain.de.</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Der A-Eintrag lässt <code>mail.meine-domain.de</code> auf den Server zeigen. Der MX-Eintrag legt fest, welcher Server für Post an <code>@meine-domain.de</code> zuständig ist. Das ist nötig, damit Antworten und DMARC-Berichte irgendwo ankommen.</p>
+<p>Da dieser Aufbau nur sendet und keine Post empfängt, sollte der MX-Eintrag <strong>auf ein vorhandenes Postfach</strong> zeigen – zum Beispiel das Postfach, das beim Domain-Anbieter mitgeliefert wird, oder ein anderes Mailkonto. Dorthin gehen dann Antworten und Berichte. Wer die Domain-Post selbst auf dem Server empfangen will, braucht den vollständigen Mailserver aus dem Abschnitt oben – ein eigenes Thema.</p>
+<h2 id="schritt-3-rückwärtsauflösung-ptr-setzen"><a class="header" href="#schritt-3-rückwärtsauflösung-ptr-setzen">Schritt 3: Rückwärtsauflösung (PTR) setzen</a></h2>
+<p>Im Kundenbereich des Server-Anbieters die Rückwärtsauflösung für <code>203.0.113.10</code> auf <code>mail.meine-domain.de</code> einstellen. Prüfen:</p>
+<pre><code class="language-bash">dig +short -x 203.0.113.10
+# muss  mail.meine-domain.de.  ausgeben
+</code></pre>
+<p>Die Änderung kann einige Zeit dauern. Ein fehlender oder falscher PTR-Eintrag ist der häufigste Grund, warum Gmail Post abweist – diesen Schritt also nicht überspringen.</p>
+<h2 id="schritt-4-postfix-installieren"><a class="header" href="#schritt-4-postfix-installieren">Schritt 4: Postfix installieren</a></h2>
+<pre><code class="language-bash">sudo apt update
+sudo apt install postfix
+</code></pre>
+<p>Es erscheint ein blauer Einrichtungsdialog:</p>
+<ul>
+<li><strong>General type of mail configuration:</strong> <strong>Internet Site</strong> auswählen.</li>
+<li><strong>System mail name:</strong> <strong>meine-domain.de</strong> eintragen (ohne <code>mail.</code> davor). Das ist die Domain, die hinter dem <code>@</code> in der Absenderadresse lokaler Post steht.</li>
+</ul>
+<p>Erscheint der Dialog nicht oder wurde etwas falsch gewählt, holt man ihn mit <code>sudo dpkg-reconfigure postfix</code> zurück.</p>
+<p>Dann noch ein Hilfsprogramm für Testnachrichten installieren:</p>
+<pre><code class="language-bash">sudo apt install mailutils
+</code></pre>
+<p><code>mailutils</code> stellt den Befehl <code>mail</code> bereit, mit dem man später eine Testmail verschickt.</p>
+<h2 id="schritt-5-postfix-als-reinen-sendedienst-einrichten"><a class="header" href="#schritt-5-postfix-als-reinen-sendedienst-einrichten">Schritt 5: Postfix als reinen Sendedienst einrichten</a></h2>
+<p>Die Haupteinstellungen stehen in <code>/etc/postfix/main.cf</code>. Statt die Datei von Hand zu öffnen, setzt man die Werte mit dem Befehl <code>postconf -e</code> – das vermeidet Tippfehler:</p>
+<pre><code class="language-bash">sudo postconf -e 'myhostname = mail.meine-domain.de'
+sudo postconf -e 'myorigin = /etc/mailname'
+sudo postconf -e 'mydestination = localhost'
+sudo postconf -e 'inet_interfaces = loopback-only'
+sudo postconf -e 'inet_protocols = ipv4'
+</code></pre>
+<p>Was die einzelnen Zeilen bedeuten:</p>
+<ul>
+<li><strong><code>myhostname</code></strong> – der vollständige Name, mit dem Postfix sich meldet.</li>
+<li><strong><code>myorigin = /etc/mailname</code></strong> – die Datei <code>/etc/mailname</code> enthält nach der Installation bereits <code>meine-domain.de</code>. Absenderadressen ohne Domain (etwa <code>www-data</code>) bekommen diesen Teil angehängt.</li>
+<li><strong><code>mydestination = localhost</code></strong> – Postfix betrachtet nur <code>localhost</code> als „für mich bestimmt“; alles andere wird nach außen weitergeleitet.</li>
+<li><strong><code>inet_interfaces = loopback-only</code></strong> – Postfix lauscht nur auf dem Server selbst (<code>127.0.0.1</code>), nie im Internet. Kein Fremder kann ihm Post übergeben. Damit ist ein Missbrauch als Spam-Verteiler ausgeschlossen.</li>
+<li><strong><code>inet_protocols = ipv4</code></strong> – gesendet wird über IPv4. Nur wenn der Server eine funktionierende IPv6-Adresse <strong>mit passendem PTR-Eintrag</strong> hat, kann man hier <code>all</code> setzen. Ein fehlender IPv6-PTR führt zu Abweisungen durch Gmail, deshalb ist IPv4 die sichere Voreinstellung.</li>
+</ul>
+<p>Kurz prüfen, dass die Datei mit dem Mailnamen stimmt:</p>
+<pre><code class="language-bash">cat /etc/mailname
+# meine-domain.de
+</code></pre>
+<p>Danach Postfix neu starten:</p>
+<pre><code class="language-bash">sudo systemctl restart postfix
+</code></pre>
+<h2 id="schritt-6-absenderadressen-sauber-umschreiben"><a class="header" href="#schritt-6-absenderadressen-sauber-umschreiben">Schritt 6: Absenderadressen sauber umschreiben</a></h2>
+<p>MediaWiki und Drupal setzen ihre Absenderadresse meist selbst sinnvoll. Systemnachrichten aber – etwa von zeitgesteuerten Aufgaben oder Fehlermeldungen – kommen von Adressen wie <code>root@mail.meine-domain.de</code> oder <code>www-data@mail.meine-domain.de</code>. Gmail mag Absender nicht, die es gar nicht gibt. Zwei Handgriffe helfen.</p>
+<p><strong>Weiterleitung für <code>root</code>.</strong> In <code>/etc/aliases</code> eine Zeile ergänzen:</p>
+<pre><code>root: postmaster@meine-domain.de
+</code></pre>
+<p>Danach:</p>
+<pre><code class="language-bash">sudo newaliases
+</code></pre>
+<p><strong>Adressen beim Versand umschreiben.</strong> Eine neue Datei <code>/etc/postfix/generic</code> anlegen:</p>
+<pre><code>root@mail.meine-domain.de        postmaster@meine-domain.de
+www-data@mail.meine-domain.de    noreply@meine-domain.de
+@mail.meine-domain.de            noreply@meine-domain.de
+</code></pre>
+<p>Dann in ein von Postfix lesbares Format übersetzen und aktivieren:</p>
+<pre><code class="language-bash">sudo postmap /etc/postfix/generic
+sudo postconf -e 'smtp_generic_maps = hash:/etc/postfix/generic'
+sudo systemctl restart postfix
+</code></pre>
+<p><code>smtp_generic_maps</code> schreibt Adressen nur auf dem Weg nach draußen um. So trägt jede Nachricht, die den Server verlässt, eine echte Adresse an der eigenen Domain. Die Adressen <code>postmaster@meine-domain.de</code> und <code>noreply@meine-domain.de</code> müssen bei dem in Schritt 2 gewählten Postfach tatsächlich existieren (<code>postmaster</code> wird ohnehin erwartet; <code>noreply</code> kann ein Sammelpostfach sein).</p>
+<h2 id="schritt-7-verbindungen-zu-anderen-mailservern-verschlüsseln"><a class="header" href="#schritt-7-verbindungen-zu-anderen-mailservern-verschlüsseln">Schritt 7: Verbindungen zu anderen Mailservern verschlüsseln</a></h2>
+<p>Beim <strong>Senden</strong> verschlüsselt Postfix in aktuellen Versionen bereits von sich aus, wann immer die Gegenseite es anbietet. Man setzt es trotzdem ausdrücklich:</p>
+<pre><code class="language-bash">sudo postconf -e 'smtp_tls_security_level = may'
+sudo postconf -e 'smtp_tls_loglevel = 1'
+</code></pre>
+<p><code>may</code> bedeutet: verschlüsseln, sobald die Gegenseite es kann – Gmail kann es immer. Ein <strong>eigenes Zertifikat</strong> braucht der Server dafür nicht, denn er stellt beim Senden keinen Ausweis vor.</p>
+<p>Ein eigenes Zertifikat wird erst wichtig, sobald andere Server oder Mailprogramme sich <strong>mit</strong> dem Server verbinden – also wenn man später Post empfangen oder den Versand für entfernte Programme öffnen will. Wer das vorbereiten möchte, holt sich jetzt ein Zertifikat mit <strong>Certbot</strong> (Einrichtung siehe <a href="./webserver.html">Webserver</a>):</p>
+<pre><code class="language-bash">sudo certbot certonly --nginx -d mail.meine-domain.de
+</code></pre>
+<p>Danach in Postfix eintragen:</p>
+<pre><code class="language-bash">sudo postconf -e 'smtpd_tls_cert_file = /etc/letsencrypt/live/mail.meine-domain.de/fullchain.pem'
+sudo postconf -e 'smtpd_tls_key_file = /etc/letsencrypt/live/mail.meine-domain.de/privkey.pem'
+sudo postconf -e 'smtpd_tls_security_level = may'
+</code></pre>
+<p>Damit Postfix ein erneuertes Zertifikat übernimmt, legt man einen kleinen Haken für Certbot an. Datei <code>/etc/letsencrypt/renewal-hooks/deploy/postfix-neuladen.sh</code>:</p>
+<pre><code class="language-sh">#!/bin/sh
+systemctl reload postfix
+</code></pre>
+<p>Ausführbar machen:</p>
+<pre><code class="language-bash">sudo chmod +x /etc/letsencrypt/renewal-hooks/deploy/postfix-neuladen.sh
+</code></pre>
+<h2 id="schritt-8-spf-eintrag-im-dns"><a class="header" href="#schritt-8-spf-eintrag-im-dns">Schritt 8: SPF-Eintrag im DNS</a></h2>
+<p>Ein TXT-Eintrag an der Wurzel der Domain:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name/Host</th><th>Typ</th><th>Wert</th></tr>
+</thead>
+<tbody>
+<tr><td><code>@</code> (die Domain selbst)</td><td>TXT</td><td><code>v=spf1 mx a ip4:203.0.113.10 -all</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Das bedeutet: Post für diese Domain darf von den MX-Servern, vom A-Server und von dieser IP kommen; alles andere (<code>-all</code>) soll abgewiesen werden. Wer sich zu Beginn unsicher ist, nimmt statt <code>-all</code> zunächst <code>~all</code> (nur Verdacht statt Abweisung) und stellt nach erfolgreichen Tests auf <code>-all</code> um.</p>
+<p>Es darf nur <strong>einen</strong> SPF-Eintrag pro Domain geben. Prüfen:</p>
+<pre><code class="language-bash">dig +short TXT meine-domain.de
+</code></pre>
+<h2 id="schritt-9-dkim-mit-opendkim-einrichten"><a class="header" href="#schritt-9-dkim-mit-opendkim-einrichten">Schritt 9: DKIM mit OpenDKIM einrichten</a></h2>
+<p>DKIM unterschreibt jede ausgehende Nachricht digital. Das Programm dafür heißt <strong>OpenDKIM</strong>.</p>
+<pre><code class="language-bash">sudo apt install opendkim opendkim-tools
+</code></pre>
+<h3 id="schlüssel-erzeugen"><a class="header" href="#schlüssel-erzeugen">Schlüssel erzeugen</a></h3>
+<pre><code class="language-bash">sudo mkdir -p /etc/opendkim/keys/meine-domain.de
+sudo opendkim-genkey -b 2048 -d meine-domain.de -D /etc/opendkim/keys/meine-domain.de -s default -v
+sudo chown -R opendkim:opendkim /etc/opendkim
+sudo chmod 600 /etc/opendkim/keys/meine-domain.de/default.private
+</code></pre>
+<p>Dabei entstehen zwei Dateien: <code>default.private</code> – der geheime Schlüssel, der auf dem Server bleibt – und <code>default.txt</code> – der öffentliche Schlüssel für das DNS. <code>default</code> ist der frei wählbare Name des Schlüssels (der „Selektor“).</p>
+<h3 id="opendkim-einstellen"><a class="header" href="#opendkim-einstellen">OpenDKIM einstellen</a></h3>
+<p>In der Datei <code>/etc/opendkim.conf</code> folgende Zeilen setzen bzw. ergänzen (vorhandene gleichnamige Zeilen anpassen):</p>
+<pre><code>Domain                  meine-domain.de
+Selector                default
+KeyFile                 /etc/opendkim/keys/meine-domain.de/default.private
+Socket                  local:/var/spool/postfix/opendkim/opendkim.sock
+Mode                    sv
+Canonicalization        relaxed/simple
+OversignHeaders         From
+SubDomains              no
+UMask                   002
+InternalHosts           refile:/etc/opendkim/TrustedHosts
+ExternalIgnoreList      refile:/etc/opendkim/TrustedHosts
+</code></pre>
+<p>Falls in <code>/etc/default/opendkim</code> eine Zeile <code>SOCKET=</code> steht, wird sie mit <code>#</code> auskommentiert, damit die Angabe aus <code>opendkim.conf</code> gilt.</p>
+<p>Die Datei <code>/etc/opendkim/TrustedHosts</code> anlegen mit dem Inhalt:</p>
+<pre><code>127.0.0.1
+::1
+localhost
+mail.meine-domain.de
+meine-domain.de
+</code></pre>
+<h3 id="platz-für-den-verbindungspunkt-schaffen"><a class="header" href="#platz-für-den-verbindungspunkt-schaffen">Platz für den Verbindungspunkt schaffen</a></h3>
+<p>Postfix läuft in einem abgeschotteten Verzeichnis (<code>/var/spool/postfix</code>). Der Verbindungspunkt zu OpenDKIM muss darin liegen:</p>
+<pre><code class="language-bash">sudo mkdir -p /var/spool/postfix/opendkim
+sudo chown opendkim:postfix /var/spool/postfix/opendkim
+sudo chmod 750 /var/spool/postfix/opendkim
+sudo adduser postfix opendkim
+</code></pre>
+<h3 id="postfix-mit-opendkim-verbinden"><a class="header" href="#postfix-mit-opendkim-verbinden">Postfix mit OpenDKIM verbinden</a></h3>
+<pre><code class="language-bash">sudo postconf -e 'milter_default_action = accept'
+sudo postconf -e 'milter_protocol = 6'
+sudo postconf -e 'smtpd_milters = local:opendkim/opendkim.sock'
+sudo postconf -e 'non_smtpd_milters = local:opendkim/opendkim.sock'
+</code></pre>
+<p>Der Pfad ist ohne <code>/var/spool/postfix</code> davor angegeben, weil Postfix aus seinem abgeschotteten Verzeichnis heraus arbeitet. Entscheidend ist hier <code>non_smtpd_milters</code>: MediaWiki und Drupal übergeben ihre Post lokal, nicht über eine SMTP-Verbindung.</p>
+<p>Dienste neu starten und für den Systemstart vormerken:</p>
+<pre><code class="language-bash">sudo systemctl restart opendkim
+sudo systemctl enable opendkim
+sudo systemctl restart postfix
+</code></pre>
+<h3 id="öffentlichen-schlüssel-im-dns-veröffentlichen"><a class="header" href="#öffentlichen-schlüssel-im-dns-veröffentlichen">Öffentlichen Schlüssel im DNS veröffentlichen</a></h3>
+<pre><code class="language-bash">sudo cat /etc/opendkim/keys/meine-domain.de/default.txt
+</code></pre>
+<p>Die Ausgabe sieht ungefähr so aus:</p>
+<pre><code>default._domainkey  IN  TXT  ( "v=DKIM1; h=sha256; k=rsa; "
+  "p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA..." )
+</code></pre>
+<p>Daraus wird ein DNS-Eintrag:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name/Host</th><th>Typ</th><th>Wert</th></tr>
+</thead>
+<tbody>
+<tr><td><code>default._domainkey</code></td><td>TXT</td><td><code>v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8A...</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Der gesamte Inhalt ab <code>v=DKIM1</code> wird zu <strong>einer</strong> Zeichenkette zusammengesetzt – die Anführungszeichen und Klammern aus der Datei entfallen, der <code>p=</code>-Teil wird ohne Leerzeichen aneinandergehängt. Viele DNS-Oberflächen nehmen den langen Wert direkt an.</p>
+<p>Nach ein paar Minuten prüfen:</p>
+<pre><code class="language-bash">sudo opendkim-testkey -d meine-domain.de -s default -vvv
+# die Meldung  key OK  bedeutet: passt
+</code></pre>
+<h2 id="schritt-10-dmarc-eintrag-im-dns"><a class="header" href="#schritt-10-dmarc-eintrag-im-dns">Schritt 10: DMARC-Eintrag im DNS</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name/Host</th><th>Typ</th><th>Wert</th></tr>
+</thead>
+<tbody>
+<tr><td><code>_dmarc</code></td><td>TXT</td><td><code>v=DMARC1; p=none; rua=mailto:postmaster@meine-domain.de; fo=1</code></td></tr>
+</tbody>
+</table>
+</div>
+<p><code>p=none</code> heißt: zu Beginn nur beobachten, nichts abweisen. An die <code>rua</code>-Adresse schicken die Empfänger regelmäßig Berichte. Sind diese Berichte nach ein bis zwei Wochen sauber, verschärft man auf <code>p=quarantine</code> (Verdachtspost in den Spam-Ordner) und später auf <code>p=reject</code> (Abweisung).</p>
+<h2 id="schritt-11-testen"><a class="header" href="#schritt-11-testen">Schritt 11: Testen</a></h2>
+<p>Eine Testnachricht an eine eigene Gmail-Adresse senden:</p>
+<pre><code class="language-bash">echo "Dies ist ein Test von meinem eigenen Server." | mail -s "Postfix-Test" -a "From: noreply@meine-domain.de" meine-adresse@gmail.com
+</code></pre>
+<p>Dabei das Protokoll mitlesen:</p>
+<pre><code class="language-bash">sudo tail -f /var/log/mail.log
+</code></pre>
+<p>Gesucht wird eine Zeile mit <code>status=sent</code> und <code>250 2.0.0 OK</code>. (Gibt es die Datei <code>/var/log/mail.log</code> nicht, hilft <code>journalctl -u postfix -f</code>.)</p>
+<p>In Gmail die Nachricht öffnen, oben rechts auf die drei Punkte, dann <strong>Original anzeigen</strong>. Dort sollte stehen:</p>
+<pre><code>SPF:    PASS
+DKIM:   'PASS' with domain meine-domain.de
+DMARC:  'PASS'
+</code></pre>
+<p>Zusätzlich die Nachricht durch <strong>mail-tester.com</strong> schicken: Die Seite zeigt eine Adresse an, an die man eine Mail sendet; nach dem Neuladen erscheint eine Bewertung. Ziel ist 10 von 10.</p>
+<p>Landet die Post trotz dreier „PASS“ im Spam, einmal „Kein Spam“ wählen und einer neuen IP einige Tage Zeit geben, einen guten Ruf aufzubauen.</p>
+<h2 id="schritt-12-mediawiki-anbinden"><a class="header" href="#schritt-12-mediawiki-anbinden">Schritt 12: MediaWiki anbinden</a></h2>
+<p>MediaWiki nutzt von Haus aus die <code>mail()</code>-Funktion von PHP, die die Nachricht über <code>/usr/sbin/sendmail</code> an Postfix übergibt. Es muss also nichts zusätzlich installiert werden – nur Adressen eingetragen. In <code>LocalSettings.php</code>:</p>
+<pre><code class="language-php">$wgEnableEmail      = true;
+$wgEnableUserEmail  = true;
+$wgEmergencyContact = 'postmaster@meine-domain.de';
+$wgPasswordSender   = 'noreply@meine-domain.de';
+$wgNoReplyAddress   = 'noreply@meine-domain.de';
+</code></pre>
+<p>Die Einstellung <code>$wgSMTP</code> bleibt auf <code>false</code> (Voreinstellung), damit das lokale Postfix verwendet wird. Zum Prüfen die Seite <code>Spezial:E-Mail_senden</code> aufrufen oder ein Passwort zurücksetzen lassen.</p>
+<h2 id="schritt-13-drupal-anbinden"><a class="header" href="#schritt-13-drupal-anbinden">Schritt 13: Drupal anbinden</a></h2>
+<p>Auch Drupal verschickt im Kern über die <code>mail()</code>-Funktion von PHP und damit über Postfix – ein Zusatzmodul ist nicht nötig. Die Absenderadresse der Website wird unter <strong>Verwaltung → Konfiguration → System → Basiseinstellungen</strong> (<code>/admin/config/system/site-information</code>) auf <code>noreply@meine-domain.de</code> gesetzt.</p>
+<p>Wer später mehr Einfluss auf das Aussehen der E-Mails braucht (etwa HTML-Nachrichten), kann das Zusatzmodul <strong>Symfony Mailer</strong> nachrüsten; es kann das lokale Postfix als „Sendmail“-Weg weiterverwenden. Für Anmelde- und Passwortmails genügt der eingebaute Weg.</p>
+<p>Zum Prüfen ein Testkonto anlegen oder <code>/user/password</code> verwenden.</p>
+<h2 id="schritt-14-laufender-betrieb"><a class="header" href="#schritt-14-laufender-betrieb">Schritt 14: Laufender Betrieb</a></h2>
+<ul>
+<li><strong>Protokoll ansehen:</strong> <code>sudo tail -f /var/log/mail.log</code>. <code>deferred</code> heißt: vorübergehend hängen geblieben, Postfix versucht es erneut; <code>bounced</code> heißt: endgültig abgewiesen.</li>
+<li><strong>Warteschlange:</strong> <code>mailq</code> zeigt wartende Post an, <code>sudo postqueue -f</code> stößt einen sofortigen neuen Versuch an.</li>
+<li><strong>Kein offenes Relay:</strong> Durch <code>inet_interfaces = loopback-only</code> nimmt der Server Post nur von sich selbst an. Diese Einstellung nicht ohne Anmeldung und weitere Regeln auf <code>all</code> ändern.</li>
+<li><strong>Aktuell halten:</strong> <code>sudo apt upgrade</code> versorgt Postfix und OpenDKIM mit Sicherheitsupdates.</li>
+<li><strong>Ruf der IP prüfen:</strong> gelegentlich unter <code>check.spamhaus.org</code> und <code>mxtoolbox.com</code> nachsehen.</li>
+<li><strong>DMARC verschärfen:</strong> nach sauberen Berichten <code>p=none</code> → <code>p=quarantine</code> → <code>p=reject</code>.</li>
+<li><strong>Zertifikat:</strong> Wurde das Certbot-Zertifikat eingerichtet, bestätigt <code>sudo certbot renew --dry-run</code>, dass die Erneuerung funktioniert.</li>
+</ul>
+<h2 id="fehlersuche"><a class="header" href="#fehlersuche">Fehlersuche</a></h2>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Symptom</th><th>Ursache</th><th>Lösung</th></tr>
+</thead>
+<tbody>
+<tr><td>Post bleibt in der Warteschlange, <code>connect to ...:25: Connection timed out</code></td><td>Anbieter sperrt ausgehenden Port 25</td><td>beim Anbieter freischalten lassen</td></tr>
+<tr><td>Gmail: <code>550 ... does not have a valid PTR record</code></td><td>keine oder falsche Rückwärtsauflösung</td><td>PTR im Anbieter-Panel auf <code>mail.meine-domain.de</code> setzen</td></tr>
+<tr><td>Gmail-Header <code>SPF: SOFTFAIL</code> oder <code>FAIL</code></td><td>SPF-Eintrag fehlt oder IP nicht enthalten</td><td>TXT-Eintrag <code>v=spf1 ... ip4:203.0.113.10 -all</code> prüfen</td></tr>
+<tr><td>Header <code>DKIM: FAIL</code> oder <code>NEUTRAL</code></td><td>öffentlicher Schlüssel im DNS falsch, oder die Unterschrift greift nicht</td><td><code>opendkim-testkey</code> ausführen; ist <code>non_smtpd_milters</code> gesetzt? Socket-Pfad richtig?</td></tr>
+<tr><td><code>warning: connect to Milter service local:opendkim/opendkim.sock: No such file or directory</code></td><td>Verzeichnis für den Verbindungspunkt fehlt oder falsche Rechte</td><td><code>/var/spool/postfix/opendkim</code> anlegen, <code>chown opendkim:postfix</code>, OpenDKIM neu starten</td></tr>
+<tr><td>Post landet trotz „PASS“ im Spam</td><td>Ruf der IP noch niedrig</td><td>„Kein Spam“ wählen, abwarten, Menge langsam steigern</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="für-dieses-buch"><a class="header" href="#für-dieses-buch">Für dieses Buch</a></h2>
+<p>Für den beschriebenen Aufbau ist ein Postfix, das nur sendet, genau das richtige Maß: MediaWiki und Drupal müssen Post verschicken, nicht empfangen. Der Server bleibt zum Internet hin geschlossen (<code>loopback-only</code>), womit das größte Risiko entfällt – der Missbrauch als Spam-Verteiler. Die Arbeit steckt nicht in Postfix selbst, sondern in den vier Nachweisen auf der DNS-Seite: Rückwärtsauflösung, SPF, DKIM und DMARC. Sind alle vier gesetzt, stellt Gmail in den Posteingang zu; fehlt einer, verschwindet die Post im Spam. Das Empfangen von Post (Postfächer, IMAP, Spam-Filter) ist eine eigene, größere Aufgabe; bis dahin zeigt der MX-Eintrag der Domain auf ein vorhandenes Postfach, damit Antworten und Berichte trotzdem ankommen.</p>
+<h2 id="fazit"><a class="header" href="#fazit">Fazit</a></h2>
+<p><strong>Postfix</strong> ist das Programm, das die E-Mails von MediaWiki und Drupal annimmt und zustellt. Auf Ubuntu 26.04 ist es mit einem <code>apt</code>-Befehl installiert und mit wenigen <code>postconf</code>-Zeilen als reiner Sendedienst eingerichtet: <code>inet_interfaces = loopback-only</code> hält den Server dabei nach außen dicht. Damit <strong>Gmail</strong> die Post annimmt, zählen vier Dinge im DNS: ein passender <strong>PTR</strong>-Eintrag für die IP, ein <strong>SPF</strong>-Eintrag, eine <strong>DKIM</strong>-Unterschrift über <strong>OpenDKIM</strong> mit veröffentlichtem Schlüssel und ein <strong>DMARC</strong>-Eintrag. Die Verbindung zu anderen Mailservern verschlüsselt Postfix beim Senden von selbst; ein eigenes Zertifikat von <strong>Certbot</strong> wird erst beim Empfangen nötig. MediaWiki und Drupal brauchen keine Zusatzsoftware – sie geben ihre Post über die <code>mail()</code>-Funktion von PHP direkt an das lokale Postfix. Ein Test an eine Gmail-Adresse und ein Blick in „Original anzeigen“ auf die Zeilen <code>SPF: PASS</code>, <code>DKIM: PASS</code> und <code>DMARC: PASS</code> bestätigen, dass alles greift.</p>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../server-einrichten/webframework.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../server-einrichten/containerisierung.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../server-einrichten/webframework.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../server-einrichten/containerisierung.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>

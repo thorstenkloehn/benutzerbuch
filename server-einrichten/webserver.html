@@ -1,0 +1,384 @@
+<!DOCTYPE HTML>
+<html lang="en" class="light sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Webserver - Benutzerhandbuch</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="icon" href="../favicon-de23e50b.svg">
+        <link rel="shortcut icon" href="../favicon-8114d1fc.png">
+        <link rel="stylesheet" href="../css/variables-8adf115d.css">
+        <link rel="stylesheet" href="../css/general-e96d0476.css">
+        <link rel="stylesheet" href="../css/chrome-d279d366.css">
+        <link rel="stylesheet" href="../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../";
+            const default_light_theme = "light";
+            const default_dark_theme = "navy";
+            window.path_to_searchindex_js = "../searchindex-bfa72d74.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../toc-0c2ed6dd.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-default_theme">Auto</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-ayu">Ayu</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">Benutzerhandbuch</h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="webserver"><a class="header" href="#webserver">Webserver</a></h1>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+<p>MediaWiki, die Grundlage der Wissenssammlung dieses Buchs, besteht aus vielen PHP-Dateien (siehe <a href="./laufzeitumgebung.html">Laufzeitumgebung</a>). Damit ein Besucher diese Seiten im Browser sehen kann, fehlt noch ein Programm dazwischen: der <strong>Webserver</strong>. Er nimmt die Anfrage aus dem Internet entgegen, holt die passende Seite und schickt sie zurück.</p>
+<p>Dieses Kapitel erklärt, was ein Webserver ist, stellt die vier bekanntesten vor und zeigt für die drei, die man wirklich selbst betreibt, wie man sie auf einem Server mit <strong>Ubuntu 26.04 LTS</strong> (siehe <a href="./betriebssystem.html">Betriebssystem</a>) einrichtet und mit einem kostenlosen SSL-Zertifikat auf verschlüsselte Verbindungen (HTTPS) umstellt. Alle Befehle werden in der Textkonsole des Servers eingegeben. Das vorangestellte <code>sudo</code> bedeutet: mit Verwaltungsrechten ausführen.</p>
+<h2 id="was-ein-webserver-ist"><a class="header" href="#was-ein-webserver-ist">Was ein Webserver ist</a></h2>
+<p>Man kann sich einen Webserver wie den Empfang in einem großen Bürohaus vorstellen. Ein Besucher kommt herein und nennt sein Anliegen (“Ich möchte die Startseite von example.de sehen”). Der Empfang schaut nach, wer zuständig ist, holt die Auskunft und gibt sie heraus. Der Besucher muss nie selbst durch das Gebäude laufen.</p>
+<p>Genau das macht ein Webserver mit Anfragen aus dem Internet. Er beherrscht dabei zwei Aufgaben:</p>
+<ul>
+<li><strong>Feste Dateien ausliefern.</strong> Bilder, Stylesheets, heruntergeladene Dokumente oder eine einfache HTML-Seite liegen als Datei auf der Festplatte. Der Webserver schickt sie unverändert an den Browser.</li>
+<li><strong>Anfragen weiterreichen.</strong> Seiten, die erst erzeugt werden müssen – jede MediaWiki-Seite gehört dazu –, gibt der Webserver an das zuständige Programm im Hintergrund weiter, bei MediaWiki an PHP-FPM. Er wartet auf dessen Antwort und leitet sie an den Browser zurück. In dieser Rolle heißt der Webserver auch <strong>Reverse Proxy</strong>.</li>
+</ul>
+<p>Dazu kommen Aufgaben, die man an einer zentralen Stelle bündeln möchte: die Verschlüsselung der Verbindung (HTTPS), das Umleiten von alten auf neue Adressen, das Sperren unerwünschter Zugriffe und das Zusammenfassen mehrerer Programme unter einer Adresse. Auch der Zwischenspeicher aus dem Kapitel <a href="./containerisierung.html">Containerisierung von Software</a> sitzt oft hinter demselben Webserver.</p>
+<h2 id="die-vier-bekanntesten-webserver"><a class="header" href="#die-vier-bekanntesten-webserver">Die vier bekanntesten Webserver</a></h2>
+<h3 id="nginx"><a class="header" href="#nginx">NGINX</a></h3>
+<p>NGINX (gesprochen “Engine-X”) wurde entwickelt, um sehr viele gleichzeitige Verbindungen mit wenig Arbeitsspeicher zu bewältigen. Es liefert feste Dateien schnell aus und ist als Reverse Proxy vor anderen Programmen weit verbreitet. Die offizielle MediaWiki-Anleitung und ein Großteil der Beispiele im Internet gehen von NGINX aus. Die Einstellungen stehen in kurzen Textblöcken; man beschreibt darin, welche Adresse zu welchem Verzeichnis oder welchem Hintergrunddienst gehört.</p>
+<p>Für die Wissenssammlung dieses Buchs ist NGINX die naheliegende Wahl: am meisten Anleitungen, sparsam im Verbrauch, gut mit PHP-FPM zu verbinden.</p>
+<h3 id="apache-http-server"><a class="header" href="#apache-http-server">Apache HTTP Server</a></h3>
+<p>Der Apache HTTP Server ist der älteste der vier und lange Zeit der Standard im Web gewesen. Viele fertige Anleitungen und Auslieferungspakete – auch die “einfache” MediaWiki-Installation – sind auf Apache zugeschnitten. Seine Stärke ist die Erweiterbarkeit über Zusatzmodule und die Möglichkeit, Einstellungen pro Verzeichnis in einer Datei namens <code>.htaccess</code> abzulegen, ohne den ganzen Server neu zu laden.</p>
+<p>Diese Bequemlichkeit hat einen Preis: Apache verbraucht bei vielen gleichzeitigen Besuchern mehr Arbeitsspeicher als NGINX. Für eine kleine Wissenssammlung fällt das kaum ins Gewicht. Wer bereits Apache-Erfahrung hat, kann bei Apache bleiben.</p>
+<h3 id="caddy"><a class="header" href="#caddy">Caddy</a></h3>
+<p>Caddy ist der jüngste der vier und verfolgt ein klares Ziel: möglichst wenig Einrichtung. Sein größter Unterschied zu den anderen ist die <strong>automatische Verschlüsselung</strong>. Caddy besorgt sich das SSL-Zertifikat beim ersten Start selbst und erneuert es von allein – ein zusätzliches Werkzeug wie Certbot entfällt vollständig. Die Konfigurationsdatei (“Caddyfile”) ist oft nur wenige Zeilen lang.</p>
+<p>Caddy ist eine gute Wahl für alle, die den Server möglichst einfach halten wollen und keine besonderen Ansprüche an die Feinabstimmung haben. Es gibt weniger fertige Anleitungen als für NGINX, dafür braucht man auch weniger davon.</p>
+<h3 id="pingora"><a class="header" href="#pingora">Pingora</a></h3>
+<p>Pingora fällt aus der Reihe. Es ist <strong>kein fertiger Webserver, den man installiert und startet</strong>, sondern ein Baukasten in der Programmiersprache Rust, mit dem Entwickler eigene Netzwerkdienste bauen. Die Firma Cloudflare hat Pingora zunächst für den Eigenbedarf geschrieben – als Ersatz für NGINX in ihrem weltweiten Netz – und den Baukasten später quelloffen veröffentlicht.</p>
+<p>Für den Aufbau dieses Buchs spielt Pingora keine Rolle. Es gibt kein <code>apt</code>-Paket dafür; man bräuchte die vollständige Rust-Entwicklungsausstattung und müsste den Dienst selbst programmieren. Pingora ist hier nur genannt, weil der Name in Vergleichen und Nachrichten auftaucht. Wer einmal ein fertiges Programm betreibt, das auf Pingora aufbaut, merkt davon im Betrieb nichts Besonderes.</p>
+<h3 id="kurzvergleich"><a class="header" href="#kurzvergleich">Kurzvergleich</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Webserver</th><th>Art</th><th>Verschlüsselung</th><th>Für diesen Aufbau</th></tr>
+</thead>
+<tbody>
+<tr><td>NGINX</td><td>fertiger Server</td><td>mit Certbot</td><td>empfohlen, die meisten Anleitungen</td></tr>
+<tr><td>Apache HTTP Server</td><td>fertiger Server</td><td>mit Certbot</td><td>geeignet, etwas mehr Verbrauch</td></tr>
+<tr><td>Caddy</td><td>fertiger Server</td><td>eingebaut, automatisch</td><td>geeignet, am wenigsten Einrichtung</td></tr>
+<tr><td>Pingora</td><td>Programmbaukasten (Rust)</td><td>selbst zu bauen</td><td>nicht relevant, nur zum Einordnen</td></tr>
+</tbody>
+</table>
+</div>
+<h2 id="installation-auf-ubuntu-2604"><a class="header" href="#installation-auf-ubuntu-2604">Installation auf Ubuntu 26.04</a></h2>
+<p>Vor der Installation lohnt ein Blick auf die Ports: Ein Webserver belegt Port 80 (unverschlüsselt) und Port 443 (verschlüsselt). Läuft dort schon ein anderer Webserver, muss dieser vorher gestoppt werden – zwei gleichzeitig geht nicht.</p>
+<h3 id="nginx-1"><a class="header" href="#nginx-1">NGINX</a></h3>
+<pre><code class="language-bash">sudo apt update
+sudo apt install nginx
+
+# Zeigt die installierte Version zur Kontrolle an
+nginx -v
+</code></pre>
+<p>Nach der Installation läuft NGINX bereits und zeigt unter der IP-Adresse des Servers eine Willkommensseite. Diese gehört zur mitgelieferten Beispielkonfiguration. Bevor eine eigene Seite eingerichtet wird, entfernt man sie:</p>
+<pre><code class="language-bash">sudo rm /etc/nginx/sites-enabled/default
+</code></pre>
+<p>Die eigenen Einstellungen kommen als neue Datei nach <code>/etc/nginx/sites-available/</code> und werden mit einem Verweis (“Symlink”) nach <code>/etc/nginx/sites-enabled/</code> aktiv geschaltet. Nach jeder Änderung prüft <code>sudo nginx -t</code> die Datei auf Fehler, <code>sudo systemctl reload nginx</code> übernimmt sie.</p>
+<h3 id="apache-http-server-1"><a class="header" href="#apache-http-server-1">Apache HTTP Server</a></h3>
+<pre><code class="language-bash">sudo apt update
+sudo apt install apache2
+
+# Zeigt die installierte Version zur Kontrolle an
+apache2 -v
+</code></pre>
+<p>Auch Apache startet sofort mit einer Standardseite. Für den Betrieb hinter PHP-FPM und für die spätere Verschlüsselung werden einige Zusatzmodule eingeschaltet:</p>
+<pre><code class="language-bash">sudo a2enmod proxy_fcgi setenvif rewrite headers ssl
+sudo systemctl restart apache2
+</code></pre>
+<p>Die Standard-Beispielseite schaltet man mit <code>sudo a2dissite 000-default</code> ab. Eigene Konfigurationsdateien liegen unter <code>/etc/apache2/sites-available/</code> und werden mit <code>sudo a2ensite &lt;name&gt;</code> aktiviert. <code>sudo apachectl configtest</code> prüft auf Fehler, <code>sudo systemctl reload apache2</code> übernimmt Änderungen.</p>
+<h3 id="caddy-1"><a class="header" href="#caddy-1">Caddy</a></h3>
+<p>Caddy liegt nicht in den Paketquellen von Ubuntu. Es wird über die offizielle Paketquelle des Herstellers eingerichtet, mitsamt einem digitalen Schlüssel, mit dem Ubuntu die Echtheit der Pakete prüft:</p>
+<pre><code class="language-bash">sudo apt install -y debian-keyring debian-archive-keyring apt-transport-https curl
+
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/gpg.key' \
+  | sudo gpg --dearmor -o /usr/share/keyrings/caddy-stable-archive-keyring.gpg
+
+curl -1sLf 'https://dl.cloudsmith.io/public/caddy/stable/debian.deb.txt' \
+  | sudo tee /etc/apt/sources.list.d/caddy-stable.list
+
+sudo apt update
+sudo apt install caddy
+</code></pre>
+<p>Danach läuft Caddy als Hintergrunddienst. Die gesamte Konfiguration steht in der Datei <code>/etc/caddy/Caddyfile</code>. Für MediaWiki genügen wenige Zeilen: der Domainname, das Wurzelverzeichnis und die Weitergabe von PHP-Dateien an PHP-FPM. Nach dem Ändern der Datei übernimmt <code>sudo systemctl reload caddy</code> die neuen Einstellungen. Um Zertifikate muss man sich nicht kümmern – dazu unten mehr.</p>
+<h2 id="verschlüsselung-mit-https"><a class="header" href="#verschlüsselung-mit-https">Verschlüsselung mit HTTPS</a></h2>
+<p>Eine Website sollte heute ausschließlich über verschlüsselte Verbindungen erreichbar sein. Sichtbar wird das am Kürzel <strong><code>https://</code></strong> und am Schloss-Symbol im Browser. Die Verschlüsselung schützt nicht nur Passwörter, sondern verhindert auch, dass unterwegs jemand den Inhalt der Seiten mitliest oder verändert.</p>
+<p>Grundlage ist ein <strong>SSL-Zertifikat</strong>. Es ist eine kleine, digital unterschriebene Datei, die bestätigt: “Dieser Server gehört wirklich zu dieser Domain.” Ausgestellt wird es von einer <strong>Zertifizierungsstelle</strong>. Die gemeinnützige Stelle <strong>Let’s Encrypt</strong> stellt solche Zertifikate kostenlos aus; sie sind allerdings nur 90 Tage gültig und müssen darum automatisch erneuert werden.</p>
+<p>Das Werkzeug, das Zertifikate bei Let’s Encrypt beantragt, einbaut und rechtzeitig erneuert, heißt <strong>Certbot</strong>. Ausnahme ist Caddy: Es bringt diese Aufgabe schon mit.</p>
+<h3 id="voraussetzung-die-domain-zeigt-auf-den-server"><a class="header" href="#voraussetzung-die-domain-zeigt-auf-den-server">Voraussetzung: die Domain zeigt auf den Server</a></h3>
+<p>Bevor ein Zertifikat beantragt werden kann, muss die Domain (z. B. <code>meine-domain.de</code>) beim DNS-Anbieter auf die IP-Adresse des Servers zeigen – über einen sogenannten <strong>A-Record</strong> für IPv4 und, falls vorhanden, einen <strong>AAAA-Record</strong> für IPv6. Let’s Encrypt prüft bei der Ausstellung, ob die Domain tatsächlich zu diesem Server führt.</p>
+<h3 id="certbot-installieren"><a class="header" href="#certbot-installieren">Certbot installieren</a></h3>
+<p>Die Certbot-Entwickler empfehlen die Installation über das Paketformat <strong>Snap</strong>, weil diese Fassung immer aktuell bleibt:</p>
+<pre><code class="language-bash">sudo apt install snapd
+sudo snap install core
+sudo snap install --classic certbot
+
+# Certbot als normalen Befehl "certbot" verfügbar machen
+sudo ln -s /snap/bin/certbot /usr/bin/certbot
+</code></pre>
+<h3 id="nginx-und-apache-zertifikat-in-einem-schritt"><a class="header" href="#nginx-und-apache-zertifikat-in-einem-schritt">NGINX und Apache: Zertifikat in einem Schritt</a></h3>
+<p>Für den Normalfall – eine feste Domain, deren A-Record auf den Server zeigt – erledigt Certbot alles allein. Es beantragt das Zertifikat, trägt es in die Serverkonfiguration ein und richtet die Umleitung von <code>http://</code> auf <code>https://</code> ein:</p>
+<pre><code class="language-bash"># Für NGINX
+sudo certbot --nginx -d meine-domain.de -d www.meine-domain.de
+
+# Für Apache
+sudo certbot --apache -d meine-domain.de -d www.meine-domain.de
+</code></pre>
+<p>Beim ersten Aufruf fragt Certbot nach einer E-Mail-Adresse für Ablaufwarnungen und nach der Zustimmung zu den Nutzungsbedingungen. Die automatische Erneuerung richtet Snap im Hintergrund selbst ein; <code>sudo certbot renew --dry-run</code> prüft, ob sie funktioniert.</p>
+<h3 id="wildcard-zertifikat-über-einen-dns-eintrag"><a class="header" href="#wildcard-zertifikat-über-einen-dns-eintrag">Wildcard-Zertifikat über einen DNS-Eintrag</a></h3>
+<p>Soll ein Zertifikat für <strong>alle Unterdomains</strong> auf einmal gelten (<code>*.meine-domain.de</code>), reicht der einfache Weg nicht. Let’s Encrypt verlangt dann einen Nachweis über einen DNS-Eintrag. Dieser Weg funktioniert für jeden Webserver gleich, weil er das Zertifikat nur beschafft (<code>certonly</code>) und nicht selbst einbaut:</p>
+<pre><code class="language-bash">sudo certbot certonly --manual --preferred-challenges dns \
+  -d '*.meine-domain.de' -d meine-domain.de
+</code></pre>
+<p>Certbot zeigt daraufhin eine zufällige Zeichenkette an und wartet. Diese Zeichenkette wird beim DNS-Anbieter als Eintrag hinterlegt:</p>
+<ol>
+<li>Beim DNS-Anbieter anmelden und die Verwaltungsoberfläche für die Domain öffnen.</li>
+<li>Den Bereich für DNS-Einträge suchen und einen neuen Eintrag anlegen:
+<ul>
+<li><strong>Typ:</strong> TXT</li>
+<li><strong>Name/Host:</strong> <code>_acme-challenge</code> (manche Oberflächen erwarten den vollständigen Namen <code>_acme-challenge.meine-domain.de</code>)</li>
+<li><strong>Wert:</strong> die von Certbot angezeigte Zeichenkette</li>
+</ul>
+</li>
+<li>Den Eintrag speichern. Die Änderung braucht einige Minuten, bis sie weltweit sichtbar ist. Ob sie schon greift, lässt sich mit dem Befehl <code>dig</code> oder auf einer Prüfseite wie whatsmydns.net kontrollieren.</li>
+<li>Erst dann bei Certbot die Eingabetaste drücken.</li>
+</ol>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Name/Host</th><th>Typ</th><th>Wert</th></tr>
+</thead>
+<tbody>
+<tr><td><code>_acme-challenge.meine-domain.de</code></td><td>TXT</td><td>(zufällige Zeichenkette von Certbot)</td></tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p><strong>Hinweis:</strong> Jeder neue Antrag erzeugt eine neue Zeichenkette. Der TXT-Eintrag muss bei jeder Verlängerung von Hand angepasst werden – oder man verwendet ein Certbot-Zusatzmodul, das den Eintrag über die Schnittstelle des DNS-Anbieters selbst setzt.</p>
+</blockquote>
+<p>Nach erfolgreicher Prüfung legt Certbot die Dateien ab und nennt die Pfade, zum Beispiel:</p>
+<pre><code>Certificate is saved at: /etc/letsencrypt/live/meine-domain.de/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/meine-domain.de/privkey.pem
+</code></pre>
+<p><code>fullchain.pem</code> enthält das Zertifikat samt der Zwischenzertifikate, <code>privkey.pem</code> den geheimen Schlüssel. Diese beiden Pfade bleiben auch bei einer Erneuerung gleich: Certbot überschreibt die Dateien, der Ordnername unter <code>/etc/letsencrypt/live/</code> ändert sich nicht. Deshalb kann man sie fest in die Konfiguration von NGINX oder Apache eintragen.</p>
+<h3 id="caddy-nichts-zu-tun"><a class="header" href="#caddy-nichts-zu-tun">Caddy: nichts zu tun</a></h3>
+<p>Bei Caddy genügt es, im Caddyfile den Domainnamen anzugeben. Beim ersten Start holt Caddy das Zertifikat selbst und erneuert es fortan ohne weiteres Zutun. Ein Wildcard-Zertifikat ist die einzige Ausnahme: Dafür braucht auch Caddy ein Zusatzmodul für den jeweiligen DNS-Anbieter.</p>
+<h2 id="für-dieses-buch"><a class="header" href="#für-dieses-buch">Für dieses Buch</a></h2>
+<p>Für die beschriebene Wissenssammlung ist <strong>NGINX</strong> die empfohlene Wahl: Es gibt die meisten Anleitungen – auch die offizielle von MediaWiki –, es verbraucht wenig, und das Zusammenspiel mit PHP-FPM ist gut dokumentiert. Wer die Einrichtung so knapp wie möglich halten will und auf Feinabstimmung verzichten kann, ist mit <strong>Caddy</strong> gut bedient, allein schon wegen der automatischen Verschlüsselung. <strong>Apache</strong> ist eine solide Wahl für alle, die damit schon vertraut sind. <strong>Pingora</strong> kommt für diesen Aufbau nicht in Frage.</p>
+<p>Ein Grundsatz gilt für alle: HTTPS ist Pflicht, nicht Kür. Das Zertifikat von Let’s Encrypt ist kostenlos, und die Erneuerung läuft nach der Einrichtung von selbst. Wer Docker einsetzt (siehe <a href="./containerisierung.html">Containerisierung von Software</a>), sollte zusätzlich beachten, dass Docker die Firewall umgehen kann; dort veröffentlicht man die Programme nur nach innen und stellt den Webserver davor.</p>
+<h2 id="fazit"><a class="header" href="#fazit">Fazit</a></h2>
+<p>Ein Webserver nimmt Anfragen aus dem Internet entgegen, liefert feste Dateien selbst aus und reicht alles Übrige an das zuständige Programm weiter – bei MediaWiki an PHP-FPM. <strong>NGINX</strong> ist für diesen Aufbau die beste Wahl, <strong>Caddy</strong> die einfachste, <strong>Apache</strong> die vertraute; <strong>Pingora</strong> ist ein Programmbaukasten und kein fertiger Server. Auf Ubuntu 26.04 wird NGINX und Apache mit einem einzigen <code>apt</code>-Befehl eingerichtet, Caddy über die Paketquelle des Herstellers. Die verschlüsselte Verbindung besorgt bei NGINX und Apache das Werkzeug <strong>Certbot</strong> mit einem kostenlosen Zertifikat von <strong>Let’s Encrypt</strong> – für eine feste Domain in einem Schritt, für alle Unterdomains über einen DNS-Eintrag. Caddy erledigt diesen Teil von allein.</p>
+<blockquote>
+<p>Diese Inhalte wurden mit Unterstützung von Künstlicher Intelligenz erstellt und redaktionell überprüft (Transparenzhinweis gemäß Art. 50 EU AI Act).</p>
+</blockquote>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../server-einrichten/tileserver.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../server-einrichten/nginx-unix-socket.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../server-einrichten/tileserver.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../server-einrichten/nginx-unix-socket.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../mark-09e88c2c.min.js"></script>
+        <script src="../searcher-09f2665d.js"></script>
+
+        <script src="../clipboard-1626706a.min.js"></script>
+        <script src="../highlight-abc7f01d.js"></script>
+        <script src="../book-609e4cb8.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+
+    </div>
+    </body>
+</html>
