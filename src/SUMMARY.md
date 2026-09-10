@@ -49,6 +49,7 @@
 - [Content-Management-System](./web-stack/cms.md)
   - [Drupal einrichten](./web-stack/drupal.md)
     - [Inhalte importieren und exportieren](./web-stack/drupal-import-export.md)
+- [Backup mit PII-Ausschluss](./web-stack/backup-pii-ausschluss.md)
 
 # Mobil
 
