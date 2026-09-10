@@ -6,6 +6,7 @@
 - [KI-Abo auswählen](./grundlagen/ki-abo.md)
 - [LLM-Anbieter](./grundlagen/llm-anbieter.md)
 - [Desktop-Agenten](./grundlagen/desktop-agenten.md)
+- [Claude Desktop](./grundlagen/claude-desktop.md)
 - [Freies Wissen](./grundlagen/freies-wissen.md)
 - [Inhalts-Software selbst betreiben](./grundlagen/inhalt-software-verwalten.md)
 - [Text erstellen](./grundlagen/text-erstellen.md)
